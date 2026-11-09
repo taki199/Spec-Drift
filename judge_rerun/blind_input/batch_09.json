@@ -1,0 +1,1526 @@
+[
+ {
+  "id": "case-607efa3c",
+  "spec_ops": [
+   {
+    "method": "POST",
+    "path": "/chrome/html",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "cost",
+     "mbIn",
+     "mbOut",
+     "pdf",
+     "success"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/chrome/url",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "cost",
+     "mbIn",
+     "mbOut",
+     "pdf",
+     "success"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/chrome/url",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "cost",
+     "mbIn",
+     "mbOut",
+     "pdf",
+     "success"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/libreoffice/convert",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "cost",
+     "mbIn",
+     "mbOut",
+     "pdf",
+     "success"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/merge",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "cost",
+     "mbIn",
+     "mbOut",
+     "pdf",
+     "success"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/wkhtmltopdf/html",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "cost",
+     "mbIn",
+     "mbOut",
+     "pdf",
+     "success"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/wkhtmltopdf/url",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "cost",
+     "mbIn",
+     "mbOut",
+     "pdf",
+     "success"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/wkhtmltopdf/url",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "cost",
+     "mbIn",
+     "mbOut",
+     "pdf",
+     "success"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/zebra",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   }
+  ],
+  "source": "from flask import Flask, jsonify, request\nfrom functools import wraps\napp = Flask(__name__)\ndef auth_required(fn):\n    @wraps(fn)\n    def w(*a, **k):\n        if request.headers.get(\"Authorization\", \"\") != \"Bearer t\":\n            return jsonify(error=\"unauthorized\"), 401\n        return fn(*a, **k)\n    return w\n\n@app.route('/chrome/html', methods=['POST'])\n@auth_required\ndef op_0():\n    return jsonify({'cost': 1.0, 'mbIn': 1.0, 'mbOut': 1.0, 'pdf': 'x', 'success': True}), 200\n\n@app.route('/chrome/url', methods=['GET'])\n@auth_required\ndef op_1():\n    return jsonify({'cost': 1.0, 'mbIn': 1.0, 'mbOut': 1.0, 'pdf': 'x', 'success': True}), 200\n\n@app.route('/chrome/url', methods=['POST'])\n@auth_required\ndef op_2():\n    return jsonify({'cost': 1.0, 'mbIn': 1.0, 'mbOut': 1.0, 'pdf': 'x', 'success': True}), 200\n\n@app.route('/libreoffice/convert', methods=['POST'])\n@auth_required\ndef op_3():\n    return jsonify({'cost': 1.0, 'mbIn': 1.0, 'mbOut': 1.0, 'pdf': 'x', 'success': True}), 200\n\n@app.route('/merge', methods=['POST'])\n@auth_required\ndef op_4():\n    return jsonify({'cost': 1.0, 'mbIn': 1.0, 'mbOut': 1.0, 'pdf': 'x', 'success': True}), 200\n\n@app.route('/wkhtmltopdf/html', methods=['POST'])\n@auth_required\ndef op_5():\n    return jsonify({'cost': 1.0, 'mbIn': 1.0, 'mbOut': 1.0, 'pdf': 'x', 'success': True}), 200\n\n@app.route('/wkhtmltopdf/url', methods=['GET'])\n@auth_required\ndef op_6():\n    return jsonify({'cost': 1.0, 'mbIn': 1.0, 'mbOut': 1.0, 'pdf': 'x', 'success': True}), 200\n\n@app.route('/wkhtmltopdf/url', methods=['POST'])\n@auth_required\ndef op_7():\n    return jsonify({'cost': 1.0, 'mbIn': 1.0, 'mbOut': 1.0, 'pdf': 'x', 'success': True}), 200\n"
+ },
+ {
+  "id": "case-ceb8aaf5",
+  "spec_ops": [
+   {
+    "method": "GET",
+    "path": "/v2/access-tokens",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "active_count",
+     "count",
+     "next",
+     "previous",
+     "results"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v2/access-tokens",
+    "status": 201,
+    "auth": false,
+    "response_fields": [
+     "client_id",
+     "created_at",
+     "creator_ip",
+     "creator_ua",
+     "generated_by",
+     "is_active"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v2/access-tokens/{uuid}",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "client_id",
+     "created_at",
+     "creator_ip",
+     "creator_ua",
+     "generated_by",
+     "is_active",
+     "token"
+    ]
+   },
+   {
+    "method": "DELETE",
+    "path": "/v2/access-tokens/{uuid}",
+    "status": 204,
+    "auth": false,
+    "response_fields": []
+   },
+   {
+    "method": "PATCH",
+    "path": "/v2/access-tokens/{uuid}",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "client_id",
+     "created_at",
+     "creator_ip",
+     "creator_ua",
+     "generated_by",
+     "is_active"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v2/auditlogs/{account}",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "logs"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v2/auditlogs/{account}/actions",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "actions"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v2/namespaces/{namespace}/delete-images",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "dry_run",
+     "metrics"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v2/namespaces/{namespace}/repositories/{repository}/images",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "count",
+     "next",
+     "previous",
+     "results"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v2/namespaces/{namespace}/repositories/{repository}/images-summary",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "active_from",
+     "statistics"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v2/namespaces/{namespace}/repositories/{repository}/images/{digest}/tags",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "count",
+     "next",
+     "previous",
+     "results"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v2/namespaces/{namespace}/repositories/{repository}/tags",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "count",
+     "next",
+     "previous",
+     "results"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v2/namespaces/{namespace}/repositories/{repository}/tags/{tag}",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "creator",
+     "full_size",
+     "id",
+     "images",
+     "last_updated",
+     "last_updater"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v2/orgs/{name}/settings",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "restricted_images"
+    ]
+   },
+   {
+    "method": "PUT",
+    "path": "/v2/orgs/{name}/settings",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "restricted_images"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v2/scim/2.0/ResourceTypes",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "resources",
+     "schemas",
+     "totalResults"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v2/scim/2.0/ResourceTypes/{name}",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "description",
+     "endpoint",
+     "id",
+     "name",
+     "schema",
+     "schemas"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v2/scim/2.0/Schemas",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "resources",
+     "schemas",
+     "totalResults"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v2/scim/2.0/Schemas/{id}",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "attributes",
+     "description",
+     "id",
+     "name",
+     "schemas"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v2/scim/2.0/ServiceProviderConfig",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "authenticationSchemes",
+     "bulk",
+     "changePassword",
+     "documentationUri",
+     "etag",
+     "filter"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v2/scim/2.0/Users",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "itemsPerPage",
+     "resources",
+     "schemas",
+     "startIndex",
+     "totalResults"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v2/scim/2.0/Users",
+    "status": 201,
+    "auth": true,
+    "response_fields": [
+     "active",
+     "displayName",
+     "emails",
+     "groups",
+     "id",
+     "meta"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v2/scim/2.0/Users/{id}",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "active",
+     "displayName",
+     "emails",
+     "groups",
+     "id",
+     "meta"
+    ]
+   },
+   {
+    "method": "PUT",
+    "path": "/v2/scim/2.0/Users/{id}",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "active",
+     "displayName",
+     "emails",
+     "groups",
+     "id",
+     "meta"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v2/users/2fa-login",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "token"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v2/users/login",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "token"
+    ]
+   }
+  ],
+  "source": "from flask import Flask, jsonify, request\nfrom functools import wraps\napp = Flask(__name__)\ndef auth_required(fn):\n    @wraps(fn)\n    def w(*a, **k):\n        if request.headers.get(\"Authorization\", \"\") != \"Bearer t\":\n            return jsonify(error=\"unauthorized\"), 401\n        return fn(*a, **k)\n    return w\n\n@app.route('/v2/access-tokens', methods=['GET'])\ndef op_0():\n    return jsonify({'active_count': 1.0, 'count': 1.0, 'next': 'x', 'previous': 'x', 'results': [{'client_id': 'x', 'created_at': 'x', 'creator_ip': 'x', 'creator_ua': 'x', 'generated_by': 'x', 'is_active': 'x', 'token': 'x'}]}), 200\n\n@app.route('/v2/access-tokens', methods=['POST'])\ndef op_1():\n    return jsonify({'client_id': 'x', 'created_at': 'x', 'creator_ip': 'x', 'creator_ua': 'x', 'generated_by': 'x', 'is_active': True}), 201\n\n@app.route('/v2/access-tokens/<uuid>', methods=['GET'])\ndef op_2(uuid):\n    return jsonify({'client_id': 'x', 'created_at': 'x', 'creator_ip': 'x', 'creator_ua': 'x', 'generated_by': 'x', 'is_active': True, 'token': 'x'}), 200\n\n@app.route('/v2/access-tokens/<uuid>', methods=['DELETE'])\ndef op_3(uuid):\n    return \"\", 204\n\n@app.route('/v2/access-tokens/<uuid>', methods=['PATCH'])\ndef op_4(uuid):\n    return jsonify({'client_id': 'x', 'created_at': 'x', 'creator_ip': 'x', 'creator_ua': 'x', 'generated_by': 'x', 'is_active': True}), 200\n\n@app.route('/v2/auditlogs/<account>', methods=['GET'])\ndef op_5(account):\n    return jsonify({'logs': [{'account': 'x', 'action': 'x', 'action_description': 'x', 'actor': 'x', 'data': {}, 'name': 'x'}]}), 200\n\n@app.route('/v2/auditlogs/<account>/actions', methods=['GET'])\ndef op_6(account):\n    return jsonify({'actions': {}}), 200\n\n@app.route('/v2/namespaces/<namespace>/delete-images', methods=['POST'])\ndef op_7(namespace):\n    return jsonify({'dry_run': True, 'metrics': {'manifest_deletes': 1, 'manifest_errors': 1, 'tag_deletes': 1, 'tag_errors': 1}}), 200\n\n@app.route('/v2/namespaces/<namespace>/repositories/<repository>/images', methods=['GET'])\ndef op_8(namespace, repository):\n    return jsonify({'count': 1, 'next': 'x', 'previous': 'x', 'results': [{'digest': 'x', 'last_pulled': 'x', 'last_pushed': 'x', 'namespace': 'x', 'repository': 'x', 'status': 'active'}]}), 200\n\n@app.route('/v2/namespaces/<namespace>/repositories/<repository>/images-summary', methods=['GET'])\ndef op_9(namespace, repository):\n    return jsonify({'active_from': 'x', 'statistics': {'active': 1, 'inactive': 1, 'total': 1}}), 200\n\n@app.route('/v2/namespaces/<namespace>/repositories/<repository>/images/<digest>/tags', methods=['GET'])\ndef op_10(namespace, repository, digest):\n    return jsonify({'count': 1, 'next': 'x', 'previous': 'x', 'results': [{'is_current': True, 'tag': 'x'}]}), 200\n\n@app.route('/v2/namespaces/<namespace>/repositories/<repository>/tags', methods=['GET'])\ndef op_11(namespace, repository):\n    return jsonify({'count': 1, 'next': 'x', 'previous': 'x', 'results': [{'creator': 'x', 'full_size': 'x', 'id': 'x', 'images': 'x', 'last_updated': 'x', 'last_updater': 'x'}]}), 200\n\n@app.route('/v2/namespaces/<namespace>/repositories/<repository>/tags/<tag>', methods=['GET'])\ndef op_12(namespace, repository, tag):\n    return jsonify({'creator': 1, 'full_size': 1, 'id': 1, 'images': {'architecture': 'x', 'digest': 'x', 'features': 'x', 'last_pulled': 'x', 'last_pushed': 'x', 'layers': [{'digest': 'x', 'instruction': 'x', 'size': 'x'}]}, 'last_updated': 'x', 'last_updater': 1}), 200\n\n@app.route('/v2/orgs/<name>/settings', methods=['GET'])\ndef op_13(name):\n    return jsonify({'restricted_images': {'allow_official_images': True, 'allow_verified_publishers': True, 'enabled': True}}), 200\n\n@app.route('/v2/orgs/<name>/settings', methods=['PUT'])\ndef op_14(name):\n    return jsonify({'restricted_images': {'allow_official_images': True, 'allow_verified_publishers': True, 'enabled': True}}), 200\n\n@app.route('/v2/scim/2.0/ResourceTypes', methods=['GET'])\n@auth_required\ndef op_15():\n    return jsonify({'resources': [{'description': 'x', 'endpoint': 'x', 'id': 'x', 'name': 'x', 'schema': 'x', 'schemas': ['x']}], 'schemas': ['x'], 'totalResults': 1}), 200\n\n@app.route('/v2/scim/2.0/ResourceTypes/<name>', methods=['GET'])\n@auth_required\ndef op_16(name):\n    return jsonify({'description': 'x', 'endpoint': 'x', 'id': 'x', 'name': 'x', 'schema': 'x', 'schemas': ['x']}), 200\n\n@app.route('/v2/scim/2.0/Schemas', methods=['GET'])\n@auth_required\ndef op_17():\n    return jsonify({'resources': [{'attributes': ['x'], 'description': 'x', 'id': 'x', 'name': 'x', 'schemas': ['x']}], 'schemas': ['x'], 'totalResults': 1}), 200\n\n@app.route('/v2/scim/2.0/Schemas/<id>', methods=['GET'])\n@auth_required\ndef op_18(id):\n    return jsonify({'attributes': [{'caseExact': 'x', 'description': 'x', 'multiValued': 'x', 'mutability': 'x', 'name': 'x', 'required': 'x', 'subAttributes': 'x'}], 'description': 'x', 'id': 'x', 'name': 'x', 'schemas': ['x']}), 200\n\n@app.route('/v2/scim/2.0/ServiceProviderConfig', methods=['GET'])\n@auth_required\ndef op_19():\n    return jsonify({'authenticationSchemes': {'description': 'x', 'name': 'x', 'specUri': 'x', 'type': 'x'}, 'bulk': {'maxOperations': 1, 'maxPayloadSize': 1, 'supported': True}, 'changePassword': {'supported': True}, 'documentationUri': 'x', 'etag': {'supported': True}, 'filter': {'maxResults': 1, 'supported': True}}), 200\n\n@app.route('/v2/scim/2.0/Users', methods=['GET'])\n@auth_required\ndef op_20():\n    return jsonify({'itemsPerPage': 1, 'resources': [{'active': True, 'displayName': 'x', 'emails': ['x'], 'groups': ['x'], 'id': 'x', 'meta': {'created': 'x', 'lastModified': 'x', 'location': 'x', 'resourceType': 'x'}}], 'schemas': ['x'], 'startIndex': 1, 'totalResults': 1}), 200\n\n@app.route('/v2/scim/2.0/Users', methods=['POST'])\n@auth_required\ndef op_21():\n    return jsonify({'active': True, 'displayName': 'x', 'emails': [{'display': 'x', 'primary': True, 'value': 'x'}], 'groups': [{'display': 'x', 'value': 'x'}], 'id': 'x', 'meta': {'created': 'x', 'lastModified': 'x', 'location': 'x', 'resourceType': 'x'}}), 201\n\n@app.route('/v2/scim/2.0/Users/<id>', methods=['GET'])\n@auth_required\ndef op_22(id):\n    return jsonify({'active': True, 'displayName': 'x', 'emails': [{'display': 'x', 'primary': True, 'value': 'x'}], 'groups': [{'display': 'x', 'value': 'x'}], 'id': 'x', 'meta': {'created': 'x', 'lastModified': 'x', 'location': 'x', 'resourceType': 'x'}}), 200\n\n@app.route('/v2/scim/2.0/Users/<id>', methods=['PUT'])\ndef op_23(id):\n    return jsonify({'active': True, 'displayName': 'x', 'emails': [{'display': 'x', 'primary': True, 'value': 'x'}], 'groups': [{'display': 'x', 'value': 'x'}], 'id': 'x', 'meta': {'created': 'x', 'lastModified': 'x', 'location': 'x', 'resourceType': 'x'}}), 200\n\n@app.route('/v2/users/2fa-login', methods=['POST'])\ndef op_24():\n    return jsonify({'token': 'x'}), 200\n\n@app.route('/v2/users/login', methods=['POST'])\ndef op_25():\n    return jsonify({'token': 'x'}), 200\n"
+ },
+ {
+  "id": "case-30706211",
+  "spec_ops": [
+   {
+    "method": "POST",
+    "path": "/bet/complex",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "id",
+     "numLines",
+     "number",
+     "placedDateTime",
+     "receipt",
+     "totalStake"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/bet/single",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "id",
+     "numLines",
+     "number",
+     "placedDateTime",
+     "receipt",
+     "totalStake"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/betslips",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "betslip"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/freebets",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "awardDateTime",
+     "displayText",
+     "expiryDateTime",
+     "id",
+     "offerDesc",
+     "offerId"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/history",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "bets"
+    ]
+   },
+   {
+    "method": "PUT",
+    "path": "/{betId}/cashin",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "success"
+    ]
+   }
+  ],
+  "source": "from flask import Flask, jsonify, request\nfrom functools import wraps\napp = Flask(__name__)\ndef auth_required(fn):\n    @wraps(fn)\n    def w(*a, **k):\n        if request.headers.get(\"Authorization\", \"\") != \"Bearer t\":\n            return jsonify(error=\"unauthorized\"), 401\n        return fn(*a, **k)\n    return w\n\n@app.route('/bet/single', methods=['POST'])\ndef op_0():\n    return jsonify([{'id': 'x', 'numLines': 1, 'number': 1.0, 'placedDateTime': 'x', 'receipt': 'x', 'totalStake': 1.0}]), 200\n\n@app.route('/betslips', methods=['POST'])\ndef op_1():\n    return jsonify({'betslip': [{'betMultiplier': 1.0, 'freeBets': ['x'], 'legs': ['x'], 'maxStake': 1.0, 'minStake': 1.0, 'numLines': 1.0}]}), 200\n\n@app.route('/freebets', methods=['GET'])\ndef op_2():\n    return jsonify([{'awardDateTime': 'x', 'displayText': 'x', 'expiryDateTime': 'x', 'id': 1, 'offerDesc': 'x', 'offerId': 1}]), 200\n\n@app.route('/history', methods=['GET'])\ndef op_3():\n    return jsonify({'bets': [{'cashinValue': 1.0, 'estimatedReturns': 1.0, 'freeBetValue': 1.0, 'id': 'x', 'legs': ['x'], 'numLines': 1}]}), 200\n\n@app.route('/<betId>/cashin', methods=['PUT'])\ndef op_4(betId):\n    return jsonify({'success': True}), 200\n"
+ },
+ {
+  "id": "case-46e96e67",
+  "spec_ops": [
+   {
+    "method": "POST",
+    "path": "/changePassword",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   },
+   {
+    "method": "POST",
+    "path": "/login",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "admin",
+     "login_id",
+     "name",
+     "read_only",
+     "token"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/logout",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   },
+   {
+    "method": "POST",
+    "path": "/requestPasswordReset",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "email",
+     "guid"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/signin",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "result"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/signin/{signinId}",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "dt",
+     "email",
+     "id",
+     "name",
+     "phone"
+    ]
+   },
+   {
+    "method": "PUT",
+    "path": "/signin/{signinId}",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "admin",
+     "email",
+     "id",
+     "name",
+     "read_only"
+    ]
+   },
+   {
+    "method": "DELETE",
+    "path": "/signin/{signinId}",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   },
+   {
+    "method": "GET",
+    "path": "/signins",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "dt",
+     "email",
+     "id",
+     "name",
+     "phone"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/user",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "email",
+     "guid"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/user/{userId}",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "admin",
+     "email",
+     "id",
+     "name",
+     "read_only"
+    ]
+   },
+   {
+    "method": "DELETE",
+    "path": "/user/{userId}",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   },
+   {
+    "method": "GET",
+    "path": "/users",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "admin",
+     "email",
+     "id",
+     "name",
+     "read_only"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/verifyPasswordChange",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   }
+  ],
+  "source": "from flask import Flask, jsonify, request\nfrom functools import wraps\napp = Flask(__name__)\ndef auth_required(fn):\n    @wraps(fn)\n    def w(*a, **k):\n        if request.headers.get(\"Authorization\", \"\") != \"Bearer t\":\n            return jsonify(error=\"unauthorized\"), 401\n        return fn(*a, **k)\n    return w\n\n@app.route('/changePassword', methods=['POST'])\n@auth_required\ndef op_0():\n    return \"\", 200\n\n@app.route('/login', methods=['POST'])\ndef op_1():\n    return jsonify({'login_id': 1, 'name': 'x', 'read_only': True, 'token': 'x', 'admin_x': True}), 200\n\n@app.route('/logout', methods=['POST'])\n@auth_required\ndef op_2():\n    return \"\", 200\n\n@app.route('/requestPasswordReset', methods=['POST'])\n@auth_required\ndef op_3():\n    return jsonify({'email': 'x', 'guid': 'x'}), 200\n\n@app.route('/signin', methods=['POST'])\n@auth_required\ndef op_4():\n    return jsonify({'result': 1}), 200\n\n@app.route('/signin/<signinId>', methods=['GET'])\n@auth_required\ndef op_5(signinId):\n    return jsonify({'dt': 1.0, 'email': 'x', 'id': 1, 'name': 'x', 'phone': 'x'}), 200\n\n@app.route('/signin/<signinId>', methods=['PUT'])\n@auth_required\ndef op_6(signinId):\n    return jsonify({'admin': True, 'email': 'x', 'id': 1, 'name': 'x', 'read_only': True}), 200\n\n@app.route('/signin/<signinId>', methods=['DELETE'])\n@auth_required\ndef op_7(signinId):\n    return \"\", 200\n\n@app.route('/signins', methods=['GET'])\n@auth_required\ndef op_8():\n    return jsonify([{'dt': 1.0, 'email': 'x', 'id': 1, 'name': 'x', 'phone': 'x'}]), 200\n\n@app.route('/user', methods=['POST'])\n@auth_required\ndef op_9():\n    return jsonify({'email': 'x', 'guid': 'x'}), 200\n\n@app.route('/user/<userId>', methods=['GET'])\n@auth_required\ndef op_10(userId):\n    return jsonify({'admin': True, 'email': 'x', 'id': 1, 'name': 'x', 'read_only': True}), 200\n\n@app.route('/user/<userId>', methods=['DELETE'])\n@auth_required\ndef op_11(userId):\n    return \"\", 200\n\n@app.route('/users', methods=['GET'])\n@auth_required\ndef op_12():\n    return jsonify([{'admin': True, 'email': 'x', 'id': 1, 'name': 'x', 'read_only': True}]), 200\n\n@app.route('/verifyPasswordChange', methods=['POST'])\n@auth_required\ndef op_13():\n    return \"\", 200\n"
+ },
+ {
+  "id": "case-f6bd616a",
+  "spec_ops": [
+   {
+    "method": "GET",
+    "path": "/v1beta1a/subscriptions",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "nextPageToken",
+     "subscription"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v1beta1a/subscriptions",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "ackDeadlineSeconds",
+     "name",
+     "pushConfig",
+     "topic"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v1beta1a/subscriptions/acknowledge",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   },
+   {
+    "method": "POST",
+    "path": "/v1beta1a/subscriptions/modifyAckDeadline",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   },
+   {
+    "method": "POST",
+    "path": "/v1beta1a/subscriptions/modifyPushConfig",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   },
+   {
+    "method": "POST",
+    "path": "/v1beta1a/subscriptions/pull",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "ackId",
+     "pubsubEvent"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v1beta1a/subscriptions/pullBatch",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "pullResponses"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v1beta1a/subscriptions/{subscription}",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "ackDeadlineSeconds",
+     "name",
+     "pushConfig",
+     "topic"
+    ]
+   },
+   {
+    "method": "DELETE",
+    "path": "/v1beta1a/subscriptions/{subscription}",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   },
+   {
+    "method": "GET",
+    "path": "/v1beta1a/topics",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "nextPageToken",
+     "topic"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v1beta1a/topics",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "name"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v1beta1a/topics/publish",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   },
+   {
+    "method": "POST",
+    "path": "/v1beta1a/topics/publishBatch",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "messageIds"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v1beta1a/topics/{topic}",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "name"
+    ]
+   },
+   {
+    "method": "DELETE",
+    "path": "/v1beta1a/topics/{topic}",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   }
+  ],
+  "source": "from flask import Flask, jsonify, request\nfrom functools import wraps\napp = Flask(__name__)\ndef auth_required(fn):\n    @wraps(fn)\n    def w(*a, **k):\n        if request.headers.get(\"Authorization\", \"\") != \"Bearer t\":\n            return jsonify(error=\"unauthorized\"), 401\n        return fn(*a, **k)\n    return w\n\n@app.route('/v1beta1a/subscriptions', methods=['GET'])\n@auth_required\ndef op_0():\n    return jsonify({'nextPageToken': 'x', 'subscription': [{'ackDeadlineSeconds': 1, 'name': 'x', 'pushConfig': {'pushEndpoint': 'x'}, 'topic': 'x'}]}), 200\n\n@app.route('/v1beta1a/subscriptions', methods=['POST'])\n@auth_required\ndef op_1():\n    return jsonify({'ackDeadlineSeconds': 1, 'name': 'x', 'pushConfig': {'pushEndpoint': 'x'}, 'topic': 'x'}), 200\n\n@app.route('/v1beta1a/subscriptions/acknowledge', methods=['POST'])\n@auth_required\ndef op_2():\n    return jsonify({}), 200\n\n@app.route('/v1beta1a/subscriptions/modifyAckDeadline', methods=['POST'])\n@auth_required\ndef op_3():\n    return jsonify({}), 200\n\n@app.route('/v1beta1a/subscriptions/modifyPushConfig', methods=['POST'])\n@auth_required\ndef op_4():\n    return jsonify({}), 200\n\n@app.route('/v1beta1a/subscriptions/pull', methods=['POST'])\n@auth_required\ndef op_5():\n    return jsonify({'ackId': 'x', 'pubsubEvent': {'deleted': True, 'message': {'data': 'x', 'label': ['x'], 'messageId': 'x', 'publishTime': 'x'}, 'subscription': 'x', 'truncated': True}}), 200\n\n@app.route('/v1beta1a/subscriptions/pullBatch', methods=['POST'])\n@auth_required\ndef op_6():\n    return jsonify({'pullResponses': [{'ackId': 'x', 'pubsubEvent': {'deleted': 'x', 'message': 'x', 'subscription': 'x', 'truncated': 'x'}}]}), 200\n\n@app.route('/v1beta1a/subscriptions/<subscription>', methods=['GET'])\n@auth_required\ndef op_7(subscription):\n    return jsonify({'ackDeadlineSeconds': 1, 'name': 'x', 'pushConfig': {'pushEndpoint': 'x'}, 'topic': 'x'}), 200\n\n@app.route('/v1beta1a/subscriptions/<subscription>', methods=['DELETE'])\n@auth_required\ndef op_8(subscription):\n    return jsonify({}), 200\n\n@app.route('/v1beta1a/topics', methods=['GET'])\n@auth_required\ndef op_9():\n    return jsonify({'nextPageToken': 'x', 'topic': [{'name': 'x'}]}), 200\n\n@app.route('/v1beta1a/topics', methods=['POST'])\n@auth_required\ndef op_10():\n    return jsonify({'name': 'x'}), 202\n\n@app.route('/v1beta1a/topics/publish', methods=['POST'])\n@auth_required\ndef op_11():\n    return jsonify({}), 200\n\n@app.route('/v1beta1a/topics/publishBatch', methods=['POST'])\n@auth_required\ndef op_12():\n    return jsonify({'messageIds': ['x']}), 200\n\n@app.route('/v1beta1a/topics/<topic>', methods=['GET'])\n@auth_required\ndef op_13(topic):\n    return jsonify({'name': 'x'}), 200\n\n@app.route('/v1beta1a/topics/<topic>', methods=['DELETE'])\n@auth_required\ndef op_14(topic):\n    return jsonify({}), 200\n"
+ },
+ {
+  "id": "case-14dec81c",
+  "spec_ops": [
+   {
+    "method": "POST",
+    "path": "/changeStatus",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "authCode",
+     "currentBalance",
+     "pspReference",
+     "refusalReason",
+     "resultCode",
+     "thirdPartyRefusalReason"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/checkBalance",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "currentBalance",
+     "pspReference",
+     "refusalReason",
+     "resultCode",
+     "thirdPartyRefusalReason"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/issue",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "authCode",
+     "currentBalance",
+     "paymentMethod",
+     "pspReference",
+     "refusalReason",
+     "resultCode"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/load",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "authCode",
+     "currentBalance",
+     "pspReference",
+     "refusalReason",
+     "resultCode",
+     "thirdPartyRefusalReason"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/mergeBalance",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "authCode",
+     "currentBalance",
+     "pspReference",
+     "refusalReason",
+     "resultCode",
+     "thirdPartyRefusalReason"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/voidTransaction",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "currentBalance",
+     "pspReference",
+     "refusalReason",
+     "resultCode",
+     "thirdPartyRefusalReason"
+    ]
+   }
+  ],
+  "source": "from flask import Flask, jsonify, request\nfrom functools import wraps\napp = Flask(__name__)\ndef auth_required(fn):\n    @wraps(fn)\n    def w(*a, **k):\n        if request.headers.get(\"Authorization\", \"\") != \"Bearer t\":\n            return jsonify(error=\"unauthorized\"), 401\n        return fn(*a, **k)\n    return w\n\n@app.route('/changeStatus', methods=['POST'])\n@auth_required\ndef op_0():\n    return jsonify({'authCode': 'x', 'currentBalance': {'currency': 'x', 'value': 1}, 'pspReference': 'x', 'refusalReason': 'x', 'resultCode': 'Success', 'thirdPartyRefusalReason': 'x'}), 200\n\n@app.route('/checkBalance', methods=['POST'])\n@auth_required\ndef op_1():\n    return jsonify({'currentBalance': {'currency': 'x', 'value': 1}, 'pspReference': 'x', 'refusalReason': 'x', 'resultCode': 'Success', 'thirdPartyRefusalReason': 'x'}), 200\n\n@app.route('/issue', methods=['POST'])\n@auth_required\ndef op_2():\n    return jsonify({'authCode': 'x', 'currentBalance': {'currency': 'x', 'value': 1}, 'paymentMethod': {}, 'pspReference': 'x', 'refusalReason': 'x', 'resultCode': 'Success'}), 200\n\n@app.route('/load', methods=['POST'])\n@auth_required\ndef op_3():\n    return jsonify({'authCode': 'x', 'currentBalance': {'currency': 'x', 'value': 1}, 'pspReference': 'x', 'refusalReason': 'x', 'resultCode': 'Success', 'thirdPartyRefusalReason': 'x'}), 200\n\n@app.route('/mergeBalance', methods=['POST'])\n@auth_required\ndef op_4():\n    return jsonify({'authCode': 'x', 'currentBalance': {'currency': 'x', 'value': 1}, 'pspReference': 'x', 'refusalReason': 'x', 'resultCode': 'Success', 'thirdPartyRefusalReason': 'x'}), 200\n\n@app.route('/voidTransaction', methods=['POST'])\ndef op_5():\n    return jsonify({'currentBalance': {'currency': 'x', 'value': 1}, 'pspReference': 'x', 'refusalReason': 'x', 'resultCode': 'Success', 'thirdPartyRefusalReason': 'x'}), 200\n"
+ },
+ {
+  "id": "case-cb13d649",
+  "spec_ops": [
+   {
+    "method": "GET",
+    "path": "/v1beta1a/subscriptions",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "nextPageToken",
+     "subscription"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v1beta1a/subscriptions",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "ackDeadlineSeconds",
+     "name",
+     "pushConfig",
+     "topic"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v1beta1a/subscriptions/acknowledge",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   },
+   {
+    "method": "POST",
+    "path": "/v1beta1a/subscriptions/modifyAckDeadline",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   },
+   {
+    "method": "POST",
+    "path": "/v1beta1a/subscriptions/modifyPushConfig",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   },
+   {
+    "method": "POST",
+    "path": "/v1beta1a/subscriptions/pull",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "ackId",
+     "pubsubEvent"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v1beta1a/subscriptions/pullBatch",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "pullResponses"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v1beta1a/subscriptions/{subscription}",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "ackDeadlineSeconds",
+     "name",
+     "pushConfig",
+     "topic"
+    ]
+   },
+   {
+    "method": "DELETE",
+    "path": "/v1beta1a/subscriptions/{subscription}",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   },
+   {
+    "method": "GET",
+    "path": "/v1beta1a/topics",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "nextPageToken",
+     "topic"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v1beta1a/topics",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "name"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v1beta1a/topics/publish",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   },
+   {
+    "method": "POST",
+    "path": "/v1beta1a/topics/publishBatch",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "messageIds"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v1beta1a/topics/{topic}",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "name"
+    ]
+   },
+   {
+    "method": "DELETE",
+    "path": "/v1beta1a/topics/{topic}",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   }
+  ],
+  "source": "from flask import Flask, jsonify, request\nfrom functools import wraps\napp = Flask(__name__)\ndef auth_required(fn):\n    @wraps(fn)\n    def w(*a, **k):\n        if request.headers.get(\"Authorization\", \"\") != \"Bearer t\":\n            return jsonify(error=\"unauthorized\"), 401\n        return fn(*a, **k)\n    return w\n\n@app.route('/v1beta1a/subscriptions', methods=['GET'])\n@auth_required\ndef op_0():\n    return jsonify({'nextPageToken': 'x', 'subscription': [{'ackDeadlineSeconds': 1, 'name': 'x', 'pushConfig': {'pushEndpoint': 'x'}, 'topic': 'x'}]}), 200\n\n@app.route('/v1beta1a/subscriptions', methods=['POST'])\n@auth_required\ndef op_1():\n    return jsonify({'ackDeadlineSeconds': 1, 'name': 'x', 'pushConfig': {'pushEndpoint': 'x'}, 'topic': 'x'}), 200\n\n@app.route('/v1beta1a/subscriptions/acknowledge', methods=['POST'])\n@auth_required\ndef op_2():\n    return jsonify({}), 200\n\n@app.route('/v1beta1a/subscriptions/modifyAckDeadline', methods=['POST'])\n@auth_required\ndef op_3():\n    return jsonify({}), 200\n\n@app.route('/v1beta1a/subscriptions/modifyPushConfig', methods=['POST'])\n@auth_required\ndef op_4():\n    return jsonify({}), 200\n\n@app.route('/v1beta1a/subscriptions/pull', methods=['POST'])\n@auth_required\ndef op_5():\n    return jsonify({'ackId': 'x', 'pubsubEvent': {'deleted': True, 'message': {'data': 'x', 'label': ['x'], 'messageId': 'x', 'publishTime': 'x'}, 'subscription': 'x', 'truncated': True}}), 200\n\n@app.route('/v1beta1a/subscriptions/pullBatch', methods=['POST'])\n@auth_required\ndef op_6():\n    return jsonify({'pullResponses': [{'ackId': 'x', 'pubsubEvent': {'deleted': 'x', 'message': 'x', 'subscription': 'x', 'truncated': 'x'}}]}), 200\n\n@app.route('/v1beta1a/subscriptions/<subscription>', methods=['GET'])\n@auth_required\ndef op_7(subscription):\n    return jsonify({'ackDeadlineSeconds': 1, 'name': 'x', 'pushConfig': {'pushEndpoint': 'x'}, 'topic': 'x'}), 200\n\n@app.route('/v1beta1a/subscriptions/<subscription>', methods=['DELETE'])\n@auth_required\ndef op_8(subscription):\n    return jsonify({}), 200\n\n@app.route('/v1beta1a/topics', methods=['GET'])\ndef op_9():\n    return jsonify({'nextPageToken': 'x', 'topic': [{'name': 'x'}]}), 200\n\n@app.route('/v1beta1a/topics', methods=['POST'])\n@auth_required\ndef op_10():\n    return jsonify({'name': 'x'}), 200\n\n@app.route('/v1beta1a/topics/publish', methods=['POST'])\n@auth_required\ndef op_11():\n    return jsonify({}), 200\n\n@app.route('/v1beta1a/topics/publishBatch', methods=['POST'])\n@auth_required\ndef op_12():\n    return jsonify({'messageIds': ['x']}), 200\n\n@app.route('/v1beta1a/topics/<topic>', methods=['GET'])\n@auth_required\ndef op_13(topic):\n    return jsonify({'name': 'x'}), 200\n\n@app.route('/v1beta1a/topics/<topic>', methods=['DELETE'])\n@auth_required\ndef op_14(topic):\n    return jsonify({}), 200\n"
+ },
+ {
+  "id": "case-7bf2d4cd",
+  "spec_ops": [
+   {
+    "method": "GET",
+    "path": "/v4/{name}",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "addresses",
+     "applicationInfo",
+     "company",
+     "companyDisplayName",
+     "compensationInfo",
+     "customAttributes"
+    ]
+   },
+   {
+    "method": "DELETE",
+    "path": "/v4/{name}",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   },
+   {
+    "method": "PATCH",
+    "path": "/v4/{name}",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "addresses",
+     "applicationInfo",
+     "company",
+     "companyDisplayName",
+     "compensationInfo",
+     "customAttributes"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v4/{parent}/clientEvents",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "createTime",
+     "eventId",
+     "eventNotes",
+     "jobEvent",
+     "requestId"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v4/{parent}/companies",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "companies",
+     "metadata",
+     "nextPageToken"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v4/{parent}/companies",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "careerSiteUri",
+     "derivedInfo",
+     "displayName",
+     "eeoText",
+     "externalId",
+     "headquartersAddress"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v4/{parent}/jobs",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "jobs",
+     "metadata",
+     "nextPageToken"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v4/{parent}/jobs",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "addresses",
+     "applicationInfo",
+     "company",
+     "companyDisplayName",
+     "compensationInfo",
+     "customAttributes"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v4/{parent}/jobs:batchCreate",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "done",
+     "error",
+     "metadata",
+     "name",
+     "response"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v4/{parent}/jobs:batchDelete",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "done",
+     "error",
+     "metadata",
+     "name",
+     "response"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v4/{parent}/jobs:batchUpdate",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "done",
+     "error",
+     "metadata",
+     "name",
+     "response"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v4/{parent}/jobs:search",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "broadenedQueryJobsCount",
+     "histogramQueryResults",
+     "locationFilters",
+     "matchingJobs",
+     "metadata",
+     "nextPageToken"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v4/{parent}/jobs:searchForAlert",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "broadenedQueryJobsCount",
+     "histogramQueryResults",
+     "locationFilters",
+     "matchingJobs",
+     "metadata",
+     "nextPageToken"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v4/{parent}/tenants",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "metadata",
+     "nextPageToken",
+     "tenants"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v4/{parent}/tenants",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "externalId",
+     "name"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v4/{tenant}:completeQuery",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "completionResults",
+     "metadata"
+    ]
+   }
+  ],
+  "source": "from flask import Flask, jsonify, request\nfrom functools import wraps\napp = Flask(__name__)\ndef auth_required(fn):\n    @wraps(fn)\n    def w(*a, **k):\n        if request.headers.get(\"Authorization\", \"\") != \"Bearer t\":\n            return jsonify(error=\"unauthorized\"), 401\n        return fn(*a, **k)\n    return w\n\n@app.route('/v4/<name>', methods=['GET'])\n@auth_required\ndef op_0(name):\n    return jsonify({'addresses': ['x'], 'applicationInfo': {'emails': ['x'], 'instruction': 'x', 'uris': ['x']}, 'company': 'x', 'companyDisplayName': 'x', 'compensationInfo': {'annualizedBaseCompensationRange': {'maxCompensation': {'currencyCode': 'x', 'nanos': 'x', 'units': 'x'}, 'minCompensation': {'currencyCode': 'x', 'nanos': 'x', 'units': 'x'}}, 'annualizedTotalCompensationRange': {'maxCompensation': {'currencyCode': 'x', 'nanos': 'x', 'units': 'x'}, 'minCompensation': {'currencyCode': 'x', 'nanos': 'x', 'units': 'x'}}, 'entries': [{'amount': 'x', 'description': 'x', 'expectedUnitsPerYear': 'x', 'range': 'x', 'type': 'x', 'unit': 'x'}]}, 'customAttributes': {}}), 200\n\n@app.route('/v4/<name>', methods=['DELETE'])\n@auth_required\ndef op_1(name):\n    return jsonify({}), 200\n\n@app.route('/v4/<name>', methods=['PATCH'])\n@auth_required\ndef op_2(name):\n    return jsonify({'applicationInfo': {'emails': ['x'], 'instruction': 'x', 'uris': ['x']}, 'company': 'x', 'companyDisplayName': 'x', 'compensationInfo': {'annualizedBaseCompensationRange': {'maxCompensation': {'currencyCode': 'x', 'nanos': 'x', 'units': 'x'}, 'minCompensation': {'currencyCode': 'x', 'nanos': 'x', 'units': 'x'}}, 'annualizedTotalCompensationRange': {'maxCompensation': {'currencyCode': 'x', 'nanos': 'x', 'units': 'x'}, 'minCompensation': {'currencyCode': 'x', 'nanos': 'x', 'units': 'x'}}, 'entries': [{'amount': 'x', 'description': 'x', 'expectedUnitsPerYear': 'x', 'range': 'x', 'type': 'x', 'unit': 'x'}]}, 'customAttributes': {}, 'addresses_x': ['x']}), 200\n\n@app.route('/v4/<parent>/clientEvents', methods=['POST'])\n@auth_required\ndef op_3(parent):\n    return jsonify({'createTime': 'x', 'eventId': 'x', 'eventNotes': 'x', 'jobEvent': {'jobs': ['x'], 'type': 'JOB_EVENT_TYPE_UNSPECIFIED'}, 'requestId': 'x'}), 200\n\n@app.route('/v4/<parent>/companies', methods=['GET'])\n@auth_required\ndef op_4(parent):\n    return jsonify({'companies': [{'careerSiteUri': 'x', 'derivedInfo': {'headquartersLocation': 'x'}, 'displayName': 'x', 'eeoText': 'x', 'externalId': 'x', 'headquartersAddress': 'x'}], 'metadata': {'requestId': 'x'}, 'nextPageToken': 'x'}), 200\n\n@app.route('/v4/<parent>/companies', methods=['POST'])\n@auth_required\ndef op_5(parent):\n    return jsonify({'careerSiteUri': 'x', 'derivedInfo': {'headquartersLocation': {'latLng': {'latitude': 'x', 'longitude': 'x'}, 'locationType': 'LOCATION_TYPE_UNSPECIFIED', 'postalAddress': {'addressLines': 'x', 'administrativeArea': 'x', 'languageCode': 'x', 'locality': 'x', 'organization': 'x', 'postalCode': 'x'}, 'radiusMiles': 1.0}}, 'displayName': 'x', 'eeoText': 'x', 'externalId': 'x', 'headquartersAddress': 'x'}), 200\n\n@app.route('/v4/<parent>/jobs', methods=['GET'])\n@auth_required\ndef op_6(parent):\n    return jsonify({'jobs': [{'addresses': ['x'], 'applicationInfo': {'emails': 'x', 'instruction': 'x', 'uris': 'x'}, 'company': 'x', 'companyDisplayName': 'x', 'compensationInfo': {'annualizedBaseCompensationRange': 'x', 'annualizedTotalCompensationRange': 'x', 'entries': 'x'}, 'customAttributes': {}}], 'metadata': {'requestId': 'x'}, 'nextPageToken': 'x'}), 200\n\n@app.route('/v4/<parent>/jobs', methods=['POST'])\n@auth_required\ndef op_7(parent):\n    return jsonify({'addresses': ['x'], 'applicationInfo': {'emails': ['x'], 'instruction': 'x', 'uris': ['x']}, 'company': 'x', 'companyDisplayName': 'x', 'compensationInfo': {'annualizedBaseCompensationRange': {'maxCompensation': {'currencyCode': 'x', 'nanos': 'x', 'units': 'x'}, 'minCompensation': {'currencyCode': 'x', 'nanos': 'x', 'units': 'x'}}, 'annualizedTotalCompensationRange': {'maxCompensation': {'currencyCode': 'x', 'nanos': 'x', 'units': 'x'}, 'minCompensation': {'currencyCode': 'x', 'nanos': 'x', 'units': 'x'}}, 'entries': [{'amount': 'x', 'description': 'x', 'expectedUnitsPerYear': 'x', 'range': 'x', 'type': 'x', 'unit': 'x'}]}, 'customAttributes': {}}), 200\n\n@app.route('/v4/<parent>/jobs:batchCreate', methods=['POST'])\n@auth_required\ndef op_8(parent):\n    return jsonify({'done': True, 'error': {'code': 1, 'details': [{}], 'message': 'x'}, 'metadata': {}, 'name': 'x', 'response': {}}), 200\n\n@app.route('/v4/<parent>/jobs:batchDelete', methods=['POST'])\n@auth_required\ndef op_9(parent):\n    return jsonify({'done': True, 'error': {'code': 1, 'details': [{}], 'message': 'x'}, 'metadata': {}, 'name': 'x', 'response': {}}), 200\n\n@app.route('/v4/<parent>/jobs:batchUpdate', methods=['POST'])\n@auth_required\ndef op_10(parent):\n    return jsonify({'done': True, 'error': {'code': 1, 'details': [{}], 'message': 'x'}, 'metadata': {}, 'name': 'x', 'response': {}}), 200\n\n@app.route('/v4/<parent>/jobs:search', methods=['POST'])\n@auth_required\ndef op_11(parent):\n    return jsonify({'broadenedQueryJobsCount': 1, 'histogramQueryResults': [{'histogram': {}, 'histogramQuery': 'x'}], 'locationFilters': [{'latLng': {'latitude': 'x', 'longitude': 'x'}, 'locationType': 'LOCATION_TYPE_UNSPECIFIED', 'postalAddress': {'addressLines': 'x', 'administrativeArea': 'x', 'languageCode': 'x', 'locality': 'x', 'organization': 'x', 'postalCode': 'x'}, 'radiusMiles': 1.0}], 'matchingJobs': [{'commuteInfo': {'jobLocation': 'x', 'travelDuration': 'x'}, 'job': {'addresses': 'x', 'applicationInfo': 'x', 'company': 'x', 'companyDisplayName': 'x', 'compensationInfo': 'x', 'customAttributes': 'x'}, 'jobSummary': 'x', 'jobTitleSnippet': 'x', 'searchTextSnippet': 'x'}], 'metadata': {'requestId': 'x'}, 'nextPageToken': 'x'}), 200\n\n@app.route('/v4/<parent>/jobs:searchForAlert', methods=['POST'])\n@auth_required\ndef op_12(parent):\n    return jsonify({'broadenedQueryJobsCount': 1, 'histogramQueryResults': [{'histogram': {}, 'histogramQuery': 'x'}], 'locationFilters': [{'latLng': {'latitude': 'x', 'longitude': 'x'}, 'locationType': 'LOCATION_TYPE_UNSPECIFIED', 'postalAddress': {'addressLines': 'x', 'administrativeArea': 'x', 'languageCode': 'x', 'locality': 'x', 'organization': 'x', 'postalCode': 'x'}, 'radiusMiles': 1.0}], 'matchingJobs': [{'commuteInfo': {'jobLocation': 'x', 'travelDuration': 'x'}, 'job': {'addresses': 'x', 'applicationInfo': 'x', 'company': 'x', 'companyDisplayName': 'x', 'compensationInfo': 'x', 'customAttributes': 'x'}, 'jobSummary': 'x', 'jobTitleSnippet': 'x', 'searchTextSnippet': 'x'}], 'metadata': {'requestId': 'x'}, 'nextPageToken': 'x'}), 200\n\n@app.route('/v4/<parent>/tenants', methods=['GET'])\n@auth_required\ndef op_13(parent):\n    return jsonify({'metadata': {'requestId': 'x'}, 'nextPageToken': 'x', 'tenants': [{'externalId': 'x', 'name': 'x'}]}), 200\n\n@app.route('/v4/<parent>/tenants', methods=['POST'])\n@auth_required\ndef op_14(parent):\n    return jsonify({'externalId': 'x', 'name': 'x'}), 200\n\n@app.route('/v4/<tenant>:completeQuery', methods=['GET'])\n@auth_required\ndef op_15(tenant):\n    return jsonify({'completionResults': [{'imageUri': 'x', 'suggestion': 'x', 'type': 'COMPLETION_TYPE_UNSPECIFIED'}], 'metadata': {'requestId': 'x'}}), 200\n"
+ },
+ {
+  "id": "case-d8e75ee8",
+  "spec_ops": [
+   {
+    "method": "GET",
+    "path": "/v1beta1a/subscriptions",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "nextPageToken",
+     "subscription"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v1beta1a/subscriptions",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "ackDeadlineSeconds",
+     "name",
+     "pushConfig",
+     "topic"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v1beta1a/subscriptions/acknowledge",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   },
+   {
+    "method": "POST",
+    "path": "/v1beta1a/subscriptions/modifyAckDeadline",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   },
+   {
+    "method": "POST",
+    "path": "/v1beta1a/subscriptions/modifyPushConfig",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   },
+   {
+    "method": "POST",
+    "path": "/v1beta1a/subscriptions/pull",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "ackId",
+     "pubsubEvent"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v1beta1a/subscriptions/pullBatch",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "pullResponses"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v1beta1a/subscriptions/{subscription}",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "ackDeadlineSeconds",
+     "name",
+     "pushConfig",
+     "topic"
+    ]
+   },
+   {
+    "method": "DELETE",
+    "path": "/v1beta1a/subscriptions/{subscription}",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   },
+   {
+    "method": "GET",
+    "path": "/v1beta1a/topics",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "nextPageToken",
+     "topic"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v1beta1a/topics",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "name"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v1beta1a/topics/publish",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   },
+   {
+    "method": "POST",
+    "path": "/v1beta1a/topics/publishBatch",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "messageIds"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v1beta1a/topics/{topic}",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "name"
+    ]
+   },
+   {
+    "method": "DELETE",
+    "path": "/v1beta1a/topics/{topic}",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   }
+  ],
+  "source": "from flask import Flask, jsonify, request\nfrom functools import wraps\napp = Flask(__name__)\ndef auth_required(fn):\n    @wraps(fn)\n    def w(*a, **k):\n        if request.headers.get(\"Authorization\", \"\") != \"Bearer t\":\n            return jsonify(error=\"unauthorized\"), 401\n        return fn(*a, **k)\n    return w\n\n@app.route('/v1beta1a/subscriptions', methods=['GET'])\n@auth_required\ndef op_0():\n    return jsonify({'nextPageToken': 'x', 'subscription': [{'ackDeadlineSeconds': 1, 'name': 'x', 'pushConfig': {'pushEndpoint': 'x'}, 'topic': 'x'}]}), 200\n\n@app.route('/v1beta1a/subscriptions', methods=['POST'])\n@auth_required\ndef op_1():\n    return jsonify({'ackDeadlineSeconds': 1, 'name': 'x', 'pushConfig': {'pushEndpoint': 'x'}, 'topic': 'x'}), 200\n\n@app.route('/v1beta1a/subscriptions/acknowledge', methods=['POST'])\n@auth_required\ndef op_2():\n    return jsonify({}), 200\n\n@app.route('/v1beta1a/subscriptions/modifyAckDeadline', methods=['POST'])\n@auth_required\ndef op_3():\n    return jsonify({}), 200\n\n@app.route('/v1beta1a/subscriptions/modifyPushConfig', methods=['POST'])\n@auth_required\ndef op_4():\n    return jsonify({}), 200\n\n@app.route('/v1beta1a/subscriptions/pull', methods=['POST'])\n@auth_required\ndef op_5():\n    return jsonify({'ackId': 'x', 'pubsubEvent': {'deleted': True, 'message': {'data': 'x', 'label': ['x'], 'messageId': 'x', 'publishTime': 'x'}, 'subscription': 'x', 'truncated': True}}), 200\n\n@app.route('/v1beta1a/subscriptions/pullBatch', methods=['POST'])\n@auth_required\ndef op_6():\n    return jsonify({'pullResponses': [{'ackId': 'x', 'pubsubEvent': {'deleted': 'x', 'message': 'x', 'subscription': 'x', 'truncated': 'x'}}]}), 200\n\n@app.route('/v1beta1a/subscriptions/<subscription>', methods=['GET'])\n@auth_required\ndef op_7(subscription):\n    return jsonify({'ackDeadlineSeconds': 1, 'name': 'x', 'pushConfig': {'pushEndpoint': 'x'}, 'topic': 'x'}), 200\n\n@app.route('/v1beta1a/subscriptions/<subscription>', methods=['DELETE'])\n@auth_required\ndef op_8(subscription):\n    return jsonify({}), 200\n\n@app.route('/v1beta1a/topics', methods=['GET'])\n@auth_required\ndef op_9():\n    return jsonify({'nextPageToken': 'x', 'topic': [{'name': 'x'}]}), 200\n\n@app.route('/v1beta1a/topics', methods=['POST'])\n@auth_required\ndef op_10():\n    return jsonify({'name': 'x'}), 200\n\n@app.route('/v1beta1a/topics/publish', methods=['POST'])\n@auth_required\ndef op_11():\n    return jsonify({}), 200\n\n@app.route('/v1beta1a/topics/publishBatch', methods=['POST'])\n@auth_required\ndef op_12():\n    return jsonify({'messageIds': ['x']}), 200\n\n@app.route('/v1beta1a/topics/<topic>', methods=['DELETE'])\n@auth_required\ndef op_13(topic):\n    return jsonify({}), 200\n"
+ },
+ {
+  "id": "case-548910de",
+  "spec_ops": [
+   {
+    "method": "GET",
+    "path": "/v1/{name}",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "cidrs",
+     "fqdns",
+     "name"
+    ]
+   },
+   {
+    "method": "DELETE",
+    "path": "/v1/{name}",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   },
+   {
+    "method": "PATCH",
+    "path": "/v1/{name}",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "cidrs",
+     "fqdns",
+     "name"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v1/{name}:iapSettings",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "accessSettings",
+     "applicationSettings",
+     "name"
+    ]
+   },
+   {
+    "method": "PATCH",
+    "path": "/v1/{name}:iapSettings",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "accessSettings",
+     "applicationSettings",
+     "name"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v1/{name}:resetSecret",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "displayName",
+     "name",
+     "secret"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v1/{name}:validateAttributeExpression",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   },
+   {
+    "method": "GET",
+    "path": "/v1/{parent}/brands",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "brands"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v1/{parent}/brands",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "applicationTitle",
+     "name",
+     "orgInternalOnly",
+     "supportEmail"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v1/{parent}/destGroups",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "nextPageToken",
+     "tunnelDestGroups"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v1/{parent}/destGroups",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "cidrs",
+     "fqdns",
+     "name"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v1/{parent}/identityAwareProxyClients",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "identityAwareProxyClients",
+     "nextPageToken"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v1/{parent}/identityAwareProxyClients",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "displayName",
+     "name",
+     "secret"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v1/{resource}:getIamPolicy",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "bindings",
+     "etag",
+     "version"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v1/{resource}:setIamPolicy",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "bindings",
+     "etag",
+     "version"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v1/{resource}:testIamPermissions",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "permissions"
+    ]
+   }
+  ],
+  "source": "from flask import Flask, jsonify, request\nfrom functools import wraps\napp = Flask(__name__)\ndef auth_required(fn):\n    @wraps(fn)\n    def w(*a, **k):\n        if request.headers.get(\"Authorization\", \"\") != \"Bearer t\":\n            return jsonify(error=\"unauthorized\"), 401\n        return fn(*a, **k)\n    return w\n\n@app.route('/v1/<name>', methods=['GET'])\n@auth_required\ndef op_0(name):\n    return jsonify({'cidrs': ['x'], 'fqdns': ['x'], 'name': 'x'}), 200\n\n@app.route('/v1/<name>', methods=['DELETE'])\n@auth_required\ndef op_1(name):\n    return jsonify({}), 200\n\n@app.route('/v1/<name>', methods=['PATCH'])\n@auth_required\ndef op_2(name):\n    return jsonify({'cidrs': ['x'], 'fqdns': ['x'], 'name': 'x'}), 200\n\n@app.route('/v1/<name>:iapSettings', methods=['GET'])\n@auth_required\ndef op_3(name):\n    return jsonify({'accessSettings': {'allowedDomainsSettings': {'domains': ['x'], 'enable': True}, 'corsSettings': {'allowHttpOptions': True}, 'gcipSettings': {'loginPageUri': 'x', 'tenantIds': ['x']}, 'oauthSettings': {'loginHint': 'x', 'programmaticClients': ['x']}, 'policyDelegationSettings': {'iamPermission': 'x', 'iamServiceName': 'x', 'policyName': {'id': 'x', 'region': 'x', 'type': 'x'}, 'resource': {'expectedNextState': 'x', 'labels': 'x', 'name': 'x', 'service': 'x', 'type': 'x'}}, 'reauthSettings': {'maxAge': 'x', 'method': 'METHOD_UNSPECIFIED', 'policyType': 'POLICY_TYPE_UNSPECIFIED'}}, 'applicationSettings': {'accessDeniedPageSettings': {'accessDeniedPageUri': 'x', 'generateTroubleshootingUri': True, 'remediationTokenGenerationEnabled': True}, 'attributePropagationSettings': {'enable': True, 'expression': 'x', 'outputCredentials': ['x']}, 'cookieDomain': 'x', 'csmSettings': {'rctokenAud': 'x'}}, 'name': 'x'}), 200\n\n@app.route('/v1/<name>:iapSettings', methods=['PATCH'])\n@auth_required\ndef op_4(name):\n    return jsonify({'accessSettings': {'allowedDomainsSettings': {'domains': ['x'], 'enable': True}, 'corsSettings': {'allowHttpOptions': True}, 'gcipSettings': {'loginPageUri': 'x', 'tenantIds': ['x']}, 'oauthSettings': {'loginHint': 'x', 'programmaticClients': ['x']}, 'policyDelegationSettings': {'iamPermission': 'x', 'iamServiceName': 'x', 'policyName': {'id': 'x', 'region': 'x', 'type': 'x'}, 'resource': {'expectedNextState': 'x', 'labels': 'x', 'name': 'x', 'service': 'x', 'type': 'x'}}, 'reauthSettings': {'maxAge': 'x', 'method': 'METHOD_UNSPECIFIED', 'policyType': 'POLICY_TYPE_UNSPECIFIED'}}, 'applicationSettings': {'accessDeniedPageSettings': {'accessDeniedPageUri': 'x', 'generateTroubleshootingUri': True, 'remediationTokenGenerationEnabled': True}, 'attributePropagationSettings': {'enable': True, 'expression': 'x', 'outputCredentials': ['x']}, 'cookieDomain': 'x', 'csmSettings': {'rctokenAud': 'x'}}, 'name': 'x'}), 200\n\n@app.route('/v1/<name>:resetSecret', methods=['POST'])\n@auth_required\ndef op_5(name):\n    return jsonify({'displayName': 'x', 'name': 'x', 'secret': 'x'}), 200\n\n@app.route('/v1/<name>:validateAttributeExpression', methods=['POST'])\n@auth_required\ndef op_6(name):\n    return jsonify({}), 200\n\n@app.route('/v1/<parent>/brands', methods=['GET'])\n@auth_required\ndef op_7(parent):\n    return jsonify({'brands': [{'applicationTitle': 'x', 'name': 'x', 'orgInternalOnly': True, 'supportEmail': 'x'}]}), 200\n\n@app.route('/v1/<parent>/brands', methods=['POST'])\n@auth_required\ndef op_8(parent):\n    return jsonify({'applicationTitle': 'x', 'name': 'x', 'orgInternalOnly': True, 'supportEmail': 'x'}), 200\n\n@app.route('/v1/<parent>/destGroups', methods=['GET'])\n@auth_required\ndef op_9(parent):\n    return jsonify({'nextPageToken': 'x', 'tunnelDestGroups': [{'cidrs': ['x'], 'fqdns': ['x'], 'name': 'x'}]}), 200\n\n@app.route('/v1/<parent>/destGroups', methods=['POST'])\n@auth_required\ndef op_10(parent):\n    return jsonify({'cidrs': ['x'], 'fqdns': ['x'], 'name': 'x'}), 200\n\n@app.route('/v1/<parent>/identityAwareProxyClients', methods=['GET'])\n@auth_required\ndef op_11(parent):\n    return jsonify({'identityAwareProxyClients': [{'displayName': 'x', 'name': 'x', 'secret': 'x'}], 'nextPageToken': 'x'}), 200\n\n@app.route('/v1/<parent>/identityAwareProxyClients', methods=['POST'])\n@auth_required\ndef op_12(parent):\n    return jsonify({'displayName': 'x', 'name': 'x', 'secret': 'x'}), 200\n\n@app.route('/v1/<resource>:getIamPolicy', methods=['POST'])\n@auth_required\ndef op_13(resource):\n    return jsonify({'etag': 'x', 'version': 1, 'bindings_x': [{'condition': {'description': 'x', 'expression': 'x', 'location': 'x', 'title': 'x'}, 'members': ['x'], 'role': 'x'}]}), 200\n\n@app.route('/v1/<resource>:setIamPolicy', methods=['POST'])\n@auth_required\ndef op_14(resource):\n    return jsonify({'bindings': [{'condition': {'description': 'x', 'expression': 'x', 'location': 'x', 'title': 'x'}, 'members': ['x'], 'role': 'x'}], 'etag': 'x', 'version': 1}), 200\n\n@app.route('/v1/<resource>:testIamPermissions', methods=['POST'])\n@auth_required\ndef op_15(resource):\n    return jsonify({'permissions': ['x']}), 200\n"
+ }
+]

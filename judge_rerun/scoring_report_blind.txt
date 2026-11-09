@@ -1,0 +1,68 @@
+======================================================================
+model: claude-haiku-5-5   runs: 1   cases judged per run: [104]
+  run 1: precision 1.0  recall 1.0  F1 1.0
+
+Combinations (using run 1 of the LLM):
+  LLM alone                        TP   86 FP    0 FN    0  precision 1.0  recall 1.0  F1 1.0
+  rules alone                      TP   85 FP    0 FN    1  precision 1.0  recall 0.988  F1 0.994
+  tests alone                      TP   68 FP    0 FN   18  precision 1.0  recall 0.791  F1 0.883
+  rules OR tests                   TP   86 FP    0 FN    0  precision 1.0  recall 1.0  F1 1.0
+  LLM OR rules OR tests            TP   86 FP    0 FN    0  precision 1.0  recall 1.0  F1 1.0
+  majority of LLM, rules, tests    TP   86 FP    0 FN    0  precision 1.0  recall 1.0  F1 1.0
+  (rules OR tests) AND LLM         TP   86 FP    0 FN    0  precision 1.0  recall 1.0  F1 1.0
+
+LLM recall per drift type (run 1):
+  auth_removed               16/16
+  field_renamed              16/16
+  missing_operation          18/18
+  status_changed             18/18
+  undocumented_operation     18/18
+
+Controls wrongly flagged by the LLM (run 1): 0 of 18
+======================================================================
+model: claude-opus-5-5   runs: 2   cases judged per run: [104, 104]
+  run 1: precision 1.0  recall 1.0  F1 1.0
+  run 2: precision 1.0  recall 1.0  F1 1.0
+  precision: mean 1.000  std 0.000
+  recall: mean 1.000  std 0.000
+  F1: mean 1.000  std 0.000
+  cases where runs disagree: 0/104
+
+Combinations (using run 1 of the LLM):
+  LLM alone                        TP   86 FP    0 FN    0  precision 1.0  recall 1.0  F1 1.0
+  rules alone                      TP   85 FP    0 FN    1  precision 1.0  recall 0.988  F1 0.994
+  tests alone                      TP   68 FP    0 FN   18  precision 1.0  recall 0.791  F1 0.883
+  rules OR tests                   TP   86 FP    0 FN    0  precision 1.0  recall 1.0  F1 1.0
+  LLM OR rules OR tests            TP   86 FP    0 FN    0  precision 1.0  recall 1.0  F1 1.0
+  majority of LLM, rules, tests    TP   86 FP    0 FN    0  precision 1.0  recall 1.0  F1 1.0
+  (rules OR tests) AND LLM         TP   86 FP    0 FN    0  precision 1.0  recall 1.0  F1 1.0
+
+LLM recall per drift type (run 1):
+  auth_removed               16/16
+  field_renamed              16/16
+  missing_operation          18/18
+  status_changed             18/18
+  undocumented_operation     18/18
+
+Controls wrongly flagged by the LLM (run 1): 0 of 18
+======================================================================
+model: claude-sonnet-5-5   runs: 1   cases judged per run: [104]
+  run 1: precision 1.0  recall 1.0  F1 1.0
+
+Combinations (using run 1 of the LLM):
+  LLM alone                        TP   86 FP    0 FN    0  precision 1.0  recall 1.0  F1 1.0
+  rules alone                      TP   85 FP    0 FN    1  precision 1.0  recall 0.988  F1 0.994
+  tests alone                      TP   68 FP    0 FN   18  precision 1.0  recall 0.791  F1 0.883
+  rules OR tests                   TP   86 FP    0 FN    0  precision 1.0  recall 1.0  F1 1.0
+  LLM OR rules OR tests            TP   86 FP    0 FN    0  precision 1.0  recall 1.0  F1 1.0
+  majority of LLM, rules, tests    TP   86 FP    0 FN    0  precision 1.0  recall 1.0  F1 1.0
+  (rules OR tests) AND LLM         TP   86 FP    0 FN    0  precision 1.0  recall 1.0  F1 1.0
+
+LLM recall per drift type (run 1):
+  auth_removed               16/16
+  field_renamed              16/16
+  missing_operation          18/18
+  status_changed             18/18
+  undocumented_operation     18/18
+
+Controls wrongly flagged by the LLM (run 1): 0 of 18

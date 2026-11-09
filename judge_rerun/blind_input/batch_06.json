@@ -1,0 +1,1465 @@
+[
+ {
+  "id": "case-b96d25c4",
+  "spec_ops": [
+   {
+    "method": "GET",
+    "path": "/accounting",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "data",
+     "meta"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/inventory",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "data",
+     "meta"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/oauth/access_token",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "access_token",
+     "expires_in",
+     "refresh_token",
+     "token_type"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/orders",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "currentStatus",
+     "departDate",
+     "dispatchDate",
+     "id",
+     "merchant",
+     "merchantOrderId"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/orders",
+    "status": 201,
+    "auth": true,
+    "response_fields": [
+     "currentStatus",
+     "departDate",
+     "dispatchDate",
+     "id",
+     "merchant",
+     "merchantOrderId"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/orders/{id}",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "currentStatus",
+     "departDate",
+     "dispatchDate",
+     "id",
+     "merchant",
+     "merchantOrderId"
+    ]
+   },
+   {
+    "method": "DELETE",
+    "path": "/orders/{id}",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "currentStatus",
+     "departDate",
+     "dispatchDate",
+     "id",
+     "merchant",
+     "merchantOrderId"
+    ]
+   },
+   {
+    "method": "PUT",
+    "path": "/orders/{id}/ship",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "currentStatus",
+     "departDate",
+     "dispatchDate",
+     "id",
+     "merchant",
+     "merchantOrderId"
+    ]
+   },
+   {
+    "method": "PUT",
+    "path": "/orders/{id}/status",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "currentStatus",
+     "departDate",
+     "dispatchDate",
+     "id",
+     "merchant",
+     "merchantOrderId"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/returns",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "data",
+     "meta"
+    ]
+   },
+   {
+    "method": "PUT",
+    "path": "/returns",
+    "status": 201,
+    "auth": true,
+    "response_fields": [
+     "items",
+     "merchantOrderId",
+     "recipient",
+     "rmaNumber"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/track",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "destination",
+     "fdcOrderId",
+     "firstCheckedDateTime",
+     "firstTransitEvent",
+     "lastCheckedDateTime",
+     "lastUpdatedDateTime"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/users/me",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "apiKey",
+     "contactInfo",
+     "createDate",
+     "deptLeader",
+     "id",
+     "merchant"
+    ]
+   }
+  ],
+  "source": "from flask import Flask, jsonify, request\nfrom functools import wraps\napp = Flask(__name__)\ndef auth_required(fn):\n    @wraps(fn)\n    def w(*a, **k):\n        if request.headers.get(\"Authorization\", \"\") != \"Bearer t\":\n            return jsonify(error=\"unauthorized\"), 401\n        return fn(*a, **k)\n    return w\n\n@app.route('/accounting', methods=['GET'])\n@auth_required\ndef op_0():\n    return jsonify({'data': [{'fees': {'box': 'x', 'envelope': 'x', 'fulfillment': 'x', 'insert': 'x', 'kitting': 'x', 'picking': 'x'}, 'itemCount': 1, 'items': ['x'], 'merchant': {'id': 'x', 'name': 'x'}, 'order': {'id': 'x', 'invoiceDate': 'x', 'merchantOrderId': 'x', 'recordedDate': 'x'}, 'warehouse': {'id': 'x', 'shortName': 'x'}}], 'meta': {'pagination': {'count': 1, 'currentPage': 1, 'total': 1, 'totalPages': 1}}}), 200\n\n@app.route('/inventory', methods=['GET'])\n@auth_required\ndef op_1():\n    return jsonify({'data': [{'item': {'id': 'x', 'skuReference': 'x'}, 'merchant': {'name': 'x'}, 'quantity': {'total': 'x'}}], 'meta': {'pagination': {'count': 1, 'currentPage': 1, 'total': 1, 'totalPages': 1}}}), 200\n\n@app.route('/oauth/access_token', methods=['POST'])\ndef op_2():\n    return jsonify({'access_token': 'x', 'expires_in': 1, 'refresh_token': 'x', 'token_type': 'x'}), 200\n\n@app.route('/orders', methods=['GET'])\n@auth_required\ndef op_3():\n    return jsonify({'currentStatus': {'createdBy': {'id': 'x'}, 'date': 'x', 'id': 1, 'reason': 'x', 'status': {'actionRequiredBy': 'x', 'code': 'x', 'detail': 'x', 'detailCode': 'x', 'id': 'x', 'isClosed': 'x'}}, 'departDate': 'x', 'dispatchDate': 'x', 'id': 1, 'merchant': {'id': 1, 'name': 'x'}, 'merchantOrderId': 'x'}), 200\n\n@app.route('/orders', methods=['POST'])\n@auth_required\ndef op_4():\n    return jsonify({'currentStatus': {'createdBy': {'id': 1}, 'date': 'x', 'id': 1, 'reason': 'x', 'status': {'actionRequiredBy': {'id': 'x', 'name': 'x'}, 'code': 'x', 'detail': 'x', 'detailCode': 'x', 'id': 1, 'isClosed': True}}, 'departDate': 'x', 'dispatchDate': 'x', 'id': 1, 'merchant': {'id': 1, 'name': 'x'}, 'merchantOrderId': 'x'}), 201\n\n@app.route('/orders/<id>', methods=['GET'])\n@auth_required\ndef op_5(id):\n    return jsonify({'currentStatus': {'createdBy': {'id': 'x'}, 'date': 'x', 'id': 1, 'reason': 'x', 'status': {'actionRequiredBy': 'x', 'code': 'x', 'detail': 'x', 'detailCode': 'x', 'id': 'x', 'isClosed': 'x'}}, 'departDate': 'x', 'dispatchDate': 'x', 'id': 1, 'merchant': {'id': 1, 'name': 'x'}, 'merchantOrderId': 'x'}), 200\n\n@app.route('/orders/<id>', methods=['DELETE'])\n@auth_required\ndef op_6(id):\n    return jsonify({'currentStatus': {'createdBy': {'id': 1}, 'date': 'x', 'id': 1, 'reason': 'x', 'status': {'actionRequiredBy': {'id': 'x', 'name': 'x'}, 'code': 'x', 'detail': 'x', 'detailCode': 'x', 'id': 1, 'isClosed': True}}, 'departDate': 'x', 'dispatchDate': 'x', 'id': 1, 'merchant': {'id': 1, 'name': 'x'}, 'merchantOrderId': 'x'}), 200\n\n@app.route('/orders/<id>/ship', methods=['PUT'])\n@auth_required\ndef op_7(id):\n    return jsonify({'currentStatus': {'createdBy': {'id': 1}, 'date': 'x', 'id': 1, 'reason': 'x', 'status': {'actionRequiredBy': {'id': 'x', 'name': 'x'}, 'code': 'x', 'detail': 'x', 'detailCode': 'x', 'id': 1, 'isClosed': True}}, 'departDate': 'x', 'dispatchDate': 'x', 'id': 1, 'merchant': {'id': 1, 'name': 'x'}, 'merchantOrderId': 'x'}), 200\n\n@app.route('/orders/<id>/status', methods=['PUT'])\n@auth_required\ndef op_8(id):\n    return jsonify({'currentStatus': {'createdBy': {'id': 1}, 'date': 'x', 'id': 1, 'reason': 'x', 'status': {'actionRequiredBy': {'id': 'x', 'name': 'x'}, 'code': 'x', 'detail': 'x', 'detailCode': 'x', 'id': 1, 'isClosed': True}}, 'departDate': 'x', 'dispatchDate': 'x', 'id': 1, 'merchant': {'id': 1, 'name': 'x'}, 'merchantOrderId': 'x'}), 200\n\n@app.route('/returns', methods=['GET'])\n@auth_required\ndef op_9():\n    return jsonify({'data': [{'comments': 'x', 'createdAt': 'x', 'createdBy': {'id': 'x'}, 'id': 1, 'order': {'id': 'x', 'merchantId': 'x', 'merchantOrderId': 'x'}, 'reason': {'id': 'x', 'title': 'x'}}], 'meta': {'pagination': {'count': 1, 'currentPage': 1, 'total': 1, 'totalPages': 1}}}), 200\n\n@app.route('/returns', methods=['PUT'])\n@auth_required\ndef op_10():\n    return jsonify({'items': [{'quantityExpected': 1, 'sku': 'x'}], 'merchantOrderId': 'x', 'recipient': {'address1': 'x', 'address2': 'x', 'addressLocality': 'x', 'addressRegion': 'x', 'companyName': 'x', 'country': 'x'}, 'rmaNumber': 'x'}), 201\n\n@app.route('/track', methods=['GET'])\ndef op_11():\n    return jsonify({'destination': {'bbox': ['x'], 'centerline': {'coordinates': 'x', 'type': 'Point'}, 'geometry': {'coordinates': 'x', 'type': 'Point'}, 'id': 1, 'properties': {'name': 'x'}, 'title': 'x'}, 'fdcOrderId': 1, 'firstCheckedDateTime': 'x', 'firstTransitEvent': 'x', 'lastCheckedDateTime': 'x', 'lastUpdatedDateTime': 'x'}), 200\n\n@app.route('/users/me', methods=['GET'])\n@auth_required\ndef op_12():\n    return jsonify({'contactInfo': {'apiKey': 'x', 'contactInfo': {'address1': 'x', 'address2': 'x', 'addressLocality': 'x', 'addressRegion': 'x', 'companyName': 'x', 'country': 'x'}, 'createDate': 'x', 'deptLeader': True, 'id': 1, 'merchant': {'id': 1}}, 'createDate': 'x', 'deptLeader': True, 'id': 1, 'merchant': {'id': 1}, 'apiKey_x': 'x'}), 200\n"
+ },
+ {
+  "id": "case-443cec4b",
+  "spec_ops": [
+   {
+    "method": "POST",
+    "path": "/changePassword",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   },
+   {
+    "method": "POST",
+    "path": "/login",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "admin",
+     "login_id",
+     "name",
+     "read_only",
+     "token"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/logout",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   },
+   {
+    "method": "POST",
+    "path": "/requestPasswordReset",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "email",
+     "guid"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/signin",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "result"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/signin/{signinId}",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "dt",
+     "email",
+     "id",
+     "name",
+     "phone"
+    ]
+   },
+   {
+    "method": "PUT",
+    "path": "/signin/{signinId}",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "admin",
+     "email",
+     "id",
+     "name",
+     "read_only"
+    ]
+   },
+   {
+    "method": "DELETE",
+    "path": "/signin/{signinId}",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   },
+   {
+    "method": "GET",
+    "path": "/signins",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "dt",
+     "email",
+     "id",
+     "name",
+     "phone"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/user",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "email",
+     "guid"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/user/{userId}",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "admin",
+     "email",
+     "id",
+     "name",
+     "read_only"
+    ]
+   },
+   {
+    "method": "DELETE",
+    "path": "/user/{userId}",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   },
+   {
+    "method": "GET",
+    "path": "/users",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "admin",
+     "email",
+     "id",
+     "name",
+     "read_only"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/verifyPasswordChange",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   }
+  ],
+  "source": "from flask import Flask, jsonify, request\nfrom functools import wraps\napp = Flask(__name__)\ndef auth_required(fn):\n    @wraps(fn)\n    def w(*a, **k):\n        if request.headers.get(\"Authorization\", \"\") != \"Bearer t\":\n            return jsonify(error=\"unauthorized\"), 401\n        return fn(*a, **k)\n    return w\n\n@app.route('/changePassword', methods=['POST'])\n@auth_required\ndef op_0():\n    return \"\", 200\n\n@app.route('/login', methods=['POST'])\ndef op_1():\n    return jsonify({'admin': True, 'login_id': 1, 'name': 'x', 'read_only': True, 'token': 'x'}), 200\n\n@app.route('/logout', methods=['POST'])\n@auth_required\ndef op_2():\n    return \"\", 200\n\n@app.route('/requestPasswordReset', methods=['POST'])\n@auth_required\ndef op_3():\n    return jsonify({'email': 'x', 'guid': 'x'}), 200\n\n@app.route('/signin', methods=['POST'])\n@auth_required\ndef op_4():\n    return jsonify({'result': 1}), 200\n\n@app.route('/signin/<signinId>', methods=['GET'])\n@auth_required\ndef op_5(signinId):\n    return jsonify({'dt': 1.0, 'email': 'x', 'id': 1, 'name': 'x', 'phone': 'x'}), 200\n\n@app.route('/signin/<signinId>', methods=['PUT'])\n@auth_required\ndef op_6(signinId):\n    return jsonify({'admin': True, 'email': 'x', 'id': 1, 'name': 'x', 'read_only': True}), 200\n\n@app.route('/signin/<signinId>', methods=['DELETE'])\n@auth_required\ndef op_7(signinId):\n    return \"\", 200\n\n@app.route('/signins', methods=['GET'])\n@auth_required\ndef op_8():\n    return jsonify([{'dt': 1.0, 'email': 'x', 'id': 1, 'name': 'x', 'phone': 'x'}]), 200\n\n@app.route('/user', methods=['POST'])\ndef op_9():\n    return jsonify({'email': 'x', 'guid': 'x'}), 200\n\n@app.route('/user/<userId>', methods=['GET'])\n@auth_required\ndef op_10(userId):\n    return jsonify({'admin': True, 'email': 'x', 'id': 1, 'name': 'x', 'read_only': True}), 200\n\n@app.route('/user/<userId>', methods=['DELETE'])\n@auth_required\ndef op_11(userId):\n    return \"\", 200\n\n@app.route('/users', methods=['GET'])\n@auth_required\ndef op_12():\n    return jsonify([{'admin': True, 'email': 'x', 'id': 1, 'name': 'x', 'read_only': True}]), 200\n\n@app.route('/verifyPasswordChange', methods=['POST'])\n@auth_required\ndef op_13():\n    return \"\", 200\n"
+ },
+ {
+  "id": "case-e6346d8d",
+  "spec_ops": [
+   {
+    "method": "GET",
+    "path": "/v2/access-tokens",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "active_count",
+     "count",
+     "next",
+     "previous",
+     "results"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v2/access-tokens",
+    "status": 201,
+    "auth": false,
+    "response_fields": [
+     "client_id",
+     "created_at",
+     "creator_ip",
+     "creator_ua",
+     "generated_by",
+     "is_active"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v2/access-tokens/{uuid}",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "client_id",
+     "created_at",
+     "creator_ip",
+     "creator_ua",
+     "generated_by",
+     "is_active",
+     "token"
+    ]
+   },
+   {
+    "method": "DELETE",
+    "path": "/v2/access-tokens/{uuid}",
+    "status": 204,
+    "auth": false,
+    "response_fields": []
+   },
+   {
+    "method": "PATCH",
+    "path": "/v2/access-tokens/{uuid}",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "client_id",
+     "created_at",
+     "creator_ip",
+     "creator_ua",
+     "generated_by",
+     "is_active"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v2/auditlogs/{account}",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "logs"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v2/auditlogs/{account}/actions",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "actions"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v2/namespaces/{namespace}/delete-images",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "dry_run",
+     "metrics"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v2/namespaces/{namespace}/repositories/{repository}/images",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "count",
+     "next",
+     "previous",
+     "results"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v2/namespaces/{namespace}/repositories/{repository}/images-summary",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "active_from",
+     "statistics"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v2/namespaces/{namespace}/repositories/{repository}/images/{digest}/tags",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "count",
+     "next",
+     "previous",
+     "results"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v2/namespaces/{namespace}/repositories/{repository}/tags",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "count",
+     "next",
+     "previous",
+     "results"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v2/namespaces/{namespace}/repositories/{repository}/tags/{tag}",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "creator",
+     "full_size",
+     "id",
+     "images",
+     "last_updated",
+     "last_updater"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v2/orgs/{name}/settings",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "restricted_images"
+    ]
+   },
+   {
+    "method": "PUT",
+    "path": "/v2/orgs/{name}/settings",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "restricted_images"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v2/scim/2.0/ResourceTypes",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "resources",
+     "schemas",
+     "totalResults"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v2/scim/2.0/ResourceTypes/{name}",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "description",
+     "endpoint",
+     "id",
+     "name",
+     "schema",
+     "schemas"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v2/scim/2.0/Schemas",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "resources",
+     "schemas",
+     "totalResults"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v2/scim/2.0/Schemas/{id}",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "attributes",
+     "description",
+     "id",
+     "name",
+     "schemas"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v2/scim/2.0/ServiceProviderConfig",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "authenticationSchemes",
+     "bulk",
+     "changePassword",
+     "documentationUri",
+     "etag",
+     "filter"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v2/scim/2.0/Users",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "itemsPerPage",
+     "resources",
+     "schemas",
+     "startIndex",
+     "totalResults"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v2/scim/2.0/Users",
+    "status": 201,
+    "auth": true,
+    "response_fields": [
+     "active",
+     "displayName",
+     "emails",
+     "groups",
+     "id",
+     "meta"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v2/scim/2.0/Users/{id}",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "active",
+     "displayName",
+     "emails",
+     "groups",
+     "id",
+     "meta"
+    ]
+   },
+   {
+    "method": "PUT",
+    "path": "/v2/scim/2.0/Users/{id}",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "active",
+     "displayName",
+     "emails",
+     "groups",
+     "id",
+     "meta"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v2/users/2fa-login",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "token"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v2/users/login",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "token"
+    ]
+   }
+  ],
+  "source": "from flask import Flask, jsonify, request\nfrom functools import wraps\napp = Flask(__name__)\ndef auth_required(fn):\n    @wraps(fn)\n    def w(*a, **k):\n        if request.headers.get(\"Authorization\", \"\") != \"Bearer t\":\n            return jsonify(error=\"unauthorized\"), 401\n        return fn(*a, **k)\n    return w\n\n@app.route('/v2/access-tokens', methods=['GET'])\ndef op_0():\n    return jsonify({'active_count': 1.0, 'count': 1.0, 'next': 'x', 'previous': 'x', 'results': [{'client_id': 'x', 'created_at': 'x', 'creator_ip': 'x', 'creator_ua': 'x', 'generated_by': 'x', 'is_active': 'x', 'token': 'x'}]}), 200\n\n@app.route('/v2/access-tokens', methods=['POST'])\ndef op_1():\n    return jsonify({'client_id': 'x', 'created_at': 'x', 'creator_ip': 'x', 'creator_ua': 'x', 'generated_by': 'x', 'is_active': True}), 201\n\n@app.route('/v2/access-tokens/<uuid>', methods=['GET'])\ndef op_2(uuid):\n    return jsonify({'client_id': 'x', 'created_at': 'x', 'creator_ip': 'x', 'creator_ua': 'x', 'generated_by': 'x', 'is_active': True, 'token': 'x'}), 200\n\n@app.route('/v2/access-tokens/<uuid>', methods=['DELETE'])\ndef op_3(uuid):\n    return \"\", 204\n\n@app.route('/v2/access-tokens/<uuid>', methods=['PATCH'])\ndef op_4(uuid):\n    return jsonify({'client_id': 'x', 'created_at': 'x', 'creator_ip': 'x', 'creator_ua': 'x', 'generated_by': 'x', 'is_active': True}), 200\n\n@app.route('/v2/auditlogs/<account>', methods=['GET'])\ndef op_5(account):\n    return jsonify({'logs': [{'account': 'x', 'action': 'x', 'action_description': 'x', 'actor': 'x', 'data': {}, 'name': 'x'}]}), 200\n\n@app.route('/v2/auditlogs/<account>/actions', methods=['GET'])\ndef op_6(account):\n    return jsonify({'actions': {}}), 200\n\n@app.route('/v2/namespaces/<namespace>/delete-images', methods=['POST'])\ndef op_7(namespace):\n    return jsonify({'dry_run': True, 'metrics': {'manifest_deletes': 1, 'manifest_errors': 1, 'tag_deletes': 1, 'tag_errors': 1}}), 200\n\n@app.route('/v2/namespaces/<namespace>/repositories/<repository>/images', methods=['GET'])\ndef op_8(namespace, repository):\n    return jsonify({'count': 1, 'next': 'x', 'previous': 'x', 'results': [{'digest': 'x', 'last_pulled': 'x', 'last_pushed': 'x', 'namespace': 'x', 'repository': 'x', 'status': 'active'}]}), 200\n\n@app.route('/v2/namespaces/<namespace>/repositories/<repository>/images-summary', methods=['GET'])\ndef op_9(namespace, repository):\n    return jsonify({'active_from': 'x', 'statistics': {'active': 1, 'inactive': 1, 'total': 1}}), 200\n\n@app.route('/v2/namespaces/<namespace>/repositories/<repository>/images/<digest>/tags', methods=['GET'])\ndef op_10(namespace, repository, digest):\n    return jsonify({'count': 1, 'next': 'x', 'previous': 'x', 'results': [{'is_current': True, 'tag': 'x'}]}), 200\n\n@app.route('/v2/namespaces/<namespace>/repositories/<repository>/tags', methods=['GET'])\ndef op_11(namespace, repository):\n    return jsonify({'count': 1, 'next': 'x', 'previous': 'x', 'results': [{'creator': 'x', 'full_size': 'x', 'id': 'x', 'images': 'x', 'last_updated': 'x', 'last_updater': 'x'}]}), 200\n\n@app.route('/v2/namespaces/<namespace>/repositories/<repository>/tags/<tag>', methods=['GET'])\ndef op_12(namespace, repository, tag):\n    return jsonify({'creator': 1, 'full_size': 1, 'id': 1, 'images': {'architecture': 'x', 'digest': 'x', 'features': 'x', 'last_pulled': 'x', 'last_pushed': 'x', 'layers': [{'digest': 'x', 'instruction': 'x', 'size': 'x'}]}, 'last_updated': 'x', 'last_updater': 1}), 200\n\n@app.route('/v2/orgs/<name>/settings', methods=['GET'])\ndef op_13(name):\n    return jsonify({'restricted_images': {'allow_official_images': True, 'allow_verified_publishers': True, 'enabled': True}}), 200\n\n@app.route('/v2/orgs/<name>/settings', methods=['PUT'])\ndef op_14(name):\n    return jsonify({'restricted_images': {'allow_official_images': True, 'allow_verified_publishers': True, 'enabled': True}}), 200\n\n@app.route('/v2/scim/2.0/ResourceTypes', methods=['GET'])\n@auth_required\ndef op_15():\n    return jsonify({'resources': [{'description': 'x', 'endpoint': 'x', 'id': 'x', 'name': 'x', 'schema': 'x', 'schemas': ['x']}], 'schemas': ['x'], 'totalResults': 1}), 200\n\n@app.route('/v2/scim/2.0/ResourceTypes/<name>', methods=['GET'])\n@auth_required\ndef op_16(name):\n    return jsonify({'description': 'x', 'endpoint': 'x', 'id': 'x', 'name': 'x', 'schema': 'x', 'schemas': ['x']}), 200\n\n@app.route('/v2/scim/2.0/Schemas', methods=['GET'])\n@auth_required\ndef op_17():\n    return jsonify({'resources': [{'attributes': ['x'], 'description': 'x', 'id': 'x', 'name': 'x', 'schemas': ['x']}], 'schemas': ['x'], 'totalResults': 1}), 200\n\n@app.route('/v2/scim/2.0/Schemas/<id>', methods=['GET'])\n@auth_required\ndef op_18(id):\n    return jsonify({'attributes': [{'caseExact': 'x', 'description': 'x', 'multiValued': 'x', 'mutability': 'x', 'name': 'x', 'required': 'x', 'subAttributes': 'x'}], 'description': 'x', 'id': 'x', 'name': 'x', 'schemas': ['x']}), 200\n\n@app.route('/v2/scim/2.0/ServiceProviderConfig', methods=['GET'])\n@auth_required\ndef op_19():\n    return jsonify({'authenticationSchemes': {'description': 'x', 'name': 'x', 'specUri': 'x', 'type': 'x'}, 'bulk': {'maxOperations': 1, 'maxPayloadSize': 1, 'supported': True}, 'changePassword': {'supported': True}, 'documentationUri': 'x', 'etag': {'supported': True}, 'filter': {'maxResults': 1, 'supported': True}}), 200\n\n@app.route('/v2/scim/2.0/Users', methods=['GET'])\n@auth_required\ndef op_20():\n    return jsonify({'itemsPerPage': 1, 'resources': [{'active': True, 'displayName': 'x', 'emails': ['x'], 'groups': ['x'], 'id': 'x', 'meta': {'created': 'x', 'lastModified': 'x', 'location': 'x', 'resourceType': 'x'}}], 'schemas': ['x'], 'startIndex': 1, 'totalResults': 1}), 200\n\n@app.route('/v2/scim/2.0/Users', methods=['POST'])\n@auth_required\ndef op_21():\n    return jsonify({'active': True, 'displayName': 'x', 'emails': [{'display': 'x', 'primary': True, 'value': 'x'}], 'groups': [{'display': 'x', 'value': 'x'}], 'id': 'x', 'meta': {'created': 'x', 'lastModified': 'x', 'location': 'x', 'resourceType': 'x'}}), 201\n\n@app.route('/v2/scim/2.0/Users/<id>', methods=['GET'])\n@auth_required\ndef op_22(id):\n    return jsonify({'active': True, 'displayName': 'x', 'emails': [{'display': 'x', 'primary': True, 'value': 'x'}], 'groups': [{'display': 'x', 'value': 'x'}], 'id': 'x', 'meta': {'created': 'x', 'lastModified': 'x', 'location': 'x', 'resourceType': 'x'}}), 200\n\n@app.route('/v2/scim/2.0/Users/<id>', methods=['PUT'])\n@auth_required\ndef op_23(id):\n    return jsonify({'active': True, 'displayName': 'x', 'emails': [{'display': 'x', 'primary': True, 'value': 'x'}], 'groups': [{'display': 'x', 'value': 'x'}], 'id': 'x', 'meta': {'created': 'x', 'lastModified': 'x', 'location': 'x', 'resourceType': 'x'}}), 202\n\n@app.route('/v2/users/2fa-login', methods=['POST'])\ndef op_24():\n    return jsonify({'token': 'x'}), 200\n\n@app.route('/v2/users/login', methods=['POST'])\ndef op_25():\n    return jsonify({'token': 'x'}), 200\n"
+ },
+ {
+  "id": "case-31cef6fb",
+  "spec_ops": [
+   {
+    "method": "GET",
+    "path": "/accounting",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "data",
+     "meta"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/inventory",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "data",
+     "meta"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/oauth/access_token",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "access_token",
+     "expires_in",
+     "refresh_token",
+     "token_type"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/orders",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "currentStatus",
+     "departDate",
+     "dispatchDate",
+     "id",
+     "merchant",
+     "merchantOrderId"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/orders",
+    "status": 201,
+    "auth": true,
+    "response_fields": [
+     "currentStatus",
+     "departDate",
+     "dispatchDate",
+     "id",
+     "merchant",
+     "merchantOrderId"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/orders/{id}",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "currentStatus",
+     "departDate",
+     "dispatchDate",
+     "id",
+     "merchant",
+     "merchantOrderId"
+    ]
+   },
+   {
+    "method": "DELETE",
+    "path": "/orders/{id}",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "currentStatus",
+     "departDate",
+     "dispatchDate",
+     "id",
+     "merchant",
+     "merchantOrderId"
+    ]
+   },
+   {
+    "method": "PUT",
+    "path": "/orders/{id}/ship",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "currentStatus",
+     "departDate",
+     "dispatchDate",
+     "id",
+     "merchant",
+     "merchantOrderId"
+    ]
+   },
+   {
+    "method": "PUT",
+    "path": "/orders/{id}/status",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "currentStatus",
+     "departDate",
+     "dispatchDate",
+     "id",
+     "merchant",
+     "merchantOrderId"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/returns",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "data",
+     "meta"
+    ]
+   },
+   {
+    "method": "PUT",
+    "path": "/returns",
+    "status": 201,
+    "auth": true,
+    "response_fields": [
+     "items",
+     "merchantOrderId",
+     "recipient",
+     "rmaNumber"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/track",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "destination",
+     "fdcOrderId",
+     "firstCheckedDateTime",
+     "firstTransitEvent",
+     "lastCheckedDateTime",
+     "lastUpdatedDateTime"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/users/me",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "apiKey",
+     "contactInfo",
+     "createDate",
+     "deptLeader",
+     "id",
+     "merchant"
+    ]
+   }
+  ],
+  "source": "from flask import Flask, jsonify, request\nfrom functools import wraps\napp = Flask(__name__)\ndef auth_required(fn):\n    @wraps(fn)\n    def w(*a, **k):\n        if request.headers.get(\"Authorization\", \"\") != \"Bearer t\":\n            return jsonify(error=\"unauthorized\"), 401\n        return fn(*a, **k)\n    return w\n\n@app.route('/accounting', methods=['GET'])\n@auth_required\ndef op_0():\n    return jsonify({'data': [{'fees': {'box': 'x', 'envelope': 'x', 'fulfillment': 'x', 'insert': 'x', 'kitting': 'x', 'picking': 'x'}, 'itemCount': 1, 'items': ['x'], 'merchant': {'id': 'x', 'name': 'x'}, 'order': {'id': 'x', 'invoiceDate': 'x', 'merchantOrderId': 'x', 'recordedDate': 'x'}, 'warehouse': {'id': 'x', 'shortName': 'x'}}], 'meta': {'pagination': {'count': 1, 'currentPage': 1, 'total': 1, 'totalPages': 1}}}), 200\n\n@app.route('/inventory', methods=['GET'])\n@auth_required\ndef op_1():\n    return jsonify({'data': [{'item': {'id': 'x', 'skuReference': 'x'}, 'merchant': {'name': 'x'}, 'quantity': {'total': 'x'}}], 'meta': {'pagination': {'count': 1, 'currentPage': 1, 'total': 1, 'totalPages': 1}}}), 200\n\n@app.route('/oauth/access_token', methods=['POST'])\ndef op_2():\n    return jsonify({'access_token': 'x', 'expires_in': 1, 'refresh_token': 'x', 'token_type': 'x'}), 200\n\n@app.route('/orders', methods=['GET'])\ndef op_3():\n    return jsonify({'currentStatus': {'createdBy': {'id': 'x'}, 'date': 'x', 'id': 1, 'reason': 'x', 'status': {'actionRequiredBy': 'x', 'code': 'x', 'detail': 'x', 'detailCode': 'x', 'id': 'x', 'isClosed': 'x'}}, 'departDate': 'x', 'dispatchDate': 'x', 'id': 1, 'merchant': {'id': 1, 'name': 'x'}, 'merchantOrderId': 'x'}), 200\n\n@app.route('/orders', methods=['POST'])\n@auth_required\ndef op_4():\n    return jsonify({'currentStatus': {'createdBy': {'id': 1}, 'date': 'x', 'id': 1, 'reason': 'x', 'status': {'actionRequiredBy': {'id': 'x', 'name': 'x'}, 'code': 'x', 'detail': 'x', 'detailCode': 'x', 'id': 1, 'isClosed': True}}, 'departDate': 'x', 'dispatchDate': 'x', 'id': 1, 'merchant': {'id': 1, 'name': 'x'}, 'merchantOrderId': 'x'}), 201\n\n@app.route('/orders/<id>', methods=['GET'])\n@auth_required\ndef op_5(id):\n    return jsonify({'currentStatus': {'createdBy': {'id': 'x'}, 'date': 'x', 'id': 1, 'reason': 'x', 'status': {'actionRequiredBy': 'x', 'code': 'x', 'detail': 'x', 'detailCode': 'x', 'id': 'x', 'isClosed': 'x'}}, 'departDate': 'x', 'dispatchDate': 'x', 'id': 1, 'merchant': {'id': 1, 'name': 'x'}, 'merchantOrderId': 'x'}), 200\n\n@app.route('/orders/<id>', methods=['DELETE'])\n@auth_required\ndef op_6(id):\n    return jsonify({'currentStatus': {'createdBy': {'id': 1}, 'date': 'x', 'id': 1, 'reason': 'x', 'status': {'actionRequiredBy': {'id': 'x', 'name': 'x'}, 'code': 'x', 'detail': 'x', 'detailCode': 'x', 'id': 1, 'isClosed': True}}, 'departDate': 'x', 'dispatchDate': 'x', 'id': 1, 'merchant': {'id': 1, 'name': 'x'}, 'merchantOrderId': 'x'}), 200\n\n@app.route('/orders/<id>/ship', methods=['PUT'])\n@auth_required\ndef op_7(id):\n    return jsonify({'currentStatus': {'createdBy': {'id': 1}, 'date': 'x', 'id': 1, 'reason': 'x', 'status': {'actionRequiredBy': {'id': 'x', 'name': 'x'}, 'code': 'x', 'detail': 'x', 'detailCode': 'x', 'id': 1, 'isClosed': True}}, 'departDate': 'x', 'dispatchDate': 'x', 'id': 1, 'merchant': {'id': 1, 'name': 'x'}, 'merchantOrderId': 'x'}), 200\n\n@app.route('/orders/<id>/status', methods=['PUT'])\n@auth_required\ndef op_8(id):\n    return jsonify({'currentStatus': {'createdBy': {'id': 1}, 'date': 'x', 'id': 1, 'reason': 'x', 'status': {'actionRequiredBy': {'id': 'x', 'name': 'x'}, 'code': 'x', 'detail': 'x', 'detailCode': 'x', 'id': 1, 'isClosed': True}}, 'departDate': 'x', 'dispatchDate': 'x', 'id': 1, 'merchant': {'id': 1, 'name': 'x'}, 'merchantOrderId': 'x'}), 200\n\n@app.route('/returns', methods=['GET'])\n@auth_required\ndef op_9():\n    return jsonify({'data': [{'comments': 'x', 'createdAt': 'x', 'createdBy': {'id': 'x'}, 'id': 1, 'order': {'id': 'x', 'merchantId': 'x', 'merchantOrderId': 'x'}, 'reason': {'id': 'x', 'title': 'x'}}], 'meta': {'pagination': {'count': 1, 'currentPage': 1, 'total': 1, 'totalPages': 1}}}), 200\n\n@app.route('/returns', methods=['PUT'])\n@auth_required\ndef op_10():\n    return jsonify({'items': [{'quantityExpected': 1, 'sku': 'x'}], 'merchantOrderId': 'x', 'recipient': {'address1': 'x', 'address2': 'x', 'addressLocality': 'x', 'addressRegion': 'x', 'companyName': 'x', 'country': 'x'}, 'rmaNumber': 'x'}), 201\n\n@app.route('/track', methods=['GET'])\ndef op_11():\n    return jsonify({'destination': {'bbox': ['x'], 'centerline': {'coordinates': 'x', 'type': 'Point'}, 'geometry': {'coordinates': 'x', 'type': 'Point'}, 'id': 1, 'properties': {'name': 'x'}, 'title': 'x'}, 'fdcOrderId': 1, 'firstCheckedDateTime': 'x', 'firstTransitEvent': 'x', 'lastCheckedDateTime': 'x', 'lastUpdatedDateTime': 'x'}), 200\n\n@app.route('/users/me', methods=['GET'])\n@auth_required\ndef op_12():\n    return jsonify({'apiKey': 'x', 'contactInfo': {'apiKey': 'x', 'contactInfo': {'address1': 'x', 'address2': 'x', 'addressLocality': 'x', 'addressRegion': 'x', 'companyName': 'x', 'country': 'x'}, 'createDate': 'x', 'deptLeader': True, 'id': 1, 'merchant': {'id': 1}}, 'createDate': 'x', 'deptLeader': True, 'id': 1, 'merchant': {'id': 1}}), 200\n"
+ },
+ {
+  "id": "case-74849fdc",
+  "spec_ops": [
+   {
+    "method": "GET",
+    "path": "/accounting",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "data",
+     "meta"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/inventory",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "data",
+     "meta"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/oauth/access_token",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "access_token",
+     "expires_in",
+     "refresh_token",
+     "token_type"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/orders",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "currentStatus",
+     "departDate",
+     "dispatchDate",
+     "id",
+     "merchant",
+     "merchantOrderId"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/orders",
+    "status": 201,
+    "auth": true,
+    "response_fields": [
+     "currentStatus",
+     "departDate",
+     "dispatchDate",
+     "id",
+     "merchant",
+     "merchantOrderId"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/orders/{id}",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "currentStatus",
+     "departDate",
+     "dispatchDate",
+     "id",
+     "merchant",
+     "merchantOrderId"
+    ]
+   },
+   {
+    "method": "DELETE",
+    "path": "/orders/{id}",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "currentStatus",
+     "departDate",
+     "dispatchDate",
+     "id",
+     "merchant",
+     "merchantOrderId"
+    ]
+   },
+   {
+    "method": "PUT",
+    "path": "/orders/{id}/ship",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "currentStatus",
+     "departDate",
+     "dispatchDate",
+     "id",
+     "merchant",
+     "merchantOrderId"
+    ]
+   },
+   {
+    "method": "PUT",
+    "path": "/orders/{id}/status",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "currentStatus",
+     "departDate",
+     "dispatchDate",
+     "id",
+     "merchant",
+     "merchantOrderId"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/returns",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "data",
+     "meta"
+    ]
+   },
+   {
+    "method": "PUT",
+    "path": "/returns",
+    "status": 201,
+    "auth": true,
+    "response_fields": [
+     "items",
+     "merchantOrderId",
+     "recipient",
+     "rmaNumber"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/track",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "destination",
+     "fdcOrderId",
+     "firstCheckedDateTime",
+     "firstTransitEvent",
+     "lastCheckedDateTime",
+     "lastUpdatedDateTime"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/users/me",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "apiKey",
+     "contactInfo",
+     "createDate",
+     "deptLeader",
+     "id",
+     "merchant"
+    ]
+   }
+  ],
+  "source": "from flask import Flask, jsonify, request\nfrom functools import wraps\napp = Flask(__name__)\ndef auth_required(fn):\n    @wraps(fn)\n    def w(*a, **k):\n        if request.headers.get(\"Authorization\", \"\") != \"Bearer t\":\n            return jsonify(error=\"unauthorized\"), 401\n        return fn(*a, **k)\n    return w\n\n@app.route('/accounting', methods=['GET'])\n@auth_required\ndef op_0():\n    return jsonify({'data': [{'fees': {'box': 'x', 'envelope': 'x', 'fulfillment': 'x', 'insert': 'x', 'kitting': 'x', 'picking': 'x'}, 'itemCount': 1, 'items': ['x'], 'merchant': {'id': 'x', 'name': 'x'}, 'order': {'id': 'x', 'invoiceDate': 'x', 'merchantOrderId': 'x', 'recordedDate': 'x'}, 'warehouse': {'id': 'x', 'shortName': 'x'}}], 'meta': {'pagination': {'count': 1, 'currentPage': 1, 'total': 1, 'totalPages': 1}}}), 200\n\n@app.route('/inventory', methods=['GET'])\n@auth_required\ndef op_1():\n    return jsonify({'data': [{'item': {'id': 'x', 'skuReference': 'x'}, 'merchant': {'name': 'x'}, 'quantity': {'total': 'x'}}], 'meta': {'pagination': {'count': 1, 'currentPage': 1, 'total': 1, 'totalPages': 1}}}), 200\n\n@app.route('/oauth/access_token', methods=['POST'])\ndef op_2():\n    return jsonify({'access_token': 'x', 'expires_in': 1, 'refresh_token': 'x', 'token_type': 'x'}), 200\n\n@app.route('/orders', methods=['GET'])\n@auth_required\ndef op_3():\n    return jsonify({'currentStatus': {'createdBy': {'id': 'x'}, 'date': 'x', 'id': 1, 'reason': 'x', 'status': {'actionRequiredBy': 'x', 'code': 'x', 'detail': 'x', 'detailCode': 'x', 'id': 'x', 'isClosed': 'x'}}, 'departDate': 'x', 'dispatchDate': 'x', 'id': 1, 'merchant': {'id': 1, 'name': 'x'}, 'merchantOrderId': 'x'}), 200\n\n@app.route('/orders', methods=['POST'])\n@auth_required\ndef op_4():\n    return jsonify({'currentStatus': {'createdBy': {'id': 1}, 'date': 'x', 'id': 1, 'reason': 'x', 'status': {'actionRequiredBy': {'id': 'x', 'name': 'x'}, 'code': 'x', 'detail': 'x', 'detailCode': 'x', 'id': 1, 'isClosed': True}}, 'departDate': 'x', 'dispatchDate': 'x', 'id': 1, 'merchant': {'id': 1, 'name': 'x'}, 'merchantOrderId': 'x'}), 201\n\n@app.route('/orders/<id>', methods=['GET'])\n@auth_required\ndef op_5(id):\n    return jsonify({'currentStatus': {'createdBy': {'id': 'x'}, 'date': 'x', 'id': 1, 'reason': 'x', 'status': {'actionRequiredBy': 'x', 'code': 'x', 'detail': 'x', 'detailCode': 'x', 'id': 'x', 'isClosed': 'x'}}, 'departDate': 'x', 'dispatchDate': 'x', 'id': 1, 'merchant': {'id': 1, 'name': 'x'}, 'merchantOrderId': 'x'}), 200\n\n@app.route('/orders/<id>', methods=['DELETE'])\n@auth_required\ndef op_6(id):\n    return jsonify({'currentStatus': {'createdBy': {'id': 1}, 'date': 'x', 'id': 1, 'reason': 'x', 'status': {'actionRequiredBy': {'id': 'x', 'name': 'x'}, 'code': 'x', 'detail': 'x', 'detailCode': 'x', 'id': 1, 'isClosed': True}}, 'departDate': 'x', 'dispatchDate': 'x', 'id': 1, 'merchant': {'id': 1, 'name': 'x'}, 'merchantOrderId': 'x'}), 200\n\n@app.route('/orders/<id>/ship', methods=['PUT'])\n@auth_required\ndef op_7(id):\n    return jsonify({'currentStatus': {'createdBy': {'id': 1}, 'date': 'x', 'id': 1, 'reason': 'x', 'status': {'actionRequiredBy': {'id': 'x', 'name': 'x'}, 'code': 'x', 'detail': 'x', 'detailCode': 'x', 'id': 1, 'isClosed': True}}, 'departDate': 'x', 'dispatchDate': 'x', 'id': 1, 'merchant': {'id': 1, 'name': 'x'}, 'merchantOrderId': 'x'}), 200\n\n@app.route('/orders/<id>/status', methods=['PUT'])\n@auth_required\ndef op_8(id):\n    return jsonify({'currentStatus': {'createdBy': {'id': 1}, 'date': 'x', 'id': 1, 'reason': 'x', 'status': {'actionRequiredBy': {'id': 'x', 'name': 'x'}, 'code': 'x', 'detail': 'x', 'detailCode': 'x', 'id': 1, 'isClosed': True}}, 'departDate': 'x', 'dispatchDate': 'x', 'id': 1, 'merchant': {'id': 1, 'name': 'x'}, 'merchantOrderId': 'x'}), 200\n\n@app.route('/returns', methods=['GET'])\n@auth_required\ndef op_9():\n    return jsonify({'data': [{'comments': 'x', 'createdAt': 'x', 'createdBy': {'id': 'x'}, 'id': 1, 'order': {'id': 'x', 'merchantId': 'x', 'merchantOrderId': 'x'}, 'reason': {'id': 'x', 'title': 'x'}}], 'meta': {'pagination': {'count': 1, 'currentPage': 1, 'total': 1, 'totalPages': 1}}}), 200\n\n@app.route('/returns', methods=['PUT'])\n@auth_required\ndef op_10():\n    return jsonify({'items': [{'quantityExpected': 1, 'sku': 'x'}], 'merchantOrderId': 'x', 'recipient': {'address1': 'x', 'address2': 'x', 'addressLocality': 'x', 'addressRegion': 'x', 'companyName': 'x', 'country': 'x'}, 'rmaNumber': 'x'}), 201\n\n@app.route('/track', methods=['GET'])\ndef op_11():\n    return jsonify({'destination': {'bbox': ['x'], 'centerline': {'coordinates': 'x', 'type': 'Point'}, 'geometry': {'coordinates': 'x', 'type': 'Point'}, 'id': 1, 'properties': {'name': 'x'}, 'title': 'x'}, 'fdcOrderId': 1, 'firstCheckedDateTime': 'x', 'firstTransitEvent': 'x', 'lastCheckedDateTime': 'x', 'lastUpdatedDateTime': 'x'}), 200\n\n@app.route('/users/me', methods=['GET'])\n@auth_required\ndef op_12():\n    return jsonify({'apiKey': 'x', 'contactInfo': {'apiKey': 'x', 'contactInfo': {'address1': 'x', 'address2': 'x', 'addressLocality': 'x', 'addressRegion': 'x', 'companyName': 'x', 'country': 'x'}, 'createDate': 'x', 'deptLeader': True, 'id': 1, 'merchant': {'id': 1}}, 'createDate': 'x', 'deptLeader': True, 'id': 1, 'merchant': {'id': 1}}), 200\n\n@app.route('/internal/debug', methods=['GET'])\n@auth_required\ndef op_13():\n    return jsonify({'ok': True}), 200\n"
+ },
+ {
+  "id": "case-7e4e17b0",
+  "spec_ops": [
+   {
+    "method": "GET",
+    "path": "/transactions",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "_links",
+     "data"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/transactions/{id}",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "accountHolderId",
+     "amount",
+     "balanceAccountId",
+     "balancePlatform",
+     "bookingDate",
+     "category"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/transfers",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "amount",
+     "balanceAccountId",
+     "bank",
+     "counterparty",
+     "description",
+     "direction"
+    ]
+   }
+  ],
+  "source": "from flask import Flask, jsonify, request\nfrom functools import wraps\napp = Flask(__name__)\ndef auth_required(fn):\n    @wraps(fn)\n    def w(*a, **k):\n        if request.headers.get(\"Authorization\", \"\") != \"Bearer t\":\n            return jsonify(error=\"unauthorized\"), 401\n        return fn(*a, **k)\n    return w\n\n@app.route('/transactions', methods=['GET'])\n@auth_required\ndef op_0():\n    return jsonify({'_links': {'next': {'href': 'x'}, 'prev': {'href': 'x'}}, 'data': [{'accountHolderId': 'x', 'amount': {'currency': 'x', 'value': 'x'}, 'balanceAccountId': 'x', 'balancePlatform': 'x', 'bookingDate': 'x', 'category': 'bank'}]}), 200\n\n@app.route('/transactions/<id>', methods=['GET'])\n@auth_required\ndef op_1(id):\n    return jsonify({'accountHolderId': 'x', 'amount': {'currency': 'x', 'value': 1}, 'balanceAccountId': 'x', 'balancePlatform': 'x', 'bookingDate': 'x', 'category': 'bank'}), 200\n\n@app.route('/transfers', methods=['POST'])\n@auth_required\ndef op_2():\n    return jsonify({'amount': {'currency': 'x', 'value': 1}, 'balanceAccountId': 'x', 'bank': {'priority': 'crossBorder'}, 'counterparty': {'balanceAccountId': 'x', 'bankAccount': {'address': {'city': 'x', 'country': 'x', 'houseNumberOrName': 'x', 'postalCode': 'x', 'stateOrProvince': 'x', 'street': 'x'}, 'iban': 'x', 'ownerName': {'firstName': 'x', 'fullName': 'x', 'infix': 'x', 'lastName': 'x'}}, 'merchant': {'acquirerId': 'x', 'mcc': 'x', 'merchantId': 'x', 'nameLocation': {'city': 'x', 'country': 'x', 'countryOfOrigin': 'x', 'name': 'x', 'rawData': 'x', 'state': 'x'}, 'postalCode': 'x'}, 'transferInstrumentId': 'x'}, 'description': 'x', 'direction': 'incoming'}), 200\n"
+ },
+ {
+  "id": "case-6061f3d6",
+  "spec_ops": [
+   {
+    "method": "GET",
+    "path": "/v1/{name}",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "cidrs",
+     "fqdns",
+     "name"
+    ]
+   },
+   {
+    "method": "DELETE",
+    "path": "/v1/{name}",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   },
+   {
+    "method": "PATCH",
+    "path": "/v1/{name}",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "cidrs",
+     "fqdns",
+     "name"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v1/{name}:iapSettings",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "accessSettings",
+     "applicationSettings",
+     "name"
+    ]
+   },
+   {
+    "method": "PATCH",
+    "path": "/v1/{name}:iapSettings",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "accessSettings",
+     "applicationSettings",
+     "name"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v1/{name}:resetSecret",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "displayName",
+     "name",
+     "secret"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v1/{name}:validateAttributeExpression",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   },
+   {
+    "method": "GET",
+    "path": "/v1/{parent}/brands",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "brands"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v1/{parent}/brands",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "applicationTitle",
+     "name",
+     "orgInternalOnly",
+     "supportEmail"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v1/{parent}/destGroups",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "nextPageToken",
+     "tunnelDestGroups"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v1/{parent}/destGroups",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "cidrs",
+     "fqdns",
+     "name"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v1/{parent}/identityAwareProxyClients",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "identityAwareProxyClients",
+     "nextPageToken"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v1/{parent}/identityAwareProxyClients",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "displayName",
+     "name",
+     "secret"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v1/{resource}:getIamPolicy",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "bindings",
+     "etag",
+     "version"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v1/{resource}:setIamPolicy",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "bindings",
+     "etag",
+     "version"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v1/{resource}:testIamPermissions",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "permissions"
+    ]
+   }
+  ],
+  "source": "from flask import Flask, jsonify, request\nfrom functools import wraps\napp = Flask(__name__)\ndef auth_required(fn):\n    @wraps(fn)\n    def w(*a, **k):\n        if request.headers.get(\"Authorization\", \"\") != \"Bearer t\":\n            return jsonify(error=\"unauthorized\"), 401\n        return fn(*a, **k)\n    return w\n\n@app.route('/v1/<name>', methods=['GET'])\n@auth_required\ndef op_0(name):\n    return jsonify({'cidrs': ['x'], 'fqdns': ['x'], 'name': 'x'}), 200\n\n@app.route('/v1/<name>', methods=['DELETE'])\n@auth_required\ndef op_1(name):\n    return jsonify({}), 200\n\n@app.route('/v1/<name>', methods=['PATCH'])\n@auth_required\ndef op_2(name):\n    return jsonify({'cidrs': ['x'], 'fqdns': ['x'], 'name': 'x'}), 200\n\n@app.route('/v1/<name>:iapSettings', methods=['GET'])\n@auth_required\ndef op_3(name):\n    return jsonify({'accessSettings': {'allowedDomainsSettings': {'domains': ['x'], 'enable': True}, 'corsSettings': {'allowHttpOptions': True}, 'gcipSettings': {'loginPageUri': 'x', 'tenantIds': ['x']}, 'oauthSettings': {'loginHint': 'x', 'programmaticClients': ['x']}, 'policyDelegationSettings': {'iamPermission': 'x', 'iamServiceName': 'x', 'policyName': {'id': 'x', 'region': 'x', 'type': 'x'}, 'resource': {'expectedNextState': 'x', 'labels': 'x', 'name': 'x', 'service': 'x', 'type': 'x'}}, 'reauthSettings': {'maxAge': 'x', 'method': 'METHOD_UNSPECIFIED', 'policyType': 'POLICY_TYPE_UNSPECIFIED'}}, 'applicationSettings': {'accessDeniedPageSettings': {'accessDeniedPageUri': 'x', 'generateTroubleshootingUri': True, 'remediationTokenGenerationEnabled': True}, 'attributePropagationSettings': {'enable': True, 'expression': 'x', 'outputCredentials': ['x']}, 'cookieDomain': 'x', 'csmSettings': {'rctokenAud': 'x'}}, 'name': 'x'}), 200\n\n@app.route('/v1/<name>:iapSettings', methods=['PATCH'])\n@auth_required\ndef op_4(name):\n    return jsonify({'accessSettings': {'allowedDomainsSettings': {'domains': ['x'], 'enable': True}, 'corsSettings': {'allowHttpOptions': True}, 'gcipSettings': {'loginPageUri': 'x', 'tenantIds': ['x']}, 'oauthSettings': {'loginHint': 'x', 'programmaticClients': ['x']}, 'policyDelegationSettings': {'iamPermission': 'x', 'iamServiceName': 'x', 'policyName': {'id': 'x', 'region': 'x', 'type': 'x'}, 'resource': {'expectedNextState': 'x', 'labels': 'x', 'name': 'x', 'service': 'x', 'type': 'x'}}, 'reauthSettings': {'maxAge': 'x', 'method': 'METHOD_UNSPECIFIED', 'policyType': 'POLICY_TYPE_UNSPECIFIED'}}, 'applicationSettings': {'accessDeniedPageSettings': {'accessDeniedPageUri': 'x', 'generateTroubleshootingUri': True, 'remediationTokenGenerationEnabled': True}, 'attributePropagationSettings': {'enable': True, 'expression': 'x', 'outputCredentials': ['x']}, 'cookieDomain': 'x', 'csmSettings': {'rctokenAud': 'x'}}, 'name': 'x'}), 200\n\n@app.route('/v1/<name>:resetSecret', methods=['POST'])\n@auth_required\ndef op_5(name):\n    return jsonify({'displayName': 'x', 'name': 'x', 'secret': 'x'}), 200\n\n@app.route('/v1/<name>:validateAttributeExpression', methods=['POST'])\n@auth_required\ndef op_6(name):\n    return jsonify({}), 200\n\n@app.route('/v1/<parent>/brands', methods=['GET'])\n@auth_required\ndef op_7(parent):\n    return jsonify({'brands': [{'applicationTitle': 'x', 'name': 'x', 'orgInternalOnly': True, 'supportEmail': 'x'}]}), 200\n\n@app.route('/v1/<parent>/brands', methods=['POST'])\n@auth_required\ndef op_8(parent):\n    return jsonify({'applicationTitle': 'x', 'name': 'x', 'orgInternalOnly': True, 'supportEmail': 'x'}), 200\n\n@app.route('/v1/<parent>/destGroups', methods=['GET'])\n@auth_required\ndef op_9(parent):\n    return jsonify({'nextPageToken': 'x', 'tunnelDestGroups': [{'cidrs': ['x'], 'fqdns': ['x'], 'name': 'x'}]}), 200\n\n@app.route('/v1/<parent>/destGroups', methods=['POST'])\n@auth_required\ndef op_10(parent):\n    return jsonify({'cidrs': ['x'], 'fqdns': ['x'], 'name': 'x'}), 200\n\n@app.route('/v1/<parent>/identityAwareProxyClients', methods=['GET'])\n@auth_required\ndef op_11(parent):\n    return jsonify({'identityAwareProxyClients': [{'displayName': 'x', 'name': 'x', 'secret': 'x'}], 'nextPageToken': 'x'}), 200\n\n@app.route('/v1/<parent>/identityAwareProxyClients', methods=['POST'])\n@auth_required\ndef op_12(parent):\n    return jsonify({'displayName': 'x', 'name': 'x', 'secret': 'x'}), 200\n\n@app.route('/v1/<resource>:getIamPolicy', methods=['POST'])\n@auth_required\ndef op_13(resource):\n    return jsonify({'bindings': [{'condition': {'description': 'x', 'expression': 'x', 'location': 'x', 'title': 'x'}, 'members': ['x'], 'role': 'x'}], 'etag': 'x', 'version': 1}), 200\n\n@app.route('/v1/<resource>:setIamPolicy', methods=['POST'])\ndef op_14(resource):\n    return jsonify({'bindings': [{'condition': {'description': 'x', 'expression': 'x', 'location': 'x', 'title': 'x'}, 'members': ['x'], 'role': 'x'}], 'etag': 'x', 'version': 1}), 200\n\n@app.route('/v1/<resource>:testIamPermissions', methods=['POST'])\n@auth_required\ndef op_15(resource):\n    return jsonify({'permissions': ['x']}), 200\n"
+ },
+ {
+  "id": "case-520bd3a8",
+  "spec_ops": [
+   {
+    "method": "POST",
+    "path": "/changeStatus",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "authCode",
+     "currentBalance",
+     "pspReference",
+     "refusalReason",
+     "resultCode",
+     "thirdPartyRefusalReason"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/checkBalance",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "currentBalance",
+     "pspReference",
+     "refusalReason",
+     "resultCode",
+     "thirdPartyRefusalReason"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/issue",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "authCode",
+     "currentBalance",
+     "paymentMethod",
+     "pspReference",
+     "refusalReason",
+     "resultCode"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/load",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "authCode",
+     "currentBalance",
+     "pspReference",
+     "refusalReason",
+     "resultCode",
+     "thirdPartyRefusalReason"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/mergeBalance",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "authCode",
+     "currentBalance",
+     "pspReference",
+     "refusalReason",
+     "resultCode",
+     "thirdPartyRefusalReason"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/voidTransaction",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "currentBalance",
+     "pspReference",
+     "refusalReason",
+     "resultCode",
+     "thirdPartyRefusalReason"
+    ]
+   }
+  ],
+  "source": "from flask import Flask, jsonify, request\nfrom functools import wraps\napp = Flask(__name__)\ndef auth_required(fn):\n    @wraps(fn)\n    def w(*a, **k):\n        if request.headers.get(\"Authorization\", \"\") != \"Bearer t\":\n            return jsonify(error=\"unauthorized\"), 401\n        return fn(*a, **k)\n    return w\n\n@app.route('/changeStatus', methods=['POST'])\n@auth_required\ndef op_0():\n    return jsonify({'authCode': 'x', 'currentBalance': {'currency': 'x', 'value': 1}, 'pspReference': 'x', 'refusalReason': 'x', 'resultCode': 'Success', 'thirdPartyRefusalReason': 'x'}), 200\n\n@app.route('/checkBalance', methods=['POST'])\n@auth_required\ndef op_1():\n    return jsonify({'currentBalance': {'currency': 'x', 'value': 1}, 'pspReference': 'x', 'refusalReason': 'x', 'resultCode': 'Success', 'thirdPartyRefusalReason': 'x'}), 200\n\n@app.route('/issue', methods=['POST'])\n@auth_required\ndef op_2():\n    return jsonify({'authCode': 'x', 'currentBalance': {'currency': 'x', 'value': 1}, 'paymentMethod': {}, 'pspReference': 'x', 'refusalReason': 'x', 'resultCode': 'Success'}), 200\n\n@app.route('/load', methods=['POST'])\n@auth_required\ndef op_3():\n    return jsonify({'authCode': 'x', 'currentBalance': {'currency': 'x', 'value': 1}, 'pspReference': 'x', 'refusalReason': 'x', 'resultCode': 'Success', 'thirdPartyRefusalReason': 'x'}), 200\n\n@app.route('/mergeBalance', methods=['POST'])\n@auth_required\ndef op_4():\n    return jsonify({'authCode': 'x', 'currentBalance': {'currency': 'x', 'value': 1}, 'pspReference': 'x', 'refusalReason': 'x', 'resultCode': 'Success', 'thirdPartyRefusalReason': 'x'}), 200\n\n@app.route('/voidTransaction', methods=['POST'])\n@auth_required\ndef op_5():\n    return jsonify({'currentBalance': {'currency': 'x', 'value': 1}, 'pspReference': 'x', 'refusalReason': 'x', 'resultCode': 'Success', 'thirdPartyRefusalReason': 'x'}), 200\n"
+ },
+ {
+  "id": "case-1c00e740",
+  "spec_ops": [
+   {
+    "method": "GET",
+    "path": "/api/plugins",
+    "status": 200,
+    "auth": false,
+    "response_fields": []
+   },
+   {
+    "method": "GET",
+    "path": "/plugins",
+    "status": 200,
+    "auth": false,
+    "response_fields": []
+   }
+  ],
+  "source": "from flask import Flask, jsonify, request\nfrom functools import wraps\napp = Flask(__name__)\ndef auth_required(fn):\n    @wraps(fn)\n    def w(*a, **k):\n        if request.headers.get(\"Authorization\", \"\") != \"Bearer t\":\n            return jsonify(error=\"unauthorized\"), 401\n        return fn(*a, **k)\n    return w\n\n@app.route('/api/plugins', methods=['GET'])\ndef op_0():\n    return \"\", 200\n\n@app.route('/plugins', methods=['GET'])\ndef op_1():\n    return \"\", 200\n"
+ },
+ {
+  "id": "case-b2994e48",
+  "spec_ops": [
+   {
+    "method": "GET",
+    "path": "/v1/{key}:retrieveLegacySecretKey",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "legacySecretKey"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v1/{name}",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "challengeMetrics",
+     "name",
+     "scoreMetrics",
+     "startTime"
+    ]
+   },
+   {
+    "method": "DELETE",
+    "path": "/v1/{name}",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   },
+   {
+    "method": "PATCH",
+    "path": "/v1/{name}",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "androidSettings",
+     "createTime",
+     "displayName",
+     "iosSettings",
+     "labels",
+     "name"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v1/{name}:annotate",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   },
+   {
+    "method": "POST",
+    "path": "/v1/{name}:migrate",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "androidSettings",
+     "createTime",
+     "displayName",
+     "iosSettings",
+     "labels",
+     "name"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v1/{parent}/assessments",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "accountDefenderAssessment",
+     "accountVerification",
+     "event",
+     "firewallPolicyAssessment",
+     "fraudPreventionAssessment",
+     "fraudSignals"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v1/{parent}/firewallpolicies",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "firewallPolicies",
+     "nextPageToken"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v1/{parent}/firewallpolicies",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "actions",
+     "condition",
+     "description",
+     "name",
+     "path"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v1/{parent}/firewallpolicies:reorder",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   },
+   {
+    "method": "GET",
+    "path": "/v1/{parent}/keys",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "keys",
+     "nextPageToken"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v1/{parent}/keys",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "androidSettings",
+     "createTime",
+     "displayName",
+     "iosSettings",
+     "labels",
+     "name"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v1/{parent}/memberships",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "nextPageToken",
+     "relatedAccountGroupMemberships"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v1/{parent}/relatedaccountgroups",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "nextPageToken",
+     "relatedAccountGroups"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v1/{project}/relatedaccountgroupmemberships:search",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "nextPageToken",
+     "relatedAccountGroupMemberships"
+    ]
+   }
+  ],
+  "source": "from flask import Flask, jsonify, request\nfrom functools import wraps\napp = Flask(__name__)\ndef auth_required(fn):\n    @wraps(fn)\n    def w(*a, **k):\n        if request.headers.get(\"Authorization\", \"\") != \"Bearer t\":\n            return jsonify(error=\"unauthorized\"), 401\n        return fn(*a, **k)\n    return w\n\n@app.route('/v1/<key>:retrieveLegacySecretKey', methods=['GET'])\n@auth_required\ndef op_0(key):\n    return jsonify({'legacySecretKey': 'x'}), 200\n\n@app.route('/v1/<name>', methods=['GET'])\n@auth_required\ndef op_1(name):\n    return jsonify({'challengeMetrics': [{'failedCount': 'x', 'nocaptchaCount': 'x', 'pageloadCount': 'x', 'passedCount': 'x'}], 'name': 'x', 'scoreMetrics': [{'actionMetrics': {}, 'overallMetrics': {'scoreBuckets': 'x'}}], 'startTime': 'x'}), 200\n\n@app.route('/v1/<name>', methods=['DELETE'])\n@auth_required\ndef op_2(name):\n    return jsonify({}), 200\n\n@app.route('/v1/<name>:annotate', methods=['POST'])\n@auth_required\ndef op_3(name):\n    return jsonify({}), 200\n\n@app.route('/v1/<name>:migrate', methods=['POST'])\n@auth_required\ndef op_4(name):\n    return jsonify({'androidSettings': {'allowAllPackageNames': True, 'allowedPackageNames': ['x'], 'supportNonGoogleAppStoreDistribution': True}, 'createTime': 'x', 'displayName': 'x', 'iosSettings': {'allowAllBundleIds': True, 'allowedBundleIds': ['x'], 'appleDeveloperId': {'keyId': 'x', 'privateKey': 'x', 'teamId': 'x'}}, 'labels': {}, 'name': 'x'}), 200\n\n@app.route('/v1/<parent>/assessments', methods=['POST'])\n@auth_required\ndef op_5(parent):\n    return jsonify({'accountDefenderAssessment': {'labels': ['ACCOUNT_DEFENDER_LABEL_UNSPECIFIED']}, 'accountVerification': {'endpoints': [{'emailAddress': 'x', 'lastVerificationTime': 'x', 'phoneNumber': 'x', 'requestToken': 'x'}], 'languageCode': 'x', 'latestVerificationResult': 'RESULT_UNSPECIFIED', 'username': 'x'}, 'event': {'expectedAction': 'x', 'express': True, 'firewallPolicyEvaluation': True, 'hashedAccountId': 'x', 'headers': ['x'], 'ja3': 'x'}, 'firewallPolicyAssessment': {'error': {'code': 1, 'details': ['x'], 'message': 'x'}, 'firewallPolicy': {'actions': ['x'], 'condition': 'x', 'description': 'x', 'name': 'x', 'path': 'x'}}, 'fraudPreventionAssessment': {'behavioralTrustVerdict': {'trust': 1.0}, 'cardTestingVerdict': {'risk': 1.0}, 'stolenInstrumentVerdict': {'risk': 1.0}, 'transactionRisk': 1.0}, 'fraudSignals': {'cardSignals': {'cardLabels': ['x']}, 'userSignals': {'activeDaysLowerBound': 1, 'syntheticRisk': 1.0}}}), 200\n\n@app.route('/v1/<parent>/firewallpolicies', methods=['GET'])\n@auth_required\ndef op_6(parent):\n    return jsonify({'firewallPolicies': [{'actions': ['x'], 'condition': 'x', 'description': 'x', 'name': 'x', 'path': 'x'}], 'nextPageToken': 'x'}), 200\n\n@app.route('/v1/<parent>/firewallpolicies', methods=['POST'])\n@auth_required\ndef op_7(parent):\n    return jsonify({'actions': [{'allow': {}, 'block': {}, 'includeRecaptchaScript': {}, 'redirect': {}, 'setHeader': {'key': 'x', 'value': 'x'}, 'substitute': {'path': 'x'}}], 'condition': 'x', 'description': 'x', 'name': 'x', 'path': 'x'}), 200\n\n@app.route('/v1/<parent>/firewallpolicies:reorder', methods=['POST'])\n@auth_required\ndef op_8(parent):\n    return jsonify({}), 200\n\n@app.route('/v1/<parent>/keys', methods=['GET'])\n@auth_required\ndef op_9(parent):\n    return jsonify({'keys': [{'androidSettings': {'allowAllPackageNames': 'x', 'allowedPackageNames': 'x', 'supportNonGoogleAppStoreDistribution': 'x'}, 'createTime': 'x', 'displayName': 'x', 'iosSettings': {'allowAllBundleIds': 'x', 'allowedBundleIds': 'x', 'appleDeveloperId': 'x'}, 'labels': {}, 'name': 'x'}], 'nextPageToken': 'x'}), 200\n\n@app.route('/v1/<parent>/keys', methods=['POST'])\n@auth_required\ndef op_10(parent):\n    return jsonify({'androidSettings': {'allowAllPackageNames': True, 'allowedPackageNames': ['x'], 'supportNonGoogleAppStoreDistribution': True}, 'createTime': 'x', 'displayName': 'x', 'iosSettings': {'allowAllBundleIds': True, 'allowedBundleIds': ['x'], 'appleDeveloperId': {'keyId': 'x', 'privateKey': 'x', 'teamId': 'x'}}, 'labels': {}, 'name': 'x'}), 200\n\n@app.route('/v1/<parent>/memberships', methods=['GET'])\n@auth_required\ndef op_11(parent):\n    return jsonify({'nextPageToken': 'x', 'relatedAccountGroupMemberships': [{'accountId': 'x', 'hashedAccountId': 'x', 'name': 'x'}]}), 200\n\n@app.route('/v1/<parent>/relatedaccountgroups', methods=['GET'])\n@auth_required\ndef op_12(parent):\n    return jsonify({'nextPageToken': 'x', 'relatedAccountGroups': [{'name': 'x'}]}), 200\n\n@app.route('/v1/<project>/relatedaccountgroupmemberships:search', methods=['POST'])\n@auth_required\ndef op_13(project):\n    return jsonify({'nextPageToken': 'x', 'relatedAccountGroupMemberships': [{'accountId': 'x', 'hashedAccountId': 'x', 'name': 'x'}]}), 200\n"
+ }
+]

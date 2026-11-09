@@ -1,0 +1,312 @@
+{"id": "adyen.com_StoredValueService_46__control", "run": 1, "model": "claude-sonnet-5-5", "pred": [], "raw": "All 6 routes, statuses, auth and fields match the spec."}
+{"id": "adyen.com_StoredValueService_46__missing_operation", "run": 1, "model": "claude-sonnet-5-5", "pred": [["POST", "/voidTransaction"]], "raw": "Route /voidTransaction is absent from the code."}
+{"id": "adyen.com_StoredValueService_46__status_changed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["POST", "/changeStatus"]], "raw": "/changeStatus returns 202 instead of documented 200."}
+{"id": "adyen.com_StoredValueService_46__field_renamed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["POST", "/changeStatus"]], "raw": "/changeStatus lacks authCode (has authCode_x instead)."}
+{"id": "adyen.com_StoredValueService_46__auth_removed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["POST", "/voidTransaction"]], "raw": "/voidTransaction has no @auth_required though spec requires auth."}
+{"id": "adyen.com_StoredValueService_46__undocumented_operation", "run": 1, "model": "claude-sonnet-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug is not in the spec."}
+{"id": "adyen.com_TfmAPIService_1__control", "run": 1, "model": "claude-sonnet-5-5", "pred": [], "raw": "All 5 routes match the spec."}
+{"id": "adyen.com_TfmAPIService_1__missing_operation", "run": 1, "model": "claude-sonnet-5-5", "pred": [["POST", "/getStoresUnderAccount"]], "raw": "Route /getStoresUnderAccount is absent from the code."}
+{"id": "adyen.com_TfmAPIService_1__status_changed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["POST", "/findTerminal"]], "raw": "/findTerminal returns 202 instead of 200."}
+{"id": "adyen.com_TfmAPIService_1__field_renamed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["POST", "/findTerminal"]], "raw": "/findTerminal lacks companyAccount (has companyAccount_x)."}
+{"id": "adyen.com_TfmAPIService_1__auth_removed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["POST", "/findTerminal"]], "raw": "/findTerminal lacks @auth_required."}
+{"id": "adyen.com_TfmAPIService_1__undocumented_operation", "run": 1, "model": "claude-sonnet-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug is not in the spec."}
+{"id": "adyen.com_TransferService_2__control", "run": 1, "model": "claude-sonnet-5-5", "pred": [], "raw": "All 3 routes match the spec."}
+{"id": "adyen.com_TransferService_2__missing_operation", "run": 1, "model": "claude-sonnet-5-5", "pred": [["POST", "/transfers"]], "raw": "POST /transfers route is absent."}
+{"id": "adyen.com_TransferService_2__status_changed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["GET", "/transactions"]], "raw": "GET /transactions returns 202 instead of 200."}
+{"id": "adyen.com_TransferService_2__field_renamed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["POST", "/transfers"]], "raw": "/transfers lacks amount (has amount_x)."}
+{"id": "adyen.com_TransferService_2__auth_removed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["POST", "/transfers"]], "raw": "POST /transfers lacks @auth_required."}
+{"id": "adyen.com_TransferService_2__undocumented_operation", "run": 1, "model": "claude-sonnet-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug is not in the spec."}
+{"id": "api2pdf.com_1.0.0__control", "run": 1, "model": "claude-sonnet-5-5", "pred": [], "raw": "All 9 routes match; /zebra has no fields required and returns 200."}
+{"id": "api2pdf.com_1.0.0__missing_operation", "run": 1, "model": "claude-sonnet-5-5", "pred": [["GET", "/zebra"]], "raw": "GET /zebra route is absent."}
+{"id": "api2pdf.com_1.0.0__status_changed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["GET", "/chrome/url"]], "raw": "GET /chrome/url returns 202 instead of 200."}
+{"id": "api2pdf.com_1.0.0__field_renamed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["GET", "/wkhtmltopdf/url"]], "raw": "GET /wkhtmltopdf/url lacks cost (has cost_x)."}
+{"id": "api2pdf.com_1.0.0__auth_removed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["POST", "/chrome/html"]], "raw": "POST /chrome/html lacks @auth_required."}
+{"id": "api2pdf.com_1.0.0__undocumented_operation", "run": 1, "model": "claude-sonnet-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug is not in the spec."}
+{"id": "apisetu.gov.in_transportdh_3.0.0__control", "run": 1, "model": "claude-sonnet-5-5", "pred": [], "raw": "Both routes match the spec."}
+{"id": "apisetu.gov.in_transportdh_3.0.0__missing_operation", "run": 1, "model": "claude-sonnet-5-5", "pred": [["POST", "/drvlc/certificate"]], "raw": "/drvlc/certificate route is absent."}
+{"id": "apisetu.gov.in_transportdh_3.0.0__status_changed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["POST", "/drvlc/certificate"]], "raw": "/drvlc/certificate returns 202 instead of 200."}
+{"id": "apisetu.gov.in_transportdh_3.0.0__auth_removed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["POST", "/drvlc/certificate"]], "raw": "/drvlc/certificate lacks @auth_required."}
+{"id": "apisetu.gov.in_transportdh_3.0.0__undocumented_operation", "run": 1, "model": "claude-sonnet-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug is not in the spec."}
+{"id": "c19qrserver.local_1.1__control", "run": 1, "model": "claude-sonnet-5-5", "pred": [], "raw": "All 14 routes match; /login is correctly unauthenticated."}
+{"id": "c19qrserver.local_1.1__missing_operation", "run": 1, "model": "claude-sonnet-5-5", "pred": [["POST", "/requestPasswordReset"]], "raw": "POST /requestPasswordReset route is absent."}
+{"id": "c19qrserver.local_1.1__status_changed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["GET", "/signins"]], "raw": "GET /signins returns 202 instead of 200."}
+{"id": "c19qrserver.local_1.1__field_renamed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["POST", "/login"]], "raw": "/login lacks admin (has admin_x)."}
+{"id": "c19qrserver.local_1.1__auth_removed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["POST", "/user"]], "raw": "POST /user lacks @auth_required."}
+{"id": "c19qrserver.local_1.1__undocumented_operation", "run": 1, "model": "claude-sonnet-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug is not in the spec."}
+{"id": "docker.com_hub_beta__control", "run": 1, "model": "claude-sonnet-5-5", "pred": [], "raw": "All 24 routes, statuses, auth and fields match the spec."}
+{"id": "docker.com_hub_beta__missing_operation", "run": 1, "model": "claude-sonnet-5-5", "pred": [["GET", "/v2/auditlogs/{account}/actions"]], "raw": "auditlogs actions route is absent."}
+{"id": "docker.com_hub_beta__status_changed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["PUT", "/v2/scim/2.0/Users/{id}"]], "raw": "PUT SCIM Users/{id} returns 202 instead of 200."}
+{"id": "docker.com_hub_beta__field_renamed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["POST", "/v2/scim/2.0/Users"]], "raw": "POST SCIM Users lacks active (has active_x)."}
+{"id": "docker.com_hub_beta__auth_removed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["PUT", "/v2/scim/2.0/Users/{id}"]], "raw": "PUT SCIM Users/{id} lacks @auth_required."}
+{"id": "docker.com_hub_beta__undocumented_operation", "run": 1, "model": "claude-sonnet-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug is not in the spec."}
+{"id": "facecheck.id_v1.02__control", "run": 1, "model": "claude-sonnet-5-5", "pred": [], "raw": "All 4 routes match the spec."}
+{"id": "facecheck.id_v1.02__missing_operation", "run": 1, "model": "claude-sonnet-5-5", "pred": [["POST", "/api/upload_pic"]], "raw": "POST /api/upload_pic route is absent."}
+{"id": "facecheck.id_v1.02__status_changed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["POST", "/api/info"]], "raw": "/api/info returns 202 instead of 200."}
+{"id": "facecheck.id_v1.02__field_renamed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["POST", "/api/upload_pic"]], "raw": "/api/upload_pic lacks code (has code_x)."}
+{"id": "facecheck.id_v1.02__auth_removed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["POST", "/api/search"]], "raw": "/api/search lacks @auth_required."}
+{"id": "facecheck.id_v1.02__undocumented_operation", "run": 1, "model": "claude-sonnet-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug is not in the spec."}
+{"id": "fulfillment.com_2.0__control", "run": 1, "model": "claude-sonnet-5-5", "pred": [], "raw": "All 13 routes match the spec."}
+{"id": "fulfillment.com_2.0__missing_operation", "run": 1, "model": "claude-sonnet-5-5", "pred": [["GET", "/users/me"]], "raw": "GET /users/me route is absent."}
+{"id": "fulfillment.com_2.0__status_changed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["GET", "/accounting"]], "raw": "GET /accounting returns 202 instead of 200."}
+{"id": "fulfillment.com_2.0__field_renamed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["GET", "/users/me"]], "raw": "/users/me lacks apiKey (has apiKey_x)."}
+{"id": "fulfillment.com_2.0__auth_removed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["GET", "/orders"]], "raw": "GET /orders lacks @auth_required."}
+{"id": "fulfillment.com_2.0__undocumented_operation", "run": 1, "model": "claude-sonnet-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug is not in the spec."}
+{"id": "googleapis.com_cloudscheduler_v1__control", "run": 1, "model": "claude-sonnet-5-5", "pred": [], "raw": "All 9 routes match the spec."}
+{"id": "googleapis.com_cloudscheduler_v1__missing_operation", "run": 1, "model": "claude-sonnet-5-5", "pred": [["POST", "/v1/{name}:run"]], "raw": "POST /v1/{name}:run route is absent."}
+{"id": "googleapis.com_cloudscheduler_v1__status_changed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["POST", "/v1/{name}:resume"]], "raw": ":resume returns 202 instead of 200."}
+{"id": "googleapis.com_cloudscheduler_v1__field_renamed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["POST", "/v1/{name}:resume"]], "raw": ":resume lacks appEngineHttpTarget (has appEngineHttpTarget_x)."}
+{"id": "googleapis.com_cloudscheduler_v1__auth_removed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["PATCH", "/v1/{name}"]], "raw": "PATCH /v1/<name> lacks @auth_required."}
+{"id": "googleapis.com_cloudscheduler_v1__undocumented_operation", "run": 1, "model": "claude-sonnet-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug is not in the spec."}
+{"id": "googleapis.com_drivelabels_v2beta__control", "run": 1, "model": "claude-sonnet-5-5", "pred": [], "raw": "All 16 routes match the spec."}
+{"id": "googleapis.com_drivelabels_v2beta__missing_operation", "run": 1, "model": "claude-sonnet-5-5", "pred": [["POST", "/v2beta/{name}:disable"]], "raw": ":disable route is absent."}
+{"id": "googleapis.com_drivelabels_v2beta__status_changed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["GET", "/v2beta/{parent}/locks"]], "raw": "GET locks returns 202 instead of 200."}
+{"id": "googleapis.com_drivelabels_v2beta__field_renamed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["POST", "/v2beta/labels"]], "raw": "POST /v2beta/labels lacks appliedCapabilities (has appliedCapabilities_x)."}
+{"id": "googleapis.com_drivelabels_v2beta__auth_removed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["GET", "/v2beta/limits/label"]], "raw": "GET /v2beta/limits/label lacks @auth_required."}
+{"id": "googleapis.com_drivelabels_v2beta__undocumented_operation", "run": 1, "model": "claude-sonnet-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug is not in the spec."}
+{"id": "googleapis.com_gameservices_v1__control", "run": 1, "model": "claude-sonnet-5-5", "pred": [], "raw": "All 8 routes match the spec."}
+{"id": "googleapis.com_gameservices_v1__missing_operation", "run": 1, "model": "claude-sonnet-5-5", "pred": [["POST", "/v1/{resource}:setIamPolicy"]], "raw": ":setIamPolicy route is absent."}
+{"id": "googleapis.com_gameservices_v1__status_changed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["DELETE", "/v1/{name}"]], "raw": "DELETE /v1/<name> returns 202 instead of 200."}
+{"id": "googleapis.com_gameservices_v1__field_renamed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["GET", "/v1/{name}/operations"]], "raw": "operations lacks nextPageToken (has nextPageToken_x)."}
+{"id": "googleapis.com_gameservices_v1__auth_removed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["GET", "/v1/{resource}:getIamPolicy"]], "raw": ":getIamPolicy lacks @auth_required."}
+{"id": "googleapis.com_gameservices_v1__undocumented_operation", "run": 1, "model": "claude-sonnet-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug is not in the spec."}
+{"id": "googleapis.com_iap_v1__control", "run": 1, "model": "claude-sonnet-5-5", "pred": [], "raw": "All 16 routes match the spec."}
+{"id": "googleapis.com_iap_v1__missing_operation", "run": 1, "model": "claude-sonnet-5-5", "pred": [["POST", "/v1/{parent}/brands"]], "raw": "POST /v1/{parent}/brands route is absent."}
+{"id": "googleapis.com_iap_v1__status_changed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["DELETE", "/v1/{name}"]], "raw": "DELETE /v1/<name> returns 202 instead of 200."}
+{"id": "googleapis.com_iap_v1__field_renamed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["POST", "/v1/{resource}:getIamPolicy"]], "raw": ":getIamPolicy lacks bindings (has bindings_x)."}
+{"id": "googleapis.com_iap_v1__auth_removed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["POST", "/v1/{resource}:setIamPolicy"]], "raw": ":setIamPolicy lacks @auth_required."}
+{"id": "googleapis.com_iap_v1__undocumented_operation", "run": 1, "model": "claude-sonnet-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug is not in the spec."}
+{"id": "googleapis.com_jobs_v4__control", "run": 1, "model": "claude-sonnet-5-5", "pred": [], "raw": "All 16 routes match the spec."}
+{"id": "googleapis.com_jobs_v4__missing_operation", "run": 1, "model": "claude-sonnet-5-5", "pred": [["POST", "/v4/{parent}/clientEvents"]], "raw": "clientEvents route is absent."}
+{"id": "googleapis.com_jobs_v4__status_changed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["POST", "/v4/{parent}/jobs:searchForAlert"]], "raw": ":searchForAlert returns 202 instead of 200."}
+{"id": "googleapis.com_jobs_v4__field_renamed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["PATCH", "/v4/{name}"]], "raw": "PATCH /v4/<name> lacks addresses (has addresses_x)."}
+{"id": "googleapis.com_jobs_v4__auth_removed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["POST", "/v4/{parent}/jobs:batchDelete"]], "raw": ":batchDelete lacks @auth_required."}
+{"id": "googleapis.com_jobs_v4__undocumented_operation", "run": 1, "model": "claude-sonnet-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug is not in the spec."}
+{"id": "googleapis.com_pubsub_v1beta1a__control", "run": 1, "model": "claude-sonnet-5-5", "pred": [], "raw": "All 15 routes match the spec."}
+{"id": "googleapis.com_pubsub_v1beta1a__missing_operation", "run": 1, "model": "claude-sonnet-5-5", "pred": [["GET", "/v1beta1a/topics/{topic}"]], "raw": "GET /v1beta1a/topics/{topic} route is absent."}
+{"id": "googleapis.com_pubsub_v1beta1a__status_changed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["POST", "/v1beta1a/topics"]], "raw": "POST /v1beta1a/topics returns 202 instead of 200."}
+{"id": "googleapis.com_pubsub_v1beta1a__field_renamed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["GET", "/v1beta1a/topics"]], "raw": "GET topics lacks nextPageToken (has nextPageToken_x)."}
+{"id": "googleapis.com_pubsub_v1beta1a__auth_removed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["GET", "/v1beta1a/topics"]], "raw": "GET /v1beta1a/topics lacks @auth_required."}
+{"id": "googleapis.com_pubsub_v1beta1a__undocumented_operation", "run": 1, "model": "claude-sonnet-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug is not in the spec."}
+{"id": "googleapis.com_recaptchaenterprise_v1__control", "run": 1, "model": "claude-sonnet-5-5", "pred": [], "raw": "All 14 routes match the spec."}
+{"id": "googleapis.com_recaptchaenterprise_v1__missing_operation", "run": 1, "model": "claude-sonnet-5-5", "pred": [["PATCH", "/v1/{name}"]], "raw": "PATCH /v1/{name} route is absent."}
+{"id": "googleapis.com_recaptchaenterprise_v1__status_changed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["POST", "/v1/{parent}/keys"]], "raw": "POST /v1/{parent}/keys returns 202 instead of 200."}
+{"id": "googleapis.com_recaptchaenterprise_v1__field_renamed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["GET", "/v1/{name}"]], "raw": "GET /v1/<name> lacks challengeMetrics (has challengeMetrics_x)."}
+{"id": "googleapis.com_recaptchaenterprise_v1__auth_removed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["GET", "/v1/{key}:retrieveLegacySecretKey"]], "raw": ":retrieveLegacySecretKey lacks @auth_required."}
+{"id": "googleapis.com_recaptchaenterprise_v1__undocumented_operation", "run": 1, "model": "claude-sonnet-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug is not in the spec."}
+{"id": "wellknown.ai_1.0.0__control", "run": 1, "model": "claude-sonnet-5-5", "pred": [], "raw": "Both routes match the spec."}
+{"id": "wellknown.ai_1.0.0__missing_operation", "run": 1, "model": "claude-sonnet-5-5", "pred": [["GET", "/api/plugins"]], "raw": "GET /api/plugins route is absent."}
+{"id": "wellknown.ai_1.0.0__status_changed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["GET", "/plugins"]], "raw": "GET /plugins returns 202 instead of 200."}
+{"id": "wellknown.ai_1.0.0__undocumented_operation", "run": 1, "model": "claude-sonnet-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug is not in the spec."}
+{"id": "whapi.com_bets_2.0.0__control", "run": 1, "model": "claude-sonnet-5-5", "pred": [], "raw": "All 6 routes match; list responses contain the spec fields per item and no auth is required."}
+{"id": "whapi.com_bets_2.0.0__missing_operation", "run": 1, "model": "claude-sonnet-5-5", "pred": [["POST", "/bet/complex"]], "raw": "POST /bet/complex route is absent."}
+{"id": "whapi.com_bets_2.0.0__status_changed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["POST", "/bet/single"]], "raw": "POST /bet/single returns 202 instead of 200."}
+{"id": "whapi.com_bets_2.0.0__field_renamed", "run": 1, "model": "claude-sonnet-5-5", "pred": [["POST", "/bet/complex"]], "raw": "/bet/complex items lack id (have id_x)."}
+{"id": "whapi.com_bets_2.0.0__undocumented_operation", "run": 1, "model": "claude-sonnet-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug is not in the spec."}
+{"id": "adyen.com_StoredValueService_46__control", "run": 2, "model": "claude-opus-5-5", "pred": [], "raw": "All six operations match spec status, auth and fields."}
+{"id": "adyen.com_StoredValueService_46__missing_operation", "run": 2, "model": "claude-opus-5-5", "pred": [["POST", "/voidTransaction"]], "raw": "POST /voidTransaction from the spec has no route in the code."}
+{"id": "adyen.com_StoredValueService_46__status_changed", "run": 2, "model": "claude-opus-5-5", "pred": [["POST", "/changeStatus"]], "raw": "/changeStatus returns 202 instead of the documented 200."}
+{"id": "adyen.com_StoredValueService_46__field_renamed", "run": 2, "model": "claude-opus-5-5", "pred": [["POST", "/changeStatus"]], "raw": "/changeStatus returns authCode_x instead of authCode."}
+{"id": "adyen.com_StoredValueService_46__auth_removed", "run": 2, "model": "claude-opus-5-5", "pred": [["POST", "/voidTransaction"]], "raw": "/voidTransaction lacks @auth_required although the spec requires auth."}
+{"id": "adyen.com_StoredValueService_46__undocumented_operation", "run": 2, "model": "claude-opus-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug exists in code but not in the spec."}
+{"id": "adyen.com_TfmAPIService_1__control", "run": 2, "model": "claude-opus-5-5", "pred": [], "raw": "All five operations match the spec."}
+{"id": "adyen.com_TfmAPIService_1__missing_operation", "run": 2, "model": "claude-opus-5-5", "pred": [["POST", "/getStoresUnderAccount"]], "raw": "POST /getStoresUnderAccount is missing from the code."}
+{"id": "adyen.com_TfmAPIService_1__status_changed", "run": 2, "model": "claude-opus-5-5", "pred": [["POST", "/findTerminal"]], "raw": "/findTerminal returns 202 instead of 200."}
+{"id": "adyen.com_TfmAPIService_1__field_renamed", "run": 2, "model": "claude-opus-5-5", "pred": [["POST", "/findTerminal"]], "raw": "/findTerminal returns companyAccount_x instead of companyAccount."}
+{"id": "adyen.com_TfmAPIService_1__auth_removed", "run": 2, "model": "claude-opus-5-5", "pred": [["POST", "/findTerminal"]], "raw": "/findTerminal lacks @auth_required although the spec requires auth."}
+{"id": "adyen.com_TfmAPIService_1__undocumented_operation", "run": 2, "model": "claude-opus-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug exists in code but not in the spec."}
+{"id": "adyen.com_TransferService_2__control", "run": 2, "model": "claude-opus-5-5", "pred": [], "raw": "All three operations match the spec."}
+{"id": "adyen.com_TransferService_2__missing_operation", "run": 2, "model": "claude-opus-5-5", "pred": [["POST", "/transfers"]], "raw": "POST /transfers from the spec has no route in the code."}
+{"id": "adyen.com_TransferService_2__status_changed", "run": 2, "model": "claude-opus-5-5", "pred": [["GET", "/transactions"]], "raw": "GET /transactions returns 202 instead of 200."}
+{"id": "adyen.com_TransferService_2__field_renamed", "run": 2, "model": "claude-opus-5-5", "pred": [["POST", "/transfers"]], "raw": "/transfers returns amount_x instead of amount."}
+{"id": "adyen.com_TransferService_2__auth_removed", "run": 2, "model": "claude-opus-5-5", "pred": [["POST", "/transfers"]], "raw": "/transfers lacks @auth_required although the spec requires auth."}
+{"id": "adyen.com_TransferService_2__undocumented_operation", "run": 2, "model": "claude-opus-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug exists in code but not in the spec."}
+{"id": "api2pdf.com_1.0.0__control", "run": 2, "model": "claude-opus-5-5", "pred": [], "raw": "All nine operations match the spec."}
+{"id": "api2pdf.com_1.0.0__missing_operation", "run": 2, "model": "claude-opus-5-5", "pred": [["GET", "/zebra"]], "raw": "GET /zebra from the spec has no route in the code."}
+{"id": "api2pdf.com_1.0.0__status_changed", "run": 2, "model": "claude-opus-5-5", "pred": [["GET", "/chrome/url"]], "raw": "GET /chrome/url returns 202 instead of 200."}
+{"id": "api2pdf.com_1.0.0__field_renamed", "run": 2, "model": "claude-opus-5-5", "pred": [["GET", "/wkhtmltopdf/url"]], "raw": "GET /wkhtmltopdf/url returns cost_x instead of cost."}
+{"id": "api2pdf.com_1.0.0__auth_removed", "run": 2, "model": "claude-opus-5-5", "pred": [["POST", "/chrome/html"]], "raw": "POST /chrome/html lacks @auth_required although the spec requires auth."}
+{"id": "api2pdf.com_1.0.0__undocumented_operation", "run": 2, "model": "claude-opus-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug exists in code but not in the spec."}
+{"id": "apisetu.gov.in_transportdh_3.0.0__control", "run": 2, "model": "claude-opus-5-5", "pred": [], "raw": "Both operations match the spec."}
+{"id": "apisetu.gov.in_transportdh_3.0.0__missing_operation", "run": 2, "model": "claude-opus-5-5", "pred": [["POST", "/drvlc/certificate"]], "raw": "POST /drvlc/certificate from the spec has no route in the code."}
+{"id": "apisetu.gov.in_transportdh_3.0.0__status_changed", "run": 2, "model": "claude-opus-5-5", "pred": [["POST", "/drvlc/certificate"]], "raw": "/drvlc/certificate returns 202 instead of 200."}
+{"id": "apisetu.gov.in_transportdh_3.0.0__auth_removed", "run": 2, "model": "claude-opus-5-5", "pred": [["POST", "/drvlc/certificate"]], "raw": "/drvlc/certificate lacks @auth_required although the spec requires auth."}
+{"id": "apisetu.gov.in_transportdh_3.0.0__undocumented_operation", "run": 2, "model": "claude-opus-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug exists in code but not in the spec."}
+{"id": "c19qrserver.local_1.1__control", "run": 2, "model": "claude-opus-5-5", "pred": [], "raw": "All 14 operations match; /login is correctly unauthenticated and list endpoints return arrays of items with the documented fields."}
+{"id": "c19qrserver.local_1.1__missing_operation", "run": 2, "model": "claude-opus-5-5", "pred": [["POST", "/requestPasswordReset"]], "raw": "POST /requestPasswordReset from the spec has no route in the code."}
+{"id": "c19qrserver.local_1.1__status_changed", "run": 2, "model": "claude-opus-5-5", "pred": [["GET", "/signins"]], "raw": "GET /signins returns 202 instead of 200."}
+{"id": "c19qrserver.local_1.1__field_renamed", "run": 2, "model": "claude-opus-5-5", "pred": [["POST", "/login"]], "raw": "/login returns admin_x instead of admin."}
+{"id": "c19qrserver.local_1.1__auth_removed", "run": 2, "model": "claude-opus-5-5", "pred": [["POST", "/user"]], "raw": "POST /user lacks @auth_required although the spec requires auth."}
+{"id": "c19qrserver.local_1.1__undocumented_operation", "run": 2, "model": "claude-opus-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug exists in code but not in the spec."}
+{"id": "docker.com_hub_beta__control", "run": 2, "model": "claude-opus-5-5", "pred": [], "raw": "All 26 operations match status, auth and fields."}
+{"id": "docker.com_hub_beta__missing_operation", "run": 2, "model": "claude-opus-5-5", "pred": [["GET", "/v2/auditlogs/{account}/actions"]], "raw": "GET /v2/auditlogs/{account}/actions from the spec has no route in the code."}
+{"id": "docker.com_hub_beta__status_changed", "run": 2, "model": "claude-opus-5-5", "pred": [["PUT", "/v2/scim/2.0/Users/{id}"]], "raw": "PUT /v2/scim/2.0/Users/{id} returns 202 instead of 200."}
+{"id": "docker.com_hub_beta__field_renamed", "run": 2, "model": "claude-opus-5-5", "pred": [["POST", "/v2/scim/2.0/Users"]], "raw": "POST /v2/scim/2.0/Users returns active_x instead of active."}
+{"id": "docker.com_hub_beta__auth_removed", "run": 2, "model": "claude-opus-5-5", "pred": [["PUT", "/v2/scim/2.0/Users/{id}"]], "raw": "PUT /v2/scim/2.0/Users/{id} lacks @auth_required although the spec requires auth."}
+{"id": "docker.com_hub_beta__undocumented_operation", "run": 2, "model": "claude-opus-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug exists in code but not in the spec."}
+{"id": "facecheck.id_v1.02__control", "run": 2, "model": "claude-opus-5-5", "pred": [], "raw": "All four operations match the spec."}
+{"id": "facecheck.id_v1.02__missing_operation", "run": 2, "model": "claude-opus-5-5", "pred": [["POST", "/api/upload_pic"]], "raw": "POST /api/upload_pic from the spec has no route in the code."}
+{"id": "facecheck.id_v1.02__status_changed", "run": 2, "model": "claude-opus-5-5", "pred": [["POST", "/api/info"]], "raw": "/api/info returns 202 instead of 200."}
+{"id": "facecheck.id_v1.02__field_renamed", "run": 2, "model": "claude-opus-5-5", "pred": [["POST", "/api/upload_pic"]], "raw": "/api/upload_pic returns code_x instead of code."}
+{"id": "facecheck.id_v1.02__auth_removed", "run": 2, "model": "claude-opus-5-5", "pred": [["POST", "/api/search"]], "raw": "/api/search lacks @auth_required although the spec requires auth."}
+{"id": "facecheck.id_v1.02__undocumented_operation", "run": 2, "model": "claude-opus-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug exists in code but not in the spec."}
+{"id": "fulfillment.com_2.0__control", "run": 2, "model": "claude-opus-5-5", "pred": [], "raw": "All 13 operations match; /oauth/access_token and /track are correctly unauthenticated."}
+{"id": "fulfillment.com_2.0__missing_operation", "run": 2, "model": "claude-opus-5-5", "pred": [["GET", "/users/me"]], "raw": "GET /users/me from the spec has no route in the code."}
+{"id": "fulfillment.com_2.0__status_changed", "run": 2, "model": "claude-opus-5-5", "pred": [["GET", "/accounting"]], "raw": "GET /accounting returns 202 instead of 200."}
+{"id": "fulfillment.com_2.0__field_renamed", "run": 2, "model": "claude-opus-5-5", "pred": [["GET", "/users/me"]], "raw": "GET /users/me returns apiKey_x instead of apiKey."}
+{"id": "fulfillment.com_2.0__auth_removed", "run": 2, "model": "claude-opus-5-5", "pred": [["GET", "/orders"]], "raw": "GET /orders lacks @auth_required although the spec requires auth."}
+{"id": "fulfillment.com_2.0__undocumented_operation", "run": 2, "model": "claude-opus-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug exists in code but not in the spec."}
+{"id": "googleapis.com_cloudscheduler_v1__control", "run": 2, "model": "claude-opus-5-5", "pred": [], "raw": "All nine operations match the spec."}
+{"id": "googleapis.com_cloudscheduler_v1__missing_operation", "run": 2, "model": "claude-opus-5-5", "pred": [["POST", "/v1/{name}:run"]], "raw": "POST /v1/{name}:run from the spec has no route in the code."}
+{"id": "googleapis.com_cloudscheduler_v1__status_changed", "run": 2, "model": "claude-opus-5-5", "pred": [["POST", "/v1/{name}:resume"]], "raw": "POST /v1/{name}:resume returns 202 instead of 200."}
+{"id": "googleapis.com_cloudscheduler_v1__field_renamed", "run": 2, "model": "claude-opus-5-5", "pred": [["POST", "/v1/{name}:resume"]], "raw": "POST /v1/{name}:resume returns appEngineHttpTarget_x instead of appEngineHttpTarget."}
+{"id": "googleapis.com_cloudscheduler_v1__auth_removed", "run": 2, "model": "claude-opus-5-5", "pred": [["PATCH", "/v1/{name}"]], "raw": "PATCH /v1/{name} lacks @auth_required although the spec requires auth."}
+{"id": "googleapis.com_cloudscheduler_v1__undocumented_operation", "run": 2, "model": "claude-opus-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug exists in code but not in the spec."}
+{"id": "googleapis.com_drivelabels_v2beta__control", "run": 2, "model": "claude-opus-5-5", "pred": [], "raw": "All 16 operations match the spec."}
+{"id": "googleapis.com_drivelabels_v2beta__missing_operation", "run": 2, "model": "claude-opus-5-5", "pred": [["POST", "/v2beta/{name}:disable"]], "raw": "POST /v2beta/{name}:disable from the spec has no route in the code."}
+{"id": "googleapis.com_drivelabels_v2beta__status_changed", "run": 2, "model": "claude-opus-5-5", "pred": [["GET", "/v2beta/{parent}/locks"]], "raw": "GET /v2beta/{parent}/locks returns 202 instead of 200."}
+{"id": "googleapis.com_drivelabels_v2beta__field_renamed", "run": 2, "model": "claude-opus-5-5", "pred": [["POST", "/v2beta/labels"]], "raw": "POST /v2beta/labels returns appliedCapabilities_x instead of appliedCapabilities."}
+{"id": "googleapis.com_drivelabels_v2beta__auth_removed", "run": 2, "model": "claude-opus-5-5", "pred": [["GET", "/v2beta/limits/label"]], "raw": "GET /v2beta/limits/label lacks @auth_required although the spec requires auth."}
+{"id": "googleapis.com_drivelabels_v2beta__undocumented_operation", "run": 2, "model": "claude-opus-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug exists in code but not in the spec."}
+{"id": "googleapis.com_gameservices_v1__control", "run": 2, "model": "claude-opus-5-5", "pred": [], "raw": "All eight operations match the spec."}
+{"id": "googleapis.com_gameservices_v1__missing_operation", "run": 2, "model": "claude-opus-5-5", "pred": [["POST", "/v1/{resource}:setIamPolicy"]], "raw": "POST /v1/{resource}:setIamPolicy from the spec has no route in the code."}
+{"id": "googleapis.com_gameservices_v1__status_changed", "run": 2, "model": "claude-opus-5-5", "pred": [["DELETE", "/v1/{name}"]], "raw": "DELETE /v1/{name} returns 202 instead of 200."}
+{"id": "googleapis.com_gameservices_v1__field_renamed", "run": 2, "model": "claude-opus-5-5", "pred": [["GET", "/v1/{name}/operations"]], "raw": "GET /v1/{name}/operations returns nextPageToken_x instead of nextPageToken."}
+{"id": "googleapis.com_gameservices_v1__auth_removed", "run": 2, "model": "claude-opus-5-5", "pred": [["GET", "/v1/{resource}:getIamPolicy"]], "raw": "GET /v1/{resource}:getIamPolicy lacks @auth_required although the spec requires auth."}
+{"id": "googleapis.com_gameservices_v1__undocumented_operation", "run": 2, "model": "claude-opus-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug exists in code but not in the spec."}
+{"id": "googleapis.com_iap_v1__control", "run": 2, "model": "claude-opus-5-5", "pred": [], "raw": "All 16 operations match the spec."}
+{"id": "googleapis.com_iap_v1__missing_operation", "run": 2, "model": "claude-opus-5-5", "pred": [["POST", "/v1/{parent}/brands"]], "raw": "POST /v1/{parent}/brands from the spec has no route in the code."}
+{"id": "googleapis.com_iap_v1__status_changed", "run": 2, "model": "claude-opus-5-5", "pred": [["DELETE", "/v1/{name}"]], "raw": "DELETE /v1/{name} returns 202 instead of 200."}
+{"id": "googleapis.com_iap_v1__field_renamed", "run": 2, "model": "claude-opus-5-5", "pred": [["POST", "/v1/{resource}:getIamPolicy"]], "raw": "POST /v1/{resource}:getIamPolicy returns bindings_x instead of bindings."}
+{"id": "googleapis.com_iap_v1__auth_removed", "run": 2, "model": "claude-opus-5-5", "pred": [["POST", "/v1/{resource}:setIamPolicy"]], "raw": "POST /v1/{resource}:setIamPolicy lacks @auth_required although the spec requires auth."}
+{"id": "googleapis.com_iap_v1__undocumented_operation", "run": 2, "model": "claude-opus-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug exists in code but not in the spec."}
+{"id": "googleapis.com_jobs_v4__control", "run": 2, "model": "claude-opus-5-5", "pred": [], "raw": "All 16 operations match the spec."}
+{"id": "googleapis.com_jobs_v4__missing_operation", "run": 2, "model": "claude-opus-5-5", "pred": [["POST", "/v4/{parent}/clientEvents"]], "raw": "POST /v4/{parent}/clientEvents from the spec has no route in the code."}
+{"id": "googleapis.com_jobs_v4__status_changed", "run": 2, "model": "claude-opus-5-5", "pred": [["POST", "/v4/{parent}/jobs:searchForAlert"]], "raw": "POST /v4/{parent}/jobs:searchForAlert returns 202 instead of 200."}
+{"id": "googleapis.com_jobs_v4__field_renamed", "run": 2, "model": "claude-opus-5-5", "pred": [["PATCH", "/v4/{name}"]], "raw": "PATCH /v4/{name} returns addresses_x instead of addresses."}
+{"id": "googleapis.com_jobs_v4__auth_removed", "run": 2, "model": "claude-opus-5-5", "pred": [["POST", "/v4/{parent}/jobs:batchDelete"]], "raw": "POST /v4/{parent}/jobs:batchDelete lacks @auth_required although the spec requires auth."}
+{"id": "googleapis.com_jobs_v4__undocumented_operation", "run": 2, "model": "claude-opus-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug exists in code but not in the spec."}
+{"id": "googleapis.com_pubsub_v1beta1a__control", "run": 2, "model": "claude-opus-5-5", "pred": [], "raw": "All 15 operations match the spec."}
+{"id": "googleapis.com_pubsub_v1beta1a__missing_operation", "run": 2, "model": "claude-opus-5-5", "pred": [["GET", "/v1beta1a/topics/{topic}"]], "raw": "GET /v1beta1a/topics/{topic} from the spec has no route in the code."}
+{"id": "googleapis.com_pubsub_v1beta1a__status_changed", "run": 2, "model": "claude-opus-5-5", "pred": [["POST", "/v1beta1a/topics"]], "raw": "POST /v1beta1a/topics returns 202 instead of 200."}
+{"id": "googleapis.com_pubsub_v1beta1a__field_renamed", "run": 2, "model": "claude-opus-5-5", "pred": [["GET", "/v1beta1a/topics"]], "raw": "GET /v1beta1a/topics returns nextPageToken_x instead of nextPageToken."}
+{"id": "googleapis.com_pubsub_v1beta1a__auth_removed", "run": 2, "model": "claude-opus-5-5", "pred": [["GET", "/v1beta1a/topics"]], "raw": "GET /v1beta1a/topics lacks @auth_required although the spec requires auth."}
+{"id": "googleapis.com_pubsub_v1beta1a__undocumented_operation", "run": 2, "model": "claude-opus-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug exists in code but not in the spec."}
+{"id": "googleapis.com_recaptchaenterprise_v1__control", "run": 2, "model": "claude-opus-5-5", "pred": [], "raw": "All 15 operations match the spec."}
+{"id": "googleapis.com_recaptchaenterprise_v1__missing_operation", "run": 2, "model": "claude-opus-5-5", "pred": [["PATCH", "/v1/{name}"]], "raw": "PATCH /v1/{name} from the spec has no route in the code."}
+{"id": "googleapis.com_recaptchaenterprise_v1__status_changed", "run": 2, "model": "claude-opus-5-5", "pred": [["POST", "/v1/{parent}/keys"]], "raw": "POST /v1/{parent}/keys returns 202 instead of 200."}
+{"id": "googleapis.com_recaptchaenterprise_v1__field_renamed", "run": 2, "model": "claude-opus-5-5", "pred": [["GET", "/v1/{name}"]], "raw": "GET /v1/{name} returns challengeMetrics_x instead of challengeMetrics."}
+{"id": "googleapis.com_recaptchaenterprise_v1__auth_removed", "run": 2, "model": "claude-opus-5-5", "pred": [["GET", "/v1/{key}:retrieveLegacySecretKey"]], "raw": "GET /v1/{key}:retrieveLegacySecretKey lacks @auth_required although the spec requires auth."}
+{"id": "googleapis.com_recaptchaenterprise_v1__undocumented_operation", "run": 2, "model": "claude-opus-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug exists in code but not in the spec."}
+{"id": "wellknown.ai_1.0.0__control", "run": 2, "model": "claude-opus-5-5", "pred": [], "raw": "Both public operations match the spec."}
+{"id": "wellknown.ai_1.0.0__missing_operation", "run": 2, "model": "claude-opus-5-5", "pred": [["GET", "/api/plugins"]], "raw": "GET /api/plugins from the spec has no route in the code."}
+{"id": "wellknown.ai_1.0.0__status_changed", "run": 2, "model": "claude-opus-5-5", "pred": [["GET", "/plugins"]], "raw": "GET /plugins returns 202 instead of 200."}
+{"id": "wellknown.ai_1.0.0__undocumented_operation", "run": 2, "model": "claude-opus-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug exists in code but not in the spec."}
+{"id": "whapi.com_bets_2.0.0__control", "run": 2, "model": "claude-opus-5-5", "pred": [], "raw": "All six unauthenticated operations match; list responses carry the documented item fields."}
+{"id": "whapi.com_bets_2.0.0__missing_operation", "run": 2, "model": "claude-opus-5-5", "pred": [["POST", "/bet/complex"]], "raw": "POST /bet/complex from the spec has no route in the code."}
+{"id": "whapi.com_bets_2.0.0__status_changed", "run": 2, "model": "claude-opus-5-5", "pred": [["POST", "/bet/single"]], "raw": "POST /bet/single returns 202 instead of 200."}
+{"id": "whapi.com_bets_2.0.0__field_renamed", "run": 2, "model": "claude-opus-5-5", "pred": [["POST", "/bet/complex"]], "raw": "/bet/complex items return id_x instead of id."}
+{"id": "whapi.com_bets_2.0.0__undocumented_operation", "run": 2, "model": "claude-opus-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug exists in code but not in the spec."}
+{"id": "adyen.com_StoredValueService_46__control", "run": 3, "model": "claude-opus-5-5", "pred": [], "raw": "All six spec operations are present with status 200, auth and the documented fields."}
+{"id": "adyen.com_StoredValueService_46__missing_operation", "run": 3, "model": "claude-opus-5-5", "pred": [["POST", "/voidTransaction"]], "raw": "POST /voidTransaction from the spec has no route in the code."}
+{"id": "adyen.com_StoredValueService_46__status_changed", "run": 3, "model": "claude-opus-5-5", "pred": [["POST", "/changeStatus"]], "raw": "POST /changeStatus returns 202 instead of the documented 200."}
+{"id": "adyen.com_StoredValueService_46__field_renamed", "run": 3, "model": "claude-opus-5-5", "pred": [["POST", "/changeStatus"]], "raw": "POST /changeStatus returns authCode_x instead of the documented authCode field."}
+{"id": "adyen.com_StoredValueService_46__auth_removed", "run": 3, "model": "claude-opus-5-5", "pred": [["POST", "/voidTransaction"]], "raw": "POST /voidTransaction requires auth in the spec but lacks @auth_required."}
+{"id": "adyen.com_StoredValueService_46__undocumented_operation", "run": 3, "model": "claude-opus-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug exists in the code but not in the spec."}
+{"id": "adyen.com_TfmAPIService_1__control", "run": 3, "model": "claude-opus-5-5", "pred": [], "raw": "All five spec operations match status, auth and response fields."}
+{"id": "adyen.com_TfmAPIService_1__missing_operation", "run": 3, "model": "claude-opus-5-5", "pred": [["POST", "/getStoresUnderAccount"]], "raw": "POST /getStoresUnderAccount from the spec has no route in the code."}
+{"id": "adyen.com_TfmAPIService_1__status_changed", "run": 3, "model": "claude-opus-5-5", "pred": [["POST", "/findTerminal"]], "raw": "POST /findTerminal returns 202 instead of the documented 200."}
+{"id": "adyen.com_TfmAPIService_1__field_renamed", "run": 3, "model": "claude-opus-5-5", "pred": [["POST", "/findTerminal"]], "raw": "POST /findTerminal returns companyAccount_x instead of companyAccount."}
+{"id": "adyen.com_TfmAPIService_1__auth_removed", "run": 3, "model": "claude-opus-5-5", "pred": [["POST", "/findTerminal"]], "raw": "POST /findTerminal requires auth in the spec but has no @auth_required."}
+{"id": "adyen.com_TfmAPIService_1__undocumented_operation", "run": 3, "model": "claude-opus-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug is in the code but not in the spec."}
+{"id": "adyen.com_TransferService_2__control", "run": 3, "model": "claude-opus-5-5", "pred": [], "raw": "All three spec operations match path, status, auth and fields."}
+{"id": "adyen.com_TransferService_2__missing_operation", "run": 3, "model": "claude-opus-5-5", "pred": [["POST", "/transfers"]], "raw": "POST /transfers from the spec has no route in the code."}
+{"id": "adyen.com_TransferService_2__status_changed", "run": 3, "model": "claude-opus-5-5", "pred": [["GET", "/transactions"]], "raw": "GET /transactions returns 202 instead of the documented 200."}
+{"id": "adyen.com_TransferService_2__field_renamed", "run": 3, "model": "claude-opus-5-5", "pred": [["POST", "/transfers"]], "raw": "POST /transfers returns amount_x instead of the documented amount field."}
+{"id": "adyen.com_TransferService_2__auth_removed", "run": 3, "model": "claude-opus-5-5", "pred": [["POST", "/transfers"]], "raw": "POST /transfers requires auth in the spec but lacks @auth_required."}
+{"id": "adyen.com_TransferService_2__undocumented_operation", "run": 3, "model": "claude-opus-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug is in the code but not in the spec."}
+{"id": "api2pdf.com_1.0.0__control", "run": 3, "model": "claude-opus-5-5", "pred": [], "raw": "All nine spec operations are implemented with matching status, auth and fields."}
+{"id": "api2pdf.com_1.0.0__missing_operation", "run": 3, "model": "claude-opus-5-5", "pred": [["GET", "/zebra"]], "raw": "GET /zebra from the spec has no route in the code."}
+{"id": "api2pdf.com_1.0.0__status_changed", "run": 3, "model": "claude-opus-5-5", "pred": [["GET", "/chrome/url"]], "raw": "GET /chrome/url returns 202 instead of the documented 200."}
+{"id": "api2pdf.com_1.0.0__field_renamed", "run": 3, "model": "claude-opus-5-5", "pred": [["GET", "/wkhtmltopdf/url"]], "raw": "GET /wkhtmltopdf/url returns cost_x instead of the documented cost field."}
+{"id": "api2pdf.com_1.0.0__auth_removed", "run": 3, "model": "claude-opus-5-5", "pred": [["POST", "/chrome/html"]], "raw": "POST /chrome/html requires auth in the spec but lacks @auth_required."}
+{"id": "api2pdf.com_1.0.0__undocumented_operation", "run": 3, "model": "claude-opus-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug is in the code but not in the spec."}
+{"id": "apisetu.gov.in_transportdh_3.0.0__control", "run": 3, "model": "claude-opus-5-5", "pred": [], "raw": "Both certificate operations match the spec."}
+{"id": "apisetu.gov.in_transportdh_3.0.0__missing_operation", "run": 3, "model": "claude-opus-5-5", "pred": [["POST", "/drvlc/certificate"]], "raw": "POST /drvlc/certificate from the spec has no route in the code."}
+{"id": "apisetu.gov.in_transportdh_3.0.0__status_changed", "run": 3, "model": "claude-opus-5-5", "pred": [["POST", "/drvlc/certificate"]], "raw": "POST /drvlc/certificate returns 202 instead of the documented 200."}
+{"id": "apisetu.gov.in_transportdh_3.0.0__auth_removed", "run": 3, "model": "claude-opus-5-5", "pred": [["POST", "/drvlc/certificate"]], "raw": "POST /drvlc/certificate requires auth in the spec but lacks @auth_required."}
+{"id": "apisetu.gov.in_transportdh_3.0.0__undocumented_operation", "run": 3, "model": "claude-opus-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug is in the code but not in the spec."}
+{"id": "c19qrserver.local_1.1__control", "run": 3, "model": "claude-opus-5-5", "pred": [], "raw": "All fourteen spec operations match path, status, auth and fields."}
+{"id": "c19qrserver.local_1.1__missing_operation", "run": 3, "model": "claude-opus-5-5", "pred": [["POST", "/requestPasswordReset"]], "raw": "POST /requestPasswordReset from the spec has no route in the code."}
+{"id": "c19qrserver.local_1.1__status_changed", "run": 3, "model": "claude-opus-5-5", "pred": [["GET", "/signins"]], "raw": "GET /signins returns 202 instead of the documented 200."}
+{"id": "c19qrserver.local_1.1__field_renamed", "run": 3, "model": "claude-opus-5-5", "pred": [["POST", "/login"]], "raw": "POST /login returns admin_x instead of the documented admin field."}
+{"id": "c19qrserver.local_1.1__auth_removed", "run": 3, "model": "claude-opus-5-5", "pred": [["POST", "/user"]], "raw": "POST /user requires auth in the spec but lacks @auth_required."}
+{"id": "c19qrserver.local_1.1__undocumented_operation", "run": 3, "model": "claude-opus-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug is in the code but not in the spec."}
+{"id": "docker.com_hub_beta__control", "run": 3, "model": "claude-opus-5-5", "pred": [], "raw": "All 26 operations match the spec, including the unauthenticated non-SCIM routes."}
+{"id": "docker.com_hub_beta__missing_operation", "run": 3, "model": "claude-opus-5-5", "pred": [["GET", "/v2/auditlogs/{account}/actions"]], "raw": "GET /v2/auditlogs/{account}/actions from the spec has no route in the code."}
+{"id": "docker.com_hub_beta__status_changed", "run": 3, "model": "claude-opus-5-5", "pred": [["PUT", "/v2/scim/2.0/Users/{id}"]], "raw": "PUT /v2/scim/2.0/Users/{id} returns 202 instead of the documented 200."}
+{"id": "docker.com_hub_beta__field_renamed", "run": 3, "model": "claude-opus-5-5", "pred": [["POST", "/v2/scim/2.0/Users"]], "raw": "POST /v2/scim/2.0/Users returns active_x instead of the documented active field."}
+{"id": "docker.com_hub_beta__auth_removed", "run": 3, "model": "claude-opus-5-5", "pred": [["PUT", "/v2/scim/2.0/Users/{id}"]], "raw": "PUT /v2/scim/2.0/Users/{id} requires auth in the spec but lacks @auth_required."}
+{"id": "docker.com_hub_beta__undocumented_operation", "run": 3, "model": "claude-opus-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug is in the code but not in the spec."}
+{"id": "facecheck.id_v1.02__control", "run": 3, "model": "claude-opus-5-5", "pred": [], "raw": "All four /api operations match the spec."}
+{"id": "facecheck.id_v1.02__missing_operation", "run": 3, "model": "claude-opus-5-5", "pred": [["POST", "/api/upload_pic"]], "raw": "POST /api/upload_pic from the spec has no route in the code."}
+{"id": "facecheck.id_v1.02__status_changed", "run": 3, "model": "claude-opus-5-5", "pred": [["POST", "/api/info"]], "raw": "POST /api/info returns 202 instead of the documented 200."}
+{"id": "facecheck.id_v1.02__field_renamed", "run": 3, "model": "claude-opus-5-5", "pred": [["POST", "/api/upload_pic"]], "raw": "POST /api/upload_pic returns code_x instead of the documented code field."}
+{"id": "facecheck.id_v1.02__auth_removed", "run": 3, "model": "claude-opus-5-5", "pred": [["POST", "/api/search"]], "raw": "POST /api/search requires auth in the spec but lacks @auth_required."}
+{"id": "facecheck.id_v1.02__undocumented_operation", "run": 3, "model": "claude-opus-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug is in the code but not in the spec."}
+{"id": "fulfillment.com_2.0__control", "run": 3, "model": "claude-opus-5-5", "pred": [], "raw": "All thirteen operations match path, status, auth and fields."}
+{"id": "fulfillment.com_2.0__missing_operation", "run": 3, "model": "claude-opus-5-5", "pred": [["GET", "/users/me"]], "raw": "GET /users/me from the spec has no route in the code."}
+{"id": "fulfillment.com_2.0__status_changed", "run": 3, "model": "claude-opus-5-5", "pred": [["GET", "/accounting"]], "raw": "GET /accounting returns 202 instead of the documented 200."}
+{"id": "fulfillment.com_2.0__field_renamed", "run": 3, "model": "claude-opus-5-5", "pred": [["GET", "/users/me"]], "raw": "GET /users/me returns apiKey_x instead of the documented apiKey field."}
+{"id": "fulfillment.com_2.0__auth_removed", "run": 3, "model": "claude-opus-5-5", "pred": [["GET", "/orders"]], "raw": "GET /orders requires auth in the spec but lacks @auth_required."}
+{"id": "fulfillment.com_2.0__undocumented_operation", "run": 3, "model": "claude-opus-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug is in the code but not in the spec."}
+{"id": "googleapis.com_cloudscheduler_v1__control", "run": 3, "model": "claude-opus-5-5", "pred": [], "raw": "All nine Cloud Scheduler operations match the spec."}
+{"id": "googleapis.com_cloudscheduler_v1__missing_operation", "run": 3, "model": "claude-opus-5-5", "pred": [["POST", "/v1/{name}:run"]], "raw": "POST /v1/{name}:run from the spec has no route in the code."}
+{"id": "googleapis.com_cloudscheduler_v1__status_changed", "run": 3, "model": "claude-opus-5-5", "pred": [["POST", "/v1/{name}:resume"]], "raw": "POST /v1/{name}:resume returns 202 instead of the documented 200."}
+{"id": "googleapis.com_cloudscheduler_v1__field_renamed", "run": 3, "model": "claude-opus-5-5", "pred": [["POST", "/v1/{name}:resume"]], "raw": "POST /v1/{name}:resume returns appEngineHttpTarget_x instead of appEngineHttpTarget."}
+{"id": "googleapis.com_cloudscheduler_v1__auth_removed", "run": 3, "model": "claude-opus-5-5", "pred": [["PATCH", "/v1/{name}"]], "raw": "PATCH /v1/{name} requires auth in the spec but lacks @auth_required."}
+{"id": "googleapis.com_cloudscheduler_v1__undocumented_operation", "run": 3, "model": "claude-opus-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug is in the code but not in the spec."}
+{"id": "googleapis.com_drivelabels_v2beta__control", "run": 3, "model": "claude-opus-5-5", "pred": [], "raw": "All sixteen Drive Labels operations match the spec."}
+{"id": "googleapis.com_drivelabels_v2beta__missing_operation", "run": 3, "model": "claude-opus-5-5", "pred": [["POST", "/v2beta/{name}:disable"]], "raw": "POST /v2beta/{name}:disable from the spec has no route in the code."}
+{"id": "googleapis.com_drivelabels_v2beta__status_changed", "run": 3, "model": "claude-opus-5-5", "pred": [["GET", "/v2beta/{parent}/locks"]], "raw": "GET /v2beta/{parent}/locks returns 202 instead of the documented 200."}
+{"id": "googleapis.com_drivelabels_v2beta__field_renamed", "run": 3, "model": "claude-opus-5-5", "pred": [["POST", "/v2beta/labels"]], "raw": "POST /v2beta/labels returns appliedCapabilities_x instead of appliedCapabilities."}
+{"id": "googleapis.com_drivelabels_v2beta__auth_removed", "run": 3, "model": "claude-opus-5-5", "pred": [["GET", "/v2beta/limits/label"]], "raw": "GET /v2beta/limits/label requires auth in the spec but lacks @auth_required."}
+{"id": "googleapis.com_drivelabels_v2beta__undocumented_operation", "run": 3, "model": "claude-opus-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug is in the code but not in the spec."}
+{"id": "googleapis.com_gameservices_v1__control", "run": 3, "model": "claude-opus-5-5", "pred": [], "raw": "All eight operations match the spec."}
+{"id": "googleapis.com_gameservices_v1__missing_operation", "run": 3, "model": "claude-opus-5-5", "pred": [["POST", "/v1/{resource}:setIamPolicy"]], "raw": "POST /v1/{resource}:setIamPolicy from the spec has no route in the code."}
+{"id": "googleapis.com_gameservices_v1__status_changed", "run": 3, "model": "claude-opus-5-5", "pred": [["DELETE", "/v1/{name}"]], "raw": "DELETE /v1/{name} returns 202 instead of the documented 200."}
+{"id": "googleapis.com_gameservices_v1__field_renamed", "run": 3, "model": "claude-opus-5-5", "pred": [["GET", "/v1/{name}/operations"]], "raw": "GET /v1/{name}/operations returns nextPageToken_x instead of nextPageToken."}
+{"id": "googleapis.com_gameservices_v1__auth_removed", "run": 3, "model": "claude-opus-5-5", "pred": [["GET", "/v1/{resource}:getIamPolicy"]], "raw": "GET /v1/{resource}:getIamPolicy requires auth in the spec but lacks @auth_required."}
+{"id": "googleapis.com_gameservices_v1__undocumented_operation", "run": 3, "model": "claude-opus-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug is in the code but not in the spec."}
+{"id": "googleapis.com_iap_v1__control", "run": 3, "model": "claude-opus-5-5", "pred": [], "raw": "All sixteen IAP operations match the spec."}
+{"id": "googleapis.com_iap_v1__missing_operation", "run": 3, "model": "claude-opus-5-5", "pred": [["POST", "/v1/{parent}/brands"]], "raw": "POST /v1/{parent}/brands from the spec has no route in the code."}
+{"id": "googleapis.com_iap_v1__status_changed", "run": 3, "model": "claude-opus-5-5", "pred": [["DELETE", "/v1/{name}"]], "raw": "DELETE /v1/{name} returns 202 instead of the documented 200."}
+{"id": "googleapis.com_iap_v1__field_renamed", "run": 3, "model": "claude-opus-5-5", "pred": [["POST", "/v1/{resource}:getIamPolicy"]], "raw": "POST /v1/{resource}:getIamPolicy returns bindings_x instead of bindings."}
+{"id": "googleapis.com_iap_v1__auth_removed", "run": 3, "model": "claude-opus-5-5", "pred": [["POST", "/v1/{resource}:setIamPolicy"]], "raw": "POST /v1/{resource}:setIamPolicy requires auth in the spec but lacks @auth_required."}
+{"id": "googleapis.com_iap_v1__undocumented_operation", "run": 3, "model": "claude-opus-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug is in the code but not in the spec."}
+{"id": "googleapis.com_jobs_v4__control", "run": 3, "model": "claude-opus-5-5", "pred": [], "raw": "All sixteen Talent API operations match the spec."}
+{"id": "googleapis.com_jobs_v4__missing_operation", "run": 3, "model": "claude-opus-5-5", "pred": [["POST", "/v4/{parent}/clientEvents"]], "raw": "POST /v4/{parent}/clientEvents from the spec has no route in the code."}
+{"id": "googleapis.com_jobs_v4__status_changed", "run": 3, "model": "claude-opus-5-5", "pred": [["POST", "/v4/{parent}/jobs:searchForAlert"]], "raw": "POST /v4/{parent}/jobs:searchForAlert returns 202 instead of the documented 200."}
+{"id": "googleapis.com_jobs_v4__field_renamed", "run": 3, "model": "claude-opus-5-5", "pred": [["PATCH", "/v4/{name}"]], "raw": "PATCH /v4/{name} returns addresses_x instead of the documented addresses field."}
+{"id": "googleapis.com_jobs_v4__auth_removed", "run": 3, "model": "claude-opus-5-5", "pred": [["POST", "/v4/{parent}/jobs:batchDelete"]], "raw": "POST /v4/{parent}/jobs:batchDelete requires auth in the spec but lacks @auth_required."}
+{"id": "googleapis.com_jobs_v4__undocumented_operation", "run": 3, "model": "claude-opus-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug is in the code but not in the spec."}
+{"id": "googleapis.com_pubsub_v1beta1a__control", "run": 3, "model": "claude-opus-5-5", "pred": [], "raw": "All fifteen Pub/Sub operations match the spec."}
+{"id": "googleapis.com_pubsub_v1beta1a__missing_operation", "run": 3, "model": "claude-opus-5-5", "pred": [["GET", "/v1beta1a/topics/{topic}"]], "raw": "GET /v1beta1a/topics/{topic} from the spec has no route in the code."}
+{"id": "googleapis.com_pubsub_v1beta1a__status_changed", "run": 3, "model": "claude-opus-5-5", "pred": [["POST", "/v1beta1a/topics"]], "raw": "POST /v1beta1a/topics returns 202 instead of the documented 200."}
+{"id": "googleapis.com_pubsub_v1beta1a__field_renamed", "run": 3, "model": "claude-opus-5-5", "pred": [["GET", "/v1beta1a/topics"]], "raw": "GET /v1beta1a/topics returns nextPageToken_x instead of nextPageToken."}
+{"id": "googleapis.com_pubsub_v1beta1a__auth_removed", "run": 3, "model": "claude-opus-5-5", "pred": [["GET", "/v1beta1a/topics"]], "raw": "GET /v1beta1a/topics requires auth in the spec but lacks @auth_required."}
+{"id": "googleapis.com_pubsub_v1beta1a__undocumented_operation", "run": 3, "model": "claude-opus-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug is in the code but not in the spec."}
+{"id": "googleapis.com_recaptchaenterprise_v1__control", "run": 3, "model": "claude-opus-5-5", "pred": [], "raw": "All fifteen reCAPTCHA Enterprise operations match the spec."}
+{"id": "googleapis.com_recaptchaenterprise_v1__missing_operation", "run": 3, "model": "claude-opus-5-5", "pred": [["PATCH", "/v1/{name}"]], "raw": "PATCH /v1/{name} from the spec has no route in the code."}
+{"id": "googleapis.com_recaptchaenterprise_v1__status_changed", "run": 3, "model": "claude-opus-5-5", "pred": [["POST", "/v1/{parent}/keys"]], "raw": "POST /v1/{parent}/keys returns 202 instead of the documented 200."}
+{"id": "googleapis.com_recaptchaenterprise_v1__field_renamed", "run": 3, "model": "claude-opus-5-5", "pred": [["GET", "/v1/{name}"]], "raw": "GET /v1/{name} returns challengeMetrics_x instead of challengeMetrics."}
+{"id": "googleapis.com_recaptchaenterprise_v1__auth_removed", "run": 3, "model": "claude-opus-5-5", "pred": [["GET", "/v1/{key}:retrieveLegacySecretKey"]], "raw": "GET /v1/{key}:retrieveLegacySecretKey requires auth in the spec but lacks @auth_required."}
+{"id": "googleapis.com_recaptchaenterprise_v1__undocumented_operation", "run": 3, "model": "claude-opus-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug is in the code but not in the spec."}
+{"id": "wellknown.ai_1.0.0__control", "run": 3, "model": "claude-opus-5-5", "pred": [], "raw": "Both unauthenticated plugin routes match the spec."}
+{"id": "wellknown.ai_1.0.0__missing_operation", "run": 3, "model": "claude-opus-5-5", "pred": [["GET", "/api/plugins"]], "raw": "GET /api/plugins from the spec has no route in the code."}
+{"id": "wellknown.ai_1.0.0__status_changed", "run": 3, "model": "claude-opus-5-5", "pred": [["GET", "/plugins"]], "raw": "GET /plugins returns 202 instead of the documented 200."}
+{"id": "wellknown.ai_1.0.0__undocumented_operation", "run": 3, "model": "claude-opus-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug is in the code but not in the spec."}
+{"id": "whapi.com_bets_2.0.0__control", "run": 3, "model": "claude-opus-5-5", "pred": [], "raw": "All six betting operations match the spec, including the list-shaped responses."}
+{"id": "whapi.com_bets_2.0.0__missing_operation", "run": 3, "model": "claude-opus-5-5", "pred": [["POST", "/bet/complex"]], "raw": "POST /bet/complex from the spec has no route in the code."}
+{"id": "whapi.com_bets_2.0.0__status_changed", "run": 3, "model": "claude-opus-5-5", "pred": [["POST", "/bet/single"]], "raw": "POST /bet/single returns 202 instead of the documented 200."}
+{"id": "whapi.com_bets_2.0.0__field_renamed", "run": 3, "model": "claude-opus-5-5", "pred": [["POST", "/bet/complex"]], "raw": "POST /bet/complex returns id_x instead of the documented id field."}
+{"id": "whapi.com_bets_2.0.0__undocumented_operation", "run": 3, "model": "claude-opus-5-5", "pred": [["GET", "/internal/debug"]], "raw": "GET /internal/debug is in the code but not in the spec."}

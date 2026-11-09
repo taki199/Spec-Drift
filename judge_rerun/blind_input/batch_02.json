@@ -1,0 +1,711 @@
+[
+ {
+  "id": "case-087c02bf",
+  "spec_ops": [
+   {
+    "method": "POST",
+    "path": "/api/delete_pic",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "code",
+     "error",
+     "hasEmptyImages",
+     "id_search",
+     "input",
+     "message"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/api/info",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "faces",
+     "has_credits_to_search",
+     "is_online",
+     "remaining_credits"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/api/search",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "code",
+     "error",
+     "hasEmptyImages",
+     "id_search",
+     "input",
+     "message"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/api/upload_pic",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "code",
+     "error",
+     "hasEmptyImages",
+     "id_search",
+     "input",
+     "message"
+    ]
+   }
+  ],
+  "source": "from flask import Flask, jsonify, request\nfrom functools import wraps\napp = Flask(__name__)\ndef auth_required(fn):\n    @wraps(fn)\n    def w(*a, **k):\n        if request.headers.get(\"Authorization\", \"\") != \"Bearer t\":\n            return jsonify(error=\"unauthorized\"), 401\n        return fn(*a, **k)\n    return w\n\n@app.route('/api/delete_pic', methods=['POST'])\n@auth_required\ndef op_0():\n    return jsonify({'code': 'x', 'error': 'x', 'hasEmptyImages': True, 'id_search': 'x', 'input': [{'base64': 'x', 'id_pic': 'x', 'svg_anim': 'x', 'url_source': 'x'}], 'message': 'x'}), 200\n\n@app.route('/api/info', methods=['POST'])\n@auth_required\ndef op_1():\n    return jsonify({'faces': 1, 'has_credits_to_search': True, 'is_online': True, 'remaining_credits': 1}), 200\n\n@app.route('/api/search', methods=['POST'])\ndef op_2():\n    return jsonify({'code': 'x', 'error': 'x', 'hasEmptyImages': True, 'id_search': 'x', 'input': [{'base64': 'x', 'id_pic': 'x', 'svg_anim': 'x', 'url_source': 'x'}], 'message': 'x'}), 200\n\n@app.route('/api/upload_pic', methods=['POST'])\n@auth_required\ndef op_3():\n    return jsonify({'code': 'x', 'error': 'x', 'hasEmptyImages': True, 'id_search': 'x', 'input': [{'base64': 'x', 'id_pic': 'x', 'svg_anim': 'x', 'url_source': 'x'}], 'message': 'x'}), 200\n"
+ },
+ {
+  "id": "case-6494bbe6",
+  "spec_ops": [
+   {
+    "method": "POST",
+    "path": "/changePassword",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   },
+   {
+    "method": "POST",
+    "path": "/login",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "admin",
+     "login_id",
+     "name",
+     "read_only",
+     "token"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/logout",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   },
+   {
+    "method": "POST",
+    "path": "/requestPasswordReset",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "email",
+     "guid"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/signin",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "result"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/signin/{signinId}",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "dt",
+     "email",
+     "id",
+     "name",
+     "phone"
+    ]
+   },
+   {
+    "method": "PUT",
+    "path": "/signin/{signinId}",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "admin",
+     "email",
+     "id",
+     "name",
+     "read_only"
+    ]
+   },
+   {
+    "method": "DELETE",
+    "path": "/signin/{signinId}",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   },
+   {
+    "method": "GET",
+    "path": "/signins",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "dt",
+     "email",
+     "id",
+     "name",
+     "phone"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/user",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "email",
+     "guid"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/user/{userId}",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "admin",
+     "email",
+     "id",
+     "name",
+     "read_only"
+    ]
+   },
+   {
+    "method": "DELETE",
+    "path": "/user/{userId}",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   },
+   {
+    "method": "GET",
+    "path": "/users",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "admin",
+     "email",
+     "id",
+     "name",
+     "read_only"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/verifyPasswordChange",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   }
+  ],
+  "source": "from flask import Flask, jsonify, request\nfrom functools import wraps\napp = Flask(__name__)\ndef auth_required(fn):\n    @wraps(fn)\n    def w(*a, **k):\n        if request.headers.get(\"Authorization\", \"\") != \"Bearer t\":\n            return jsonify(error=\"unauthorized\"), 401\n        return fn(*a, **k)\n    return w\n\n@app.route('/changePassword', methods=['POST'])\n@auth_required\ndef op_0():\n    return \"\", 200\n\n@app.route('/login', methods=['POST'])\ndef op_1():\n    return jsonify({'admin': True, 'login_id': 1, 'name': 'x', 'read_only': True, 'token': 'x'}), 200\n\n@app.route('/logout', methods=['POST'])\n@auth_required\ndef op_2():\n    return \"\", 200\n\n@app.route('/signin', methods=['POST'])\n@auth_required\ndef op_3():\n    return jsonify({'result': 1}), 200\n\n@app.route('/signin/<signinId>', methods=['GET'])\n@auth_required\ndef op_4(signinId):\n    return jsonify({'dt': 1.0, 'email': 'x', 'id': 1, 'name': 'x', 'phone': 'x'}), 200\n\n@app.route('/signin/<signinId>', methods=['PUT'])\n@auth_required\ndef op_5(signinId):\n    return jsonify({'admin': True, 'email': 'x', 'id': 1, 'name': 'x', 'read_only': True}), 200\n\n@app.route('/signin/<signinId>', methods=['DELETE'])\n@auth_required\ndef op_6(signinId):\n    return \"\", 200\n\n@app.route('/signins', methods=['GET'])\n@auth_required\ndef op_7():\n    return jsonify([{'dt': 1.0, 'email': 'x', 'id': 1, 'name': 'x', 'phone': 'x'}]), 200\n\n@app.route('/user', methods=['POST'])\n@auth_required\ndef op_8():\n    return jsonify({'email': 'x', 'guid': 'x'}), 200\n\n@app.route('/user/<userId>', methods=['GET'])\n@auth_required\ndef op_9(userId):\n    return jsonify({'admin': True, 'email': 'x', 'id': 1, 'name': 'x', 'read_only': True}), 200\n\n@app.route('/user/<userId>', methods=['DELETE'])\n@auth_required\ndef op_10(userId):\n    return \"\", 200\n\n@app.route('/users', methods=['GET'])\n@auth_required\ndef op_11():\n    return jsonify([{'admin': True, 'email': 'x', 'id': 1, 'name': 'x', 'read_only': True}]), 200\n\n@app.route('/verifyPasswordChange', methods=['POST'])\n@auth_required\ndef op_12():\n    return \"\", 200\n"
+ },
+ {
+  "id": "case-904c295c",
+  "spec_ops": [
+   {
+    "method": "POST",
+    "path": "/chrome/html",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "cost",
+     "mbIn",
+     "mbOut",
+     "pdf",
+     "success"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/chrome/url",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "cost",
+     "mbIn",
+     "mbOut",
+     "pdf",
+     "success"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/chrome/url",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "cost",
+     "mbIn",
+     "mbOut",
+     "pdf",
+     "success"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/libreoffice/convert",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "cost",
+     "mbIn",
+     "mbOut",
+     "pdf",
+     "success"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/merge",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "cost",
+     "mbIn",
+     "mbOut",
+     "pdf",
+     "success"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/wkhtmltopdf/html",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "cost",
+     "mbIn",
+     "mbOut",
+     "pdf",
+     "success"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/wkhtmltopdf/url",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "cost",
+     "mbIn",
+     "mbOut",
+     "pdf",
+     "success"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/wkhtmltopdf/url",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "cost",
+     "mbIn",
+     "mbOut",
+     "pdf",
+     "success"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/zebra",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   }
+  ],
+  "source": "from flask import Flask, jsonify, request\nfrom functools import wraps\napp = Flask(__name__)\ndef auth_required(fn):\n    @wraps(fn)\n    def w(*a, **k):\n        if request.headers.get(\"Authorization\", \"\") != \"Bearer t\":\n            return jsonify(error=\"unauthorized\"), 401\n        return fn(*a, **k)\n    return w\n\n@app.route('/chrome/html', methods=['POST'])\n@auth_required\ndef op_0():\n    return jsonify({'cost': 1.0, 'mbIn': 1.0, 'mbOut': 1.0, 'pdf': 'x', 'success': True}), 200\n\n@app.route('/chrome/url', methods=['GET'])\n@auth_required\ndef op_1():\n    return jsonify({'cost': 1.0, 'mbIn': 1.0, 'mbOut': 1.0, 'pdf': 'x', 'success': True}), 202\n\n@app.route('/chrome/url', methods=['POST'])\n@auth_required\ndef op_2():\n    return jsonify({'cost': 1.0, 'mbIn': 1.0, 'mbOut': 1.0, 'pdf': 'x', 'success': True}), 200\n\n@app.route('/libreoffice/convert', methods=['POST'])\n@auth_required\ndef op_3():\n    return jsonify({'cost': 1.0, 'mbIn': 1.0, 'mbOut': 1.0, 'pdf': 'x', 'success': True}), 200\n\n@app.route('/merge', methods=['POST'])\n@auth_required\ndef op_4():\n    return jsonify({'cost': 1.0, 'mbIn': 1.0, 'mbOut': 1.0, 'pdf': 'x', 'success': True}), 200\n\n@app.route('/wkhtmltopdf/html', methods=['POST'])\n@auth_required\ndef op_5():\n    return jsonify({'cost': 1.0, 'mbIn': 1.0, 'mbOut': 1.0, 'pdf': 'x', 'success': True}), 200\n\n@app.route('/wkhtmltopdf/url', methods=['GET'])\n@auth_required\ndef op_6():\n    return jsonify({'cost': 1.0, 'mbIn': 1.0, 'mbOut': 1.0, 'pdf': 'x', 'success': True}), 200\n\n@app.route('/wkhtmltopdf/url', methods=['POST'])\n@auth_required\ndef op_7():\n    return jsonify({'cost': 1.0, 'mbIn': 1.0, 'mbOut': 1.0, 'pdf': 'x', 'success': True}), 200\n\n@app.route('/zebra', methods=['GET'])\n@auth_required\ndef op_8():\n    return \"\", 200\n"
+ },
+ {
+  "id": "case-d479a185",
+  "spec_ops": [
+   {
+    "method": "GET",
+    "path": "/accounting",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "data",
+     "meta"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/inventory",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "data",
+     "meta"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/oauth/access_token",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "access_token",
+     "expires_in",
+     "refresh_token",
+     "token_type"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/orders",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "currentStatus",
+     "departDate",
+     "dispatchDate",
+     "id",
+     "merchant",
+     "merchantOrderId"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/orders",
+    "status": 201,
+    "auth": true,
+    "response_fields": [
+     "currentStatus",
+     "departDate",
+     "dispatchDate",
+     "id",
+     "merchant",
+     "merchantOrderId"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/orders/{id}",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "currentStatus",
+     "departDate",
+     "dispatchDate",
+     "id",
+     "merchant",
+     "merchantOrderId"
+    ]
+   },
+   {
+    "method": "DELETE",
+    "path": "/orders/{id}",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "currentStatus",
+     "departDate",
+     "dispatchDate",
+     "id",
+     "merchant",
+     "merchantOrderId"
+    ]
+   },
+   {
+    "method": "PUT",
+    "path": "/orders/{id}/ship",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "currentStatus",
+     "departDate",
+     "dispatchDate",
+     "id",
+     "merchant",
+     "merchantOrderId"
+    ]
+   },
+   {
+    "method": "PUT",
+    "path": "/orders/{id}/status",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "currentStatus",
+     "departDate",
+     "dispatchDate",
+     "id",
+     "merchant",
+     "merchantOrderId"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/returns",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "data",
+     "meta"
+    ]
+   },
+   {
+    "method": "PUT",
+    "path": "/returns",
+    "status": 201,
+    "auth": true,
+    "response_fields": [
+     "items",
+     "merchantOrderId",
+     "recipient",
+     "rmaNumber"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/track",
+    "status": 200,
+    "auth": false,
+    "response_fields": [
+     "destination",
+     "fdcOrderId",
+     "firstCheckedDateTime",
+     "firstTransitEvent",
+     "lastCheckedDateTime",
+     "lastUpdatedDateTime"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/users/me",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "apiKey",
+     "contactInfo",
+     "createDate",
+     "deptLeader",
+     "id",
+     "merchant"
+    ]
+   }
+  ],
+  "source": "from flask import Flask, jsonify, request\nfrom functools import wraps\napp = Flask(__name__)\ndef auth_required(fn):\n    @wraps(fn)\n    def w(*a, **k):\n        if request.headers.get(\"Authorization\", \"\") != \"Bearer t\":\n            return jsonify(error=\"unauthorized\"), 401\n        return fn(*a, **k)\n    return w\n\n@app.route('/accounting', methods=['GET'])\n@auth_required\ndef op_0():\n    return jsonify({'data': [{'fees': {'box': 'x', 'envelope': 'x', 'fulfillment': 'x', 'insert': 'x', 'kitting': 'x', 'picking': 'x'}, 'itemCount': 1, 'items': ['x'], 'merchant': {'id': 'x', 'name': 'x'}, 'order': {'id': 'x', 'invoiceDate': 'x', 'merchantOrderId': 'x', 'recordedDate': 'x'}, 'warehouse': {'id': 'x', 'shortName': 'x'}}], 'meta': {'pagination': {'count': 1, 'currentPage': 1, 'total': 1, 'totalPages': 1}}}), 200\n\n@app.route('/inventory', methods=['GET'])\n@auth_required\ndef op_1():\n    return jsonify({'data': [{'item': {'id': 'x', 'skuReference': 'x'}, 'merchant': {'name': 'x'}, 'quantity': {'total': 'x'}}], 'meta': {'pagination': {'count': 1, 'currentPage': 1, 'total': 1, 'totalPages': 1}}}), 200\n\n@app.route('/oauth/access_token', methods=['POST'])\ndef op_2():\n    return jsonify({'access_token': 'x', 'expires_in': 1, 'refresh_token': 'x', 'token_type': 'x'}), 200\n\n@app.route('/orders', methods=['GET'])\n@auth_required\ndef op_3():\n    return jsonify({'currentStatus': {'createdBy': {'id': 'x'}, 'date': 'x', 'id': 1, 'reason': 'x', 'status': {'actionRequiredBy': 'x', 'code': 'x', 'detail': 'x', 'detailCode': 'x', 'id': 'x', 'isClosed': 'x'}}, 'departDate': 'x', 'dispatchDate': 'x', 'id': 1, 'merchant': {'id': 1, 'name': 'x'}, 'merchantOrderId': 'x'}), 200\n\n@app.route('/orders', methods=['POST'])\n@auth_required\ndef op_4():\n    return jsonify({'currentStatus': {'createdBy': {'id': 1}, 'date': 'x', 'id': 1, 'reason': 'x', 'status': {'actionRequiredBy': {'id': 'x', 'name': 'x'}, 'code': 'x', 'detail': 'x', 'detailCode': 'x', 'id': 1, 'isClosed': True}}, 'departDate': 'x', 'dispatchDate': 'x', 'id': 1, 'merchant': {'id': 1, 'name': 'x'}, 'merchantOrderId': 'x'}), 201\n\n@app.route('/orders/<id>', methods=['GET'])\n@auth_required\ndef op_5(id):\n    return jsonify({'currentStatus': {'createdBy': {'id': 'x'}, 'date': 'x', 'id': 1, 'reason': 'x', 'status': {'actionRequiredBy': 'x', 'code': 'x', 'detail': 'x', 'detailCode': 'x', 'id': 'x', 'isClosed': 'x'}}, 'departDate': 'x', 'dispatchDate': 'x', 'id': 1, 'merchant': {'id': 1, 'name': 'x'}, 'merchantOrderId': 'x'}), 200\n\n@app.route('/orders/<id>', methods=['DELETE'])\n@auth_required\ndef op_6(id):\n    return jsonify({'currentStatus': {'createdBy': {'id': 1}, 'date': 'x', 'id': 1, 'reason': 'x', 'status': {'actionRequiredBy': {'id': 'x', 'name': 'x'}, 'code': 'x', 'detail': 'x', 'detailCode': 'x', 'id': 1, 'isClosed': True}}, 'departDate': 'x', 'dispatchDate': 'x', 'id': 1, 'merchant': {'id': 1, 'name': 'x'}, 'merchantOrderId': 'x'}), 200\n\n@app.route('/orders/<id>/ship', methods=['PUT'])\n@auth_required\ndef op_7(id):\n    return jsonify({'currentStatus': {'createdBy': {'id': 1}, 'date': 'x', 'id': 1, 'reason': 'x', 'status': {'actionRequiredBy': {'id': 'x', 'name': 'x'}, 'code': 'x', 'detail': 'x', 'detailCode': 'x', 'id': 1, 'isClosed': True}}, 'departDate': 'x', 'dispatchDate': 'x', 'id': 1, 'merchant': {'id': 1, 'name': 'x'}, 'merchantOrderId': 'x'}), 200\n\n@app.route('/orders/<id>/status', methods=['PUT'])\n@auth_required\ndef op_8(id):\n    return jsonify({'currentStatus': {'createdBy': {'id': 1}, 'date': 'x', 'id': 1, 'reason': 'x', 'status': {'actionRequiredBy': {'id': 'x', 'name': 'x'}, 'code': 'x', 'detail': 'x', 'detailCode': 'x', 'id': 1, 'isClosed': True}}, 'departDate': 'x', 'dispatchDate': 'x', 'id': 1, 'merchant': {'id': 1, 'name': 'x'}, 'merchantOrderId': 'x'}), 200\n\n@app.route('/returns', methods=['GET'])\n@auth_required\ndef op_9():\n    return jsonify({'data': [{'comments': 'x', 'createdAt': 'x', 'createdBy': {'id': 'x'}, 'id': 1, 'order': {'id': 'x', 'merchantId': 'x', 'merchantOrderId': 'x'}, 'reason': {'id': 'x', 'title': 'x'}}], 'meta': {'pagination': {'count': 1, 'currentPage': 1, 'total': 1, 'totalPages': 1}}}), 200\n\n@app.route('/returns', methods=['PUT'])\n@auth_required\ndef op_10():\n    return jsonify({'items': [{'quantityExpected': 1, 'sku': 'x'}], 'merchantOrderId': 'x', 'recipient': {'address1': 'x', 'address2': 'x', 'addressLocality': 'x', 'addressRegion': 'x', 'companyName': 'x', 'country': 'x'}, 'rmaNumber': 'x'}), 201\n\n@app.route('/track', methods=['GET'])\ndef op_11():\n    return jsonify({'destination': {'bbox': ['x'], 'centerline': {'coordinates': 'x', 'type': 'Point'}, 'geometry': {'coordinates': 'x', 'type': 'Point'}, 'id': 1, 'properties': {'name': 'x'}, 'title': 'x'}, 'fdcOrderId': 1, 'firstCheckedDateTime': 'x', 'firstTransitEvent': 'x', 'lastCheckedDateTime': 'x', 'lastUpdatedDateTime': 'x'}), 200\n\n@app.route('/users/me', methods=['GET'])\n@auth_required\ndef op_12():\n    return jsonify({'apiKey': 'x', 'contactInfo': {'apiKey': 'x', 'contactInfo': {'address1': 'x', 'address2': 'x', 'addressLocality': 'x', 'addressRegion': 'x', 'companyName': 'x', 'country': 'x'}, 'createDate': 'x', 'deptLeader': True, 'id': 1, 'merchant': {'id': 1}}, 'createDate': 'x', 'deptLeader': True, 'id': 1, 'merchant': {'id': 1}}), 200\n"
+ },
+ {
+  "id": "case-b7dc4196",
+  "spec_ops": [
+   {
+    "method": "GET",
+    "path": "/api/plugins",
+    "status": 200,
+    "auth": false,
+    "response_fields": []
+   },
+   {
+    "method": "GET",
+    "path": "/plugins",
+    "status": 200,
+    "auth": false,
+    "response_fields": []
+   }
+  ],
+  "source": "from flask import Flask, jsonify, request\nfrom functools import wraps\napp = Flask(__name__)\ndef auth_required(fn):\n    @wraps(fn)\n    def w(*a, **k):\n        if request.headers.get(\"Authorization\", \"\") != \"Bearer t\":\n            return jsonify(error=\"unauthorized\"), 401\n        return fn(*a, **k)\n    return w\n\n@app.route('/plugins', methods=['GET'])\ndef op_0():\n    return \"\", 200\n"
+ },
+ {
+  "id": "case-8b680584",
+  "spec_ops": [
+   {
+    "method": "POST",
+    "path": "/drvlc/certificate",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   },
+   {
+    "method": "POST",
+    "path": "/rvcer/certificate",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   }
+  ],
+  "source": "from flask import Flask, jsonify, request\nfrom functools import wraps\napp = Flask(__name__)\ndef auth_required(fn):\n    @wraps(fn)\n    def w(*a, **k):\n        if request.headers.get(\"Authorization\", \"\") != \"Bearer t\":\n            return jsonify(error=\"unauthorized\"), 401\n        return fn(*a, **k)\n    return w\n\n@app.route('/drvlc/certificate', methods=['POST'])\n@auth_required\ndef op_0():\n    return \"\", 202\n\n@app.route('/rvcer/certificate', methods=['POST'])\n@auth_required\ndef op_1():\n    return \"\", 200\n"
+ },
+ {
+  "id": "case-e71d057b",
+  "spec_ops": [
+   {
+    "method": "GET",
+    "path": "/transactions",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "_links",
+     "data"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/transactions/{id}",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "accountHolderId",
+     "amount",
+     "balanceAccountId",
+     "balancePlatform",
+     "bookingDate",
+     "category"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/transfers",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "amount",
+     "balanceAccountId",
+     "bank",
+     "counterparty",
+     "description",
+     "direction"
+    ]
+   }
+  ],
+  "source": "from flask import Flask, jsonify, request\nfrom functools import wraps\napp = Flask(__name__)\ndef auth_required(fn):\n    @wraps(fn)\n    def w(*a, **k):\n        if request.headers.get(\"Authorization\", \"\") != \"Bearer t\":\n            return jsonify(error=\"unauthorized\"), 401\n        return fn(*a, **k)\n    return w\n\n@app.route('/transactions', methods=['GET'])\n@auth_required\ndef op_0():\n    return jsonify({'_links': {'next': {'href': 'x'}, 'prev': {'href': 'x'}}, 'data': [{'accountHolderId': 'x', 'amount': {'currency': 'x', 'value': 'x'}, 'balanceAccountId': 'x', 'balancePlatform': 'x', 'bookingDate': 'x', 'category': 'bank'}]}), 200\n\n@app.route('/transactions/<id>', methods=['GET'])\n@auth_required\ndef op_1(id):\n    return jsonify({'accountHolderId': 'x', 'amount': {'currency': 'x', 'value': 1}, 'balanceAccountId': 'x', 'balancePlatform': 'x', 'bookingDate': 'x', 'category': 'bank'}), 200\n"
+ },
+ {
+  "id": "case-2ae9e5e7",
+  "spec_ops": [
+   {
+    "method": "POST",
+    "path": "/drvlc/certificate",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   },
+   {
+    "method": "POST",
+    "path": "/rvcer/certificate",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   }
+  ],
+  "source": "from flask import Flask, jsonify, request\nfrom functools import wraps\napp = Flask(__name__)\ndef auth_required(fn):\n    @wraps(fn)\n    def w(*a, **k):\n        if request.headers.get(\"Authorization\", \"\") != \"Bearer t\":\n            return jsonify(error=\"unauthorized\"), 401\n        return fn(*a, **k)\n    return w\n\n@app.route('/drvlc/certificate', methods=['POST'])\ndef op_0():\n    return \"\", 200\n\n@app.route('/rvcer/certificate', methods=['POST'])\n@auth_required\ndef op_1():\n    return \"\", 200\n"
+ },
+ {
+  "id": "case-8a01b184",
+  "spec_ops": [
+   {
+    "method": "POST",
+    "path": "/drvlc/certificate",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   },
+   {
+    "method": "POST",
+    "path": "/rvcer/certificate",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   }
+  ],
+  "source": "from flask import Flask, jsonify, request\nfrom functools import wraps\napp = Flask(__name__)\ndef auth_required(fn):\n    @wraps(fn)\n    def w(*a, **k):\n        if request.headers.get(\"Authorization\", \"\") != \"Bearer t\":\n            return jsonify(error=\"unauthorized\"), 401\n        return fn(*a, **k)\n    return w\n\n@app.route('/drvlc/certificate', methods=['POST'])\n@auth_required\ndef op_0():\n    return \"\", 200\n\n@app.route('/rvcer/certificate', methods=['POST'])\n@auth_required\ndef op_1():\n    return \"\", 200\n\n@app.route('/internal/debug', methods=['GET'])\n@auth_required\ndef op_2():\n    return jsonify({'ok': True}), 200\n"
+ },
+ {
+  "id": "case-c7ac0754",
+  "spec_ops": [
+   {
+    "method": "GET",
+    "path": "/v1/{name}",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "done",
+     "error",
+     "metadata",
+     "name",
+     "response"
+    ]
+   },
+   {
+    "method": "DELETE",
+    "path": "/v1/{name}",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   },
+   {
+    "method": "GET",
+    "path": "/v1/{name}/locations",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "locations",
+     "nextPageToken"
+    ]
+   },
+   {
+    "method": "GET",
+    "path": "/v1/{name}/operations",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "nextPageToken",
+     "operations"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v1/{name}:cancel",
+    "status": 200,
+    "auth": true,
+    "response_fields": []
+   },
+   {
+    "method": "GET",
+    "path": "/v1/{resource}:getIamPolicy",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "auditConfigs",
+     "bindings",
+     "etag",
+     "rules",
+     "version"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v1/{resource}:setIamPolicy",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "auditConfigs",
+     "bindings",
+     "etag",
+     "rules",
+     "version"
+    ]
+   },
+   {
+    "method": "POST",
+    "path": "/v1/{resource}:testIamPermissions",
+    "status": 200,
+    "auth": true,
+    "response_fields": [
+     "permissions"
+    ]
+   }
+  ],
+  "source": "from flask import Flask, jsonify, request\nfrom functools import wraps\napp = Flask(__name__)\ndef auth_required(fn):\n    @wraps(fn)\n    def w(*a, **k):\n        if request.headers.get(\"Authorization\", \"\") != \"Bearer t\":\n            return jsonify(error=\"unauthorized\"), 401\n        return fn(*a, **k)\n    return w\n\n@app.route('/v1/<name>', methods=['GET'])\n@auth_required\ndef op_0(name):\n    return jsonify({'done': True, 'error': {'code': 1, 'details': [{}], 'message': 'x'}, 'metadata': {}, 'name': 'x', 'response': {}}), 200\n\n@app.route('/v1/<name>', methods=['DELETE'])\n@auth_required\ndef op_1(name):\n    return jsonify({}), 202\n\n@app.route('/v1/<name>/locations', methods=['GET'])\n@auth_required\ndef op_2(name):\n    return jsonify({'locations': [{'displayName': 'x', 'labels': {}, 'locationId': 'x', 'metadata': {}, 'name': 'x'}], 'nextPageToken': 'x'}), 200\n\n@app.route('/v1/<name>/operations', methods=['GET'])\n@auth_required\ndef op_3(name):\n    return jsonify({'nextPageToken': 'x', 'operations': [{'done': True, 'error': {'code': 'x', 'details': 'x', 'message': 'x'}, 'metadata': {}, 'name': 'x', 'response': {}}]}), 200\n\n@app.route('/v1/<name>:cancel', methods=['POST'])\n@auth_required\ndef op_4(name):\n    return jsonify({}), 200\n\n@app.route('/v1/<resource>:getIamPolicy', methods=['GET'])\n@auth_required\ndef op_5(resource):\n    return jsonify({'auditConfigs': [{'auditLogConfigs': ['x'], 'service': 'x'}], 'bindings': [{'bindingId': 'x', 'condition': {'description': 'x', 'expression': 'x', 'location': 'x', 'title': 'x'}, 'members': ['x'], 'role': 'x'}], 'etag': 'x', 'rules': [{'action': 'NO_ACTION', 'conditions': ['x'], 'description': 'x', 'in': ['x'], 'logConfig': ['x'], 'notIn': ['x']}], 'version': 1}), 200\n\n@app.route('/v1/<resource>:setIamPolicy', methods=['POST'])\n@auth_required\ndef op_6(resource):\n    return jsonify({'auditConfigs': [{'auditLogConfigs': ['x'], 'service': 'x'}], 'bindings': [{'bindingId': 'x', 'condition': {'description': 'x', 'expression': 'x', 'location': 'x', 'title': 'x'}, 'members': ['x'], 'role': 'x'}], 'etag': 'x', 'rules': [{'action': 'NO_ACTION', 'conditions': ['x'], 'description': 'x', 'in': ['x'], 'logConfig': ['x'], 'notIn': ['x']}], 'version': 1}), 200\n\n@app.route('/v1/<resource>:testIamPermissions', methods=['POST'])\n@auth_required\ndef op_7(resource):\n    return jsonify({'permissions': ['x']}), 200\n"
+ }
+]
