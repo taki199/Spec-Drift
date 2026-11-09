@@ -33,10 +33,10 @@ Reproduce the blind scores:
 cd answer_key
 python judge.py --report --results ../judge_rerun/judge_results_blind.jsonl
 ```
-- The code that generated the implementations and ran the rule-based and test-based detectors is not included yet; their outputs are stored in `cases.json`. [Add `build_and_eval.py` here if available.]
-- Pilot A (the 9-variant toy API, `pilot.py`, `results.json`) and the Schemathesis cross-check are not included yet. [Add if available.]
+- The code that generated the implementations and ran the rule-based and test-based detectors is not included yet; their outputs are stored in `cases.json`.
+- Pilot A (the 9-variant toy API, `pilot.py`, `results.json`) and the Schemathesis cross-check are not included yet.
 - The implementations are template-generated with one clean drift each, so all scores are an upper bound.
 
 ## Licence
 
-Specifications come from the APIs.guru OpenAPI Directory (CC0). [Choose a licence for the code, e.g. MIT.]
+Specifications come from the APIs.guru OpenAPI Directory (CC0). The code is released under the MIT licence (see `LICENSE`).
